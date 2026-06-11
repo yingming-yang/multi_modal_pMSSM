@@ -1,9 +1,14 @@
 import torch
+import pandas as pd
 from torch.utils.data import Dataset
 
 class pMSSM_Dataset(Dataset):
     def __init__(self, parameters, observables, device):
-        self.parameters = parameters
+        if isinstance(parameters, pd.core.frame.DataFrame):
+            self.parameters = parameters.to_numpy()
+            self.columns = parameters.columns
+        else:
+            self.parameters = parameters
         self.observables = observables
         self.device = torch.device(device) # also works if device has type torch.device
 
@@ -11,7 +16,7 @@ class pMSSM_Dataset(Dataset):
         return len(self.parameters)
 
     def __getitem__(self, idx):
-        params = self.parameters.iloc[idx]
+        params = self.parameters[idx]
         data = self.observables[idx]
 
         if self.device.type == "mps":

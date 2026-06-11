@@ -53,7 +53,7 @@ mo_omega = mo_omega[mask]
 
 # To make training easy for the normalizing flow, we standardize the parameters:
 
-parameters_mean = np.mean(parameters, axis=0)
-parameters_std = np.std(parameters, axis=0)
+parameters_mean = np.mean(parameters, axis=0).to_numpy()
+parameters_std = np.std(parameters, axis=0).to_numpy()
 
 parameters_standardized = (parameters - parameters_mean) / parameters_std
