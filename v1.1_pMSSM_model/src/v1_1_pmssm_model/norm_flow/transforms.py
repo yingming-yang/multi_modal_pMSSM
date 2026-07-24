@@ -18,6 +18,7 @@ def create_base_transform(
     num_transform_blocks: int = 2,
     batch_norm: bool = False,
     base_transform_type: str = "rq-coupling",
+    num_bins: int = 8,
 ):
 
     activation_fn = torch.nn.ELU()
@@ -51,7 +52,7 @@ def create_base_transform(
                     use_batch_norm=batch_norm,
                 )
             ),
-            num_bins=8,
+            num_bins=num_bins,
             tails="linear",
             tail_bound=1.0,
             apply_unconditional_transform=False,
