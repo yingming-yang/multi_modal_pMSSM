@@ -1,0 +1,6023 @@
+==========================================
+[norm-flow] job_id=28716582
+[norm-flow] PROJ_DIR=/raven/u/yinya/workspace/multi_modal_pMSSM/v1.1_pMSSM_model
+[norm-flow] CONFIG=/raven/u/yinya/workspace/multi_modal_pMSSM/v1.1_pMSSM_model/slurm/train_norm_flow.yaml
+[norm-flow] started: Wed Jul  8 12:18:37 CEST 2026
+==========================================
+Project: Multi-Modal pMSSM
+Architecture: Normalizing Flows
+Selected GPU 0 (40437 MiB free)
+---Load pMSSM dataset---
+Loading files: 1/250Loading files: 2/250Loading files: 3/250Loading files: 4/250Loading files: 5/250Loading files: 6/250Loading files: 7/250Loading files: 8/250Loading files: 9/250Loading files: 10/250Loading files: 11/250Loading files: 12/250Loading files: 13/250Loading files: 14/250Loading files: 15/250Loading files: 16/250Loading files: 17/250Loading files: 18/250Loading files: 19/250Loading files: 20/250Loading files: 21/250Loading files: 22/250Loading files: 23/250Loading files: 24/250Loading files: 25/250Loading files: 26/250Loading files: 27/250Loading files: 28/250Loading files: 29/250Loading files: 30/250Loading files: 31/250Loading files: 32/250Loading files: 33/250Loading files: 34/250Loading files: 35/250Loading files: 36/250Loading files: 37/250Loading files: 38/250Loading files: 39/250Loading files: 40/250Loading files: 41/250Loading files: 42/250Loading files: 43/250Loading files: 44/250Loading files: 45/250Loading files: 46/250Loading files: 47/250Loading files: 48/250Loading files: 49/250Loading files: 50/250Loading files: 51/250Loading files: 52/250Loading files: 53/250Loading files: 54/250Loading files: 55/250Loading files: 56/250Loading files: 57/250Loading files: 58/250Loading files: 59/250Loading files: 60/250Loading files: 61/250Loading files: 62/250Loading files: 63/250Loading files: 64/250Loading files: 65/250Loading files: 66/250Loading files: 67/250Loading files: 68/250Loading files: 69/250Loading files: 70/250Loading files: 71/250Loading files: 72/250Loading files: 73/250Loading files: 74/250Loading files: 75/250Loading files: 76/250Loading files: 77/250Loading files: 78/250Loading files: 79/250Loading files: 80/250Loading files: 81/250Loading files: 82/250Loading files: 83/250Loading files: 84/250Loading files: 85/250Loading files: 86/250Loading files: 87/250Loading files: 88/250Loading files: 89/250Loading files: 90/250Loading files: 91/250Loading files: 92/250Loading files: 93/250Loading files: 94/250Loading files: 95/250Loading files: 96/250Loading files: 97/250Loading files: 98/250Loading files: 99/250Loading files: 100/250Loading files: 101/250Loading files: 102/250Loading files: 103/250Loading files: 104/250Loading files: 105/250Loading files: 106/250Loading files: 107/250Loading files: 108/250Loading files: 109/250Loading files: 110/250Loading files: 111/250Loading files: 112/250Loading files: 113/250Loading files: 114/250Loading files: 115/250Loading files: 116/250Loading files: 117/250Loading files: 118/250Loading files: 119/250Loading files: 120/250Loading files: 121/250Loading files: 122/250Loading files: 123/250Loading files: 124/250Loading files: 125/250Loading files: 126/250Loading files: 127/250Loading files: 128/250Loading files: 129/250Loading files: 130/250Loading files: 131/250Loading files: 132/250Loading files: 133/250Loading files: 134/250Loading files: 135/250Loading files: 136/250Loading files: 137/250Loading files: 138/250Loading files: 139/250Loading files: 140/250Loading files: 141/250Loading files: 142/250Loading files: 143/250Loading files: 144/250Loading files: 145/250Loading files: 146/250Loading files: 147/250Loading files: 148/250Loading files: 149/250Loading files: 150/250Loading files: 151/250Loading files: 152/250Loading files: 153/250Loading files: 154/250Loading files: 155/250Loading files: 156/250Loading files: 157/250Loading files: 158/250Loading files: 159/250Loading files: 160/250Loading files: 161/250Loading files: 162/250Loading files: 163/250Loading files: 164/250Loading files: 165/250Loading files: 166/250Loading files: 167/250Loading files: 168/250Loading files: 169/250Loading files: 170/250Loading files: 171/250Loading files: 172/250Loading files: 173/250Loading files: 174/250Loading files: 175/250Loading files: 176/250Loading files: 177/250Loading files: 178/250Loading files: 179/250Loading files: 180/250Loading files: 181/250Loading files: 182/250Loading files: 183/250Loading files: 184/250Loading files: 185/250Loading files: 186/250Loading files: 187/250Loading files: 188/250Loading files: 189/250Loading files: 190/250Loading files: 191/250Loading files: 192/250Loading files: 193/250Loading files: 194/250Loading files: 195/250Loading files: 196/250Loading files: 197/250Loading files: 198/250Loading files: 199/250Loading files: 200/250Loading files: 201/250Loading files: 202/250Loading files: 203/250Loading files: 204/250Loading files: 205/250Loading files: 206/250Loading files: 207/250Loading files: 208/250Loading files: 209/250Loading files: 210/250Loading files: 211/250Loading files: 212/250Loading files: 213/250Loading files: 214/250Loading files: 215/250Loading files: 216/250Loading files: 217/250Loading files: 218/250Loading files: 219/250Loading files: 220/250Loading files: 221/250Loading files: 222/250Loading files: 223/250Loading files: 224/250Loading files: 225/250Loading files: 226/250Loading files: 227/250Loading files: 228/250Loading files: 229/250Loading files: 230/250Loading files: 231/250Loading files: 232/250Loading files: 233/250Loading files: 234/250Loading files: 235/250Loading files: 236/250Loading files: 237/250Loading files: 238/250Loading files: 239/250Loading files: 240/250Loading files: 241/250Loading files: 242/250Loading files: 243/250Loading files: 244/250Loading files: 245/250Loading files: 246/250Loading files: 247/250Loading files: 248/250Loading files: 249/250Loading files: 250/250
+Loaded 250 files from ['/ptmp/yinya/gen_flat_28346825/ntuples']
+Total samples: 2000000
+Samples after filter on relic density: 1565111
+Using 157 samples (0.0% of filtered data)
+Training sample size: 126
+Epoch 1
+-------------------------------
+Loss: 28.905710  [    0/  126 samples]
+Average loss: 31.4156
+Test loss: 31.733568 
+
+Epoch 2
+-------------------------------
+Loss: 27.810810  [    0/  126 samples]
+Average loss: 30.5279
+Test loss: 31.295109 
+
+Epoch 3
+-------------------------------
+Loss: 34.894333  [    0/  126 samples]
+Average loss: 30.4265
+Test loss: 31.242235 
+
+Epoch 4
+-------------------------------
+Loss: 31.306549  [    0/  126 samples]
+Average loss: 29.5357
+Test loss: 31.070507 
+
+Epoch 5
+-------------------------------
+Loss: 29.172016  [    0/  126 samples]
+Average loss: 29.2182
+Test loss: 31.334234 
+
+Epoch 6
+-------------------------------
+Loss: 27.780003  [    0/  126 samples]
+Average loss: 29.3143
+Test loss: 31.381950 
+
+Epoch 7
+-------------------------------
+Loss: 33.045227  [    0/  126 samples]
+Average loss: 28.9433
+Test loss: 31.182920 
+
+Epoch 8
+-------------------------------
+Loss: 28.011261  [    0/  126 samples]
+Average loss: 28.6589
+Test loss: 31.549452 
+
+Epoch 9
+-------------------------------
+Loss: 27.302864  [    0/  126 samples]
+Average loss: 28.9733
+Test loss: 31.097857 
+
+Epoch 10
+-------------------------------
+Loss: 28.041077  [    0/  126 samples]
+Average loss: 29.1003
+Test loss: 30.450459 
+
+Epoch 11
+-------------------------------
+Loss: 33.992580  [    0/  126 samples]
+Average loss: 28.6458
+Test loss: 31.063445 
+
+Epoch 12
+-------------------------------
+Loss: 29.958836  [    0/  126 samples]
+Average loss: 28.8015
+Test loss: 31.055857 
+
+Epoch 13
+-------------------------------
+Loss: 26.231480  [    0/  126 samples]
+Average loss: 28.4811
+Test loss: 30.897425 
+
+Epoch 14
+-------------------------------
+Loss: 31.523449  [    0/  126 samples]
+Average loss: 28.3228
+Test loss: 30.521132 
+
+Epoch 15
+-------------------------------
+Loss: 27.635273  [    0/  126 samples]
+Average loss: 28.2490
+Test loss: 30.390674 
+
+Epoch 16
+-------------------------------
+Loss: 31.916084  [    0/  126 samples]
+Average loss: 28.1501
+Test loss: 29.668311 
+
+Epoch 17
+-------------------------------
+Loss: 26.215319  [    0/  126 samples]
+Average loss: 27.9696
+Test loss: 29.910164 
+
+Epoch 18
+-------------------------------
+Loss: 29.324778  [    0/  126 samples]
+Average loss: 27.8815
+Test loss: 30.439138 
+
+Epoch 19
+-------------------------------
+Loss: 29.562658  [    0/  126 samples]
+Average loss: 27.3778
+Test loss: 30.556593 
+
+Epoch 20
+-------------------------------
+Loss: 31.068977  [    0/  126 samples]
+Average loss: 27.3977
+Test loss: 30.576174 
+
+Epoch 21
+-------------------------------
+Loss: 28.071163  [    0/  126 samples]
+Average loss: 27.1708
+Test loss: 30.451518 
+
+Epoch 22
+-------------------------------
+Loss: 22.648438  [    0/  126 samples]
+Average loss: 26.8545
+Test loss: 29.957563 
+
+Epoch 23
+-------------------------------
+Loss: 29.398779  [    0/  126 samples]
+Average loss: 26.9235
+Test loss: 29.860493 
+
+Epoch 24
+-------------------------------
+Loss: 27.936634  [    0/  126 samples]
+Average loss: 26.8196
+Test loss: 30.221046 
+
+Epoch 25
+-------------------------------
+Loss: 29.303911  [    0/  126 samples]
+Average loss: 26.5614
+Test loss: 30.145212 
+
+Epoch 26
+-------------------------------
+Loss: 25.707182  [    0/  126 samples]
+Average loss: 26.6142
+Test loss: 29.975082 
+
+Epoch 27
+-------------------------------
+Loss: 28.303192  [    0/  126 samples]
+Average loss: 26.4708
+Test loss: 29.893732 
+
+Epoch 28
+-------------------------------
+Loss: 28.368046  [    0/  126 samples]
+Average loss: 26.2017
+Test loss: 29.822636 
+
+Epoch 29
+-------------------------------
+Loss: 29.478678  [    0/  126 samples]
+Average loss: 25.9502
+Test loss: 29.742593 
+
+Epoch 30
+-------------------------------
+Loss: 27.437611  [    0/  126 samples]
+Average loss: 25.8336
+Test loss: 29.841277 
+
+Epoch 31
+-------------------------------
+Loss: 22.698351  [    0/  126 samples]
+Average loss: 25.6278
+Test loss: 29.680195 
+
+Epoch 32
+-------------------------------
+Loss: 27.908665  [    0/  126 samples]
+Average loss: 25.6817
+Test loss: 29.635978 
+
+Epoch 33
+-------------------------------
+Loss: 25.407124  [    0/  126 samples]
+Average loss: 25.3369
+Test loss: 29.742329 
+
+Epoch 34
+-------------------------------
+Loss: 25.362806  [    0/  126 samples]
+Average loss: 25.2043
+Test loss: 29.565107 
+
+Epoch 35
+-------------------------------
+Loss: 22.845543  [    0/  126 samples]
+Average loss: 25.1580
+Test loss: 29.130934 
+
+Epoch 36
+-------------------------------
+Loss: 26.846849  [    0/  126 samples]
+Average loss: 25.0846
+Test loss: 28.996511 
+
+Epoch 37
+-------------------------------
+Loss: 19.930336  [    0/  126 samples]
+Average loss: 25.0063
+Test loss: 28.847997 
+
+Epoch 38
+-------------------------------
+Loss: 24.292316  [    0/  126 samples]
+Average loss: 24.9332
+Test loss: 28.726929 
+
+Epoch 39
+-------------------------------
+Loss: 24.105150  [    0/  126 samples]
+Average loss: 24.7410
+Test loss: 28.659843 
+
+Epoch 40
+-------------------------------
+Loss: 24.108932  [    0/  126 samples]
+Average loss: 24.6181
+Test loss: 28.545979 
+
+Epoch 41
+-------------------------------
+Loss: 23.976633  [    0/  126 samples]
+Average loss: 24.4501
+Test loss: 28.421859 
+
+Epoch 42
+-------------------------------
+Loss: 23.314945  [    0/  126 samples]
+Average loss: 24.3576
+Test loss: 28.283329 
+
+Epoch 43
+-------------------------------
+Loss: 20.641121  [    0/  126 samples]
+Average loss: 24.1570
+Test loss: 28.172698 
+
+Epoch 44
+-------------------------------
+Loss: 24.925386  [    0/  126 samples]
+Average loss: 24.0642
+Test loss: 28.079046 
+
+Epoch 45
+-------------------------------
+Loss: 23.469728  [    0/  126 samples]
+Average loss: 24.0295
+Test loss: 27.996649 
+
+Epoch 46
+-------------------------------
+Loss: 25.534008  [    0/  126 samples]
+Average loss: 24.0059
+Test loss: 28.037109 
+
+Epoch 47
+-------------------------------
+Loss: 22.165260  [    0/  126 samples]
+Average loss: 23.9177
+Test loss: 27.988340 
+
+Epoch 48
+-------------------------------
+Loss: 22.897060  [    0/  126 samples]
+Average loss: 23.8061
+Test loss: 27.864279 
+
+Epoch 49
+-------------------------------
+Loss: 23.793156  [    0/  126 samples]
+Average loss: 23.6377
+Test loss: 27.841311 
+
+Epoch 50
+-------------------------------
+Loss: 26.521978  [    0/  126 samples]
+Average loss: 23.5765
+Test loss: 27.565231 
+
+Epoch 51
+-------------------------------
+Loss: 24.874107  [    0/  126 samples]
+Average loss: 23.4737
+Test loss: 27.628249 
+
+Epoch 52
+-------------------------------
+Loss: 23.501692  [    0/  126 samples]
+Average loss: 23.4039
+Test loss: 27.714399 
+
+Epoch 53
+-------------------------------
+Loss: 23.394417  [    0/  126 samples]
+Average loss: 23.1932
+Test loss: 27.832775 
+
+Epoch 54
+-------------------------------
+Loss: 21.894531  [    0/  126 samples]
+Average loss: 23.2213
+Test loss: 27.661936 
+
+Epoch 55
+-------------------------------
+Loss: 24.620888  [    0/  126 samples]
+Average loss: 23.1625
+Test loss: 27.798694 
+
+Epoch 56
+-------------------------------
+Loss: 23.056145  [    0/  126 samples]
+Average loss: 23.0237
+Test loss: 27.676459 
+
+Epoch 57
+-------------------------------
+Loss: 24.514961  [    0/  126 samples]
+Average loss: 23.0000
+Test loss: 27.627489 
+
+Epoch 58
+-------------------------------
+Loss: 21.962227  [    0/  126 samples]
+Average loss: 22.9116
+Test loss: 27.480392 
+
+Epoch 59
+-------------------------------
+Loss: 21.447533  [    0/  126 samples]
+Average loss: 22.6532
+Test loss: 27.369267 
+
+Epoch 60
+-------------------------------
+Loss: 20.011265  [    0/  126 samples]
+Average loss: 22.5158
+Test loss: 27.192422 
+
+Epoch 61
+-------------------------------
+Loss: 23.109505  [    0/  126 samples]
+Average loss: 22.4646
+Test loss: 27.269754 
+
+Epoch 62
+-------------------------------
+Loss: 19.890018  [    0/  126 samples]
+Average loss: 22.4126
+Test loss: 27.750350 
+
+Epoch 63
+-------------------------------
+Loss: 23.642868  [    0/  126 samples]
+Average loss: 22.4637
+Test loss: 27.245794 
+
+Epoch 64
+-------------------------------
+Loss: 21.982323  [    0/  126 samples]
+Average loss: 22.4816
+Test loss: 28.021130 
+
+Epoch 65
+-------------------------------
+Loss: 20.785013  [    0/  126 samples]
+Average loss: 22.7618
+Test loss: 28.194411 
+
+Epoch 66
+-------------------------------
+Loss: 21.369669  [    0/  126 samples]
+Average loss: 22.7740
+Test loss: 28.500512 
+
+Epoch 67
+-------------------------------
+Loss: 24.529491  [    0/  126 samples]
+Average loss: 22.7520
+Test loss: 28.456319 
+
+Epoch 68
+-------------------------------
+Loss: 20.243959  [    0/  126 samples]
+Average loss: 22.6698
+Test loss: 28.289787 
+
+Epoch 69
+-------------------------------
+Loss: 24.253326  [    0/  126 samples]
+Average loss: 22.6659
+Test loss: 28.312341 
+
+Epoch 70
+-------------------------------
+Loss: 21.788036  [    0/  126 samples]
+Average loss: 22.5033
+Test loss: 28.178321 
+
+Epoch 71
+-------------------------------
+Loss: 22.362431  [    0/  126 samples]
+Average loss: 22.3569
+Test loss: 28.093516 
+
+Epoch 72
+-------------------------------
+Loss: 22.594536  [    0/  126 samples]
+Average loss: 22.0489
+Test loss: 27.779848 
+
+Epoch 73
+-------------------------------
+Loss: 22.290215  [    0/  126 samples]
+Average loss: 21.9313
+Test loss: 27.154876 
+
+Epoch 74
+-------------------------------
+Loss: 23.094322  [    0/  126 samples]
+Average loss: 21.8630
+Test loss: 27.280014 
+
+Epoch 75
+-------------------------------
+Loss: 22.484007  [    0/  126 samples]
+Average loss: 21.8592
+Test loss: 27.312461 
+
+Epoch 76
+-------------------------------
+Loss: 22.157490  [    0/  126 samples]
+Average loss: 21.7853
+Test loss: 27.324081 
+
+Epoch 77
+-------------------------------
+Loss: 20.270489  [    0/  126 samples]
+Average loss: 21.7458
+Test loss: 27.308015 
+
+Epoch 78
+-------------------------------
+Loss: 20.527685  [    0/  126 samples]
+Average loss: 21.7024
+Test loss: 27.249047 
+
+Epoch 79
+-------------------------------
+Loss: 20.731659  [    0/  126 samples]
+Average loss: 21.6627
+Test loss: 27.152371 
+
+Epoch 80
+-------------------------------
+Loss: 21.526937  [    0/  126 samples]
+Average loss: 21.5253
+Test loss: 27.028318 
+
+Epoch 81
+-------------------------------
+Loss: 21.244740  [    0/  126 samples]
+Average loss: 21.3932
+Test loss: 26.849865 
+
+Epoch 82
+-------------------------------
+Loss: 22.371428  [    0/  126 samples]
+Average loss: 21.2821
+Test loss: 26.856784 
+
+Epoch 83
+-------------------------------
+Loss: 23.661472  [    0/  126 samples]
+Average loss: 21.0991
+Test loss: 26.899666 
+
+Epoch 84
+-------------------------------
+Loss: 20.978064  [    0/  126 samples]
+Average loss: 21.0686
+Test loss: 26.872687 
+
+Epoch 85
+-------------------------------
+Loss: 20.293293  [    0/  126 samples]
+Average loss: 21.0615
+Test loss: 26.874894 
+
+Epoch 86
+-------------------------------
+Loss: 24.261021  [    0/  126 samples]
+Average loss: 21.0859
+Test loss: 27.032632 
+
+Epoch 87
+-------------------------------
+Loss: 18.278339  [    0/  126 samples]
+Average loss: 21.0187
+Test loss: 27.087572 
+
+Epoch 88
+-------------------------------
+Loss: 23.195257  [    0/  126 samples]
+Average loss: 20.9359
+Test loss: 27.066172 
+
+Epoch 89
+-------------------------------
+Loss: 17.142315  [    0/  126 samples]
+Average loss: 20.9943
+Test loss: 27.039618 
+
+Epoch 90
+-------------------------------
+Loss: 22.564808  [    0/  126 samples]
+Average loss: 20.8882
+Test loss: 27.018019 
+
+Epoch 91
+-------------------------------
+Loss: 23.731800  [    0/  126 samples]
+Average loss: 20.8823
+Test loss: 27.096995 
+
+Epoch 92
+-------------------------------
+Loss: 19.504498  [    0/  126 samples]
+Average loss: 20.8092
+Test loss: 26.907294 
+
+Epoch 93
+-------------------------------
+Loss: 19.657621  [    0/  126 samples]
+Average loss: 20.7736
+Test loss: 27.185338 
+
+Epoch 94
+-------------------------------
+Loss: 20.820442  [    0/  126 samples]
+Average loss: 20.6496
+Test loss: 27.163499 
+
+Epoch 95
+-------------------------------
+Loss: 20.743294  [    0/  126 samples]
+Average loss: 20.5981
+Test loss: 27.116266 
+
+Epoch 96
+-------------------------------
+Loss: 18.924274  [    0/  126 samples]
+Average loss: 20.4582
+Test loss: 27.305631 
+
+Epoch 97
+-------------------------------
+Loss: 22.390368  [    0/  126 samples]
+Average loss: 20.4729
+Test loss: 26.637869 
+
+Epoch 98
+-------------------------------
+Loss: 19.988731  [    0/  126 samples]
+Average loss: 20.4656
+Test loss: 26.662153 
+
+Epoch 99
+-------------------------------
+Loss: 18.692734  [    0/  126 samples]
+Average loss: 20.3423
+Test loss: 26.599909 
+
+Epoch 100
+-------------------------------
+Loss: 21.341078  [    0/  126 samples]
+Average loss: 20.2957
+Test loss: 26.662430 
+
+Epoch 101
+-------------------------------
+Loss: 22.281822  [    0/  126 samples]
+Average loss: 20.1914
+Test loss: 26.630950 
+
+Epoch 102
+-------------------------------
+Loss: 18.535618  [    0/  126 samples]
+Average loss: 20.1668
+Test loss: 26.375744 
+
+Epoch 103
+-------------------------------
+Loss: 22.205225  [    0/  126 samples]
+Average loss: 20.0768
+Test loss: 26.290634 
+
+Epoch 104
+-------------------------------
+Loss: 19.760109  [    0/  126 samples]
+Average loss: 20.0024
+Test loss: 26.255227 
+
+Epoch 105
+-------------------------------
+Loss: 19.960804  [    0/  126 samples]
+Average loss: 19.9805
+Test loss: 26.176510 
+
+Epoch 106
+-------------------------------
+Loss: 21.411022  [    0/  126 samples]
+Average loss: 19.9707
+Test loss: 26.194365 
+
+Epoch 107
+-------------------------------
+Loss: 18.797953  [    0/  126 samples]
+Average loss: 19.8479
+Test loss: 26.259065 
+
+Epoch 108
+-------------------------------
+Loss: 21.344479  [    0/  126 samples]
+Average loss: 19.7709
+Test loss: 26.384888 
+
+Epoch 109
+-------------------------------
+Loss: 21.890682  [    0/  126 samples]
+Average loss: 19.7197
+Test loss: 26.377544 
+
+Epoch 110
+-------------------------------
+Loss: 19.834375  [    0/  126 samples]
+Average loss: 19.6872
+Test loss: 26.305851 
+
+Epoch 111
+-------------------------------
+Loss: 19.715946  [    0/  126 samples]
+Average loss: 19.6490
+Test loss: 26.201341 
+
+Epoch 112
+-------------------------------
+Loss: 20.333250  [    0/  126 samples]
+Average loss: 19.6638
+Test loss: 26.169302 
+
+Epoch 113
+-------------------------------
+Loss: 17.380272  [    0/  126 samples]
+Average loss: 19.6839
+Test loss: 26.194631 
+
+Epoch 114
+-------------------------------
+Loss: 19.113398  [    0/  126 samples]
+Average loss: 19.5981
+Test loss: 25.926833 
+
+Epoch 115
+-------------------------------
+Loss: 19.844004  [    0/  126 samples]
+Average loss: 19.3275
+Test loss: 25.818489 
+
+Epoch 116
+-------------------------------
+Loss: 19.098217  [    0/  126 samples]
+Average loss: 19.2965
+Test loss: 25.794000 
+
+Epoch 117
+-------------------------------
+Loss: 18.142757  [    0/  126 samples]
+Average loss: 19.2170
+Test loss: 25.795786 
+
+Epoch 118
+-------------------------------
+Loss: 18.804203  [    0/  126 samples]
+Average loss: 19.1053
+Test loss: 25.822470 
+
+Epoch 119
+-------------------------------
+Loss: 17.474199  [    0/  126 samples]
+Average loss: 19.0980
+Test loss: 25.806739 
+
+Epoch 120
+-------------------------------
+Loss: 17.561367  [    0/  126 samples]
+Average loss: 18.9920
+Test loss: 25.803841 
+
+Epoch 121
+-------------------------------
+Loss: 17.505405  [    0/  126 samples]
+Average loss: 18.9259
+Test loss: 25.706710 
+
+Epoch 122
+-------------------------------
+Loss: 20.278015  [    0/  126 samples]
+Average loss: 18.7847
+Test loss: 25.706537 
+
+Epoch 123
+-------------------------------
+Loss: 17.698351  [    0/  126 samples]
+Average loss: 18.8714
+Test loss: 25.752571 
+
+Epoch 124
+-------------------------------
+Loss: 19.803802  [    0/  126 samples]
+Average loss: 18.9099
+Test loss: 25.844459 
+
+Epoch 125
+-------------------------------
+Loss: 17.592014  [    0/  126 samples]
+Average loss: 18.8421
+Test loss: 25.813024 
+
+Epoch 126
+-------------------------------
+Loss: 21.791153  [    0/  126 samples]
+Average loss: 18.8588
+Test loss: 25.780722 
+
+Epoch 127
+-------------------------------
+Loss: 18.271744  [    0/  126 samples]
+Average loss: 18.8555
+Test loss: 25.742782 
+
+Epoch 128
+-------------------------------
+Loss: 17.785215  [    0/  126 samples]
+Average loss: 18.7470
+Test loss: 25.724802 
+
+Epoch 129
+-------------------------------
+Loss: 21.927338  [    0/  126 samples]
+Average loss: 18.7640
+Test loss: 25.741061 
+
+Epoch 130
+-------------------------------
+Loss: 20.322720  [    0/  126 samples]
+Average loss: 18.8913
+Test loss: 25.752843 
+
+Epoch 131
+-------------------------------
+Loss: 21.231377  [    0/  126 samples]
+Average loss: 18.9560
+Test loss: 25.921320 
+
+Epoch 132
+-------------------------------
+Loss: 19.450026  [    0/  126 samples]
+Average loss: 18.9046
+Test loss: 26.006308 
+
+Epoch 133
+-------------------------------
+Loss: 19.066883  [    0/  126 samples]
+Average loss: 18.8749
+Test loss: 26.145354 
+
+Epoch 134
+-------------------------------
+Loss: 19.078609  [    0/  126 samples]
+Average loss: 18.8690
+Test loss: 26.102616 
+
+Epoch 135
+-------------------------------
+Loss: 18.490120  [    0/  126 samples]
+Average loss: 18.8096
+Test loss: 26.232961 
+
+Epoch 136
+-------------------------------
+Loss: 19.103453  [    0/  126 samples]
+Average loss: 18.7167
+Test loss: 26.297590 
+
+Epoch 137
+-------------------------------
+Loss: 17.369621  [    0/  126 samples]
+Average loss: 18.6702
+Test loss: 26.392999 
+
+Epoch 138
+-------------------------------
+Loss: 19.653704  [    0/  126 samples]
+Average loss: 18.6029
+Test loss: 26.190270 
+
+Epoch 139
+-------------------------------
+Loss: 18.714272  [    0/  126 samples]
+Average loss: 18.5210
+Test loss: 26.666114 
+
+Epoch 140
+-------------------------------
+Loss: 16.592302  [    0/  126 samples]
+Average loss: 18.4716
+Test loss: 26.711721 
+
+Epoch 141
+-------------------------------
+Loss: 16.176970  [    0/  126 samples]
+Average loss: 18.4018
+Test loss: 26.796302 
+
+Epoch 142
+-------------------------------
+Loss: 16.159311  [    0/  126 samples]
+Average loss: 18.2925
+Test loss: 26.796643 
+
+Epoch 143
+-------------------------------
+Loss: 18.668711  [    0/  126 samples]
+Average loss: 18.2023
+Test loss: 26.621464 
+
+Epoch 144
+-------------------------------
+Loss: 19.550570  [    0/  126 samples]
+Average loss: 18.2523
+Test loss: 26.439372 
+
+Epoch 145
+-------------------------------
+Loss: 18.806894  [    0/  126 samples]
+Average loss: 18.2385
+Test loss: 26.424690 
+
+Epoch 146
+-------------------------------
+Loss: 18.917706  [    0/  126 samples]
+Average loss: 18.1854
+Test loss: 26.416388 
+
+Epoch 147
+-------------------------------
+Loss: 21.047493  [    0/  126 samples]
+Average loss: 18.2020
+Test loss: 26.601027 
+
+Epoch 148
+-------------------------------
+Loss: 15.612711  [    0/  126 samples]
+Average loss: 18.1493
+Test loss: 26.746385 
+
+Epoch 149
+-------------------------------
+Loss: 15.711388  [    0/  126 samples]
+Average loss: 18.1403
+Test loss: 26.791925 
+
+Epoch 150
+-------------------------------
+Loss: 19.631332  [    0/  126 samples]
+Average loss: 18.0731
+Test loss: 26.766590 
+
+Epoch 151
+-------------------------------
+Loss: 18.374897  [    0/  126 samples]
+Average loss: 18.0303
+Test loss: 26.709945 
+
+Epoch 152
+-------------------------------
+Loss: 16.462246  [    0/  126 samples]
+Average loss: 17.9668
+Test loss: 26.691806 
+
+Epoch 153
+-------------------------------
+Loss: 16.300247  [    0/  126 samples]
+Average loss: 17.9379
+Test loss: 26.654384 
+
+Epoch 154
+-------------------------------
+Loss: 17.943241  [    0/  126 samples]
+Average loss: 17.8505
+Test loss: 26.591661 
+
+Epoch 155
+-------------------------------
+Loss: 19.126450  [    0/  126 samples]
+Average loss: 17.9532
+Test loss: 26.574518 
+
+Epoch 156
+-------------------------------
+Loss: 17.894125  [    0/  126 samples]
+Average loss: 17.9283
+Test loss: 26.525822 
+
+Epoch 157
+-------------------------------
+Loss: 16.923979  [    0/  126 samples]
+Average loss: 17.8468
+Test loss: 26.592047 
+
+Epoch 158
+-------------------------------
+Loss: 19.958523  [    0/  126 samples]
+Average loss: 17.8180
+Test loss: 26.659024 
+
+Epoch 159
+-------------------------------
+Loss: 17.370005  [    0/  126 samples]
+Average loss: 17.7958
+Test loss: 26.665157 
+
+Epoch 160
+-------------------------------
+Loss: 18.167538  [    0/  126 samples]
+Average loss: 17.7758
+Test loss: 26.530821 
+
+Epoch 161
+-------------------------------
+Loss: 17.171938  [    0/  126 samples]
+Average loss: 17.8473
+Test loss: 26.746724 
+
+Epoch 162
+-------------------------------
+Loss: 19.975721  [    0/  126 samples]
+Average loss: 17.8149
+Test loss: 26.738687 
+
+Epoch 163
+-------------------------------
+Loss: 18.750328  [    0/  126 samples]
+Average loss: 17.7674
+Test loss: 26.707945 
+
+Epoch 164
+-------------------------------
+Loss: 16.271921  [    0/  126 samples]
+Average loss: 17.7587
+Test loss: 26.756600 
+
+Epoch 165
+-------------------------------
+Loss: 17.402958  [    0/  126 samples]
+Average loss: 17.6873
+Test loss: 26.751288 
+
+Epoch 166
+-------------------------------
+Loss: 17.929703  [    0/  126 samples]
+Average loss: 17.5837
+Test loss: 26.661731 
+
+Epoch 167
+-------------------------------
+Loss: 17.905415  [    0/  126 samples]
+Average loss: 17.5406
+Test loss: 26.173671 
+
+Epoch 168
+-------------------------------
+Loss: 16.506720  [    0/  126 samples]
+Average loss: 17.5298
+Test loss: 26.283506 
+
+Epoch 169
+-------------------------------
+Loss: 15.170052  [    0/  126 samples]
+Average loss: 17.4641
+Test loss: 26.348979 
+
+Epoch 170
+-------------------------------
+Loss: 19.410919  [    0/  126 samples]
+Average loss: 17.4510
+Test loss: 26.467411 
+
+Epoch 171
+-------------------------------
+Loss: 15.393064  [    0/  126 samples]
+Average loss: 17.6375
+Test loss: 26.360001 
+
+Epoch 172
+-------------------------------
+Loss: 18.126722  [    0/  126 samples]
+Average loss: 17.4745
+Test loss: 26.306007 
+
+Epoch 173
+-------------------------------
+Loss: 17.074364  [    0/  126 samples]
+Average loss: 17.4952
+Test loss: 26.298777 
+
+Epoch 174
+-------------------------------
+Loss: 17.539301  [    0/  126 samples]
+Average loss: 17.4253
+Test loss: 26.242593 
+
+Epoch 175
+-------------------------------
+Loss: 16.650898  [    0/  126 samples]
+Average loss: 17.3693
+Test loss: 26.261719 
+
+Epoch 176
+-------------------------------
+Loss: 17.808743  [    0/  126 samples]
+Average loss: 17.3311
+Test loss: 26.381820 
+
+Epoch 177
+-------------------------------
+Loss: 18.945932  [    0/  126 samples]
+Average loss: 17.4204
+Test loss: 26.356020 
+
+Epoch 178
+-------------------------------
+Loss: 17.004669  [    0/  126 samples]
+Average loss: 17.3543
+Test loss: 27.011213 
+
+Epoch 179
+-------------------------------
+Loss: 18.184799  [    0/  126 samples]
+Average loss: 17.2950
+Test loss: 26.623880 
+
+Epoch 180
+-------------------------------
+Loss: 17.478928  [    0/  126 samples]
+Average loss: 17.2883
+Test loss: 26.540502 
+
+Epoch 181
+-------------------------------
+Loss: 16.784348  [    0/  126 samples]
+Average loss: 17.3820
+Test loss: 26.519017 
+
+Epoch 182
+-------------------------------
+Loss: 17.854681  [    0/  126 samples]
+Average loss: 17.2899
+Test loss: 26.896209 
+
+Epoch 183
+-------------------------------
+Loss: 16.276636  [    0/  126 samples]
+Average loss: 17.4220
+Test loss: 26.368566 
+
+Epoch 184
+-------------------------------
+Loss: 18.632759  [    0/  126 samples]
+Average loss: 17.4409
+Test loss: 26.495379 
+
+Epoch 185
+-------------------------------
+Loss: 16.141716  [    0/  126 samples]
+Average loss: 17.3759
+Test loss: 26.520844 
+
+Epoch 186
+-------------------------------
+Loss: 17.091957  [    0/  126 samples]
+Average loss: 17.5047
+Test loss: 26.286698 
+
+Epoch 187
+-------------------------------
+Loss: 19.558804  [    0/  126 samples]
+Average loss: 17.4399
+Test loss: 25.780829 
+
+Epoch 188
+-------------------------------
+Loss: 15.739393  [    0/  126 samples]
+Average loss: 17.5531
+Test loss: 25.580846 
+
+Epoch 189
+-------------------------------
+Loss: 17.992226  [    0/  126 samples]
+Average loss: 17.3094
+Test loss: 25.827121 
+
+Epoch 190
+-------------------------------
+Loss: 18.507618  [    0/  126 samples]
+Average loss: 17.2766
+Test loss: 25.966899 
+
+Epoch 191
+-------------------------------
+Loss: 19.134003  [    0/  126 samples]
+Average loss: 17.2592
+Test loss: 26.014611 
+
+Epoch 192
+-------------------------------
+Loss: 18.050671  [    0/  126 samples]
+Average loss: 17.1528
+Test loss: 26.134825 
+
+Epoch 193
+-------------------------------
+Loss: 17.717159  [    0/  126 samples]
+Average loss: 17.2090
+Test loss: 26.401869 
+
+Epoch 194
+-------------------------------
+Loss: 17.260572  [    0/  126 samples]
+Average loss: 17.3247
+Test loss: 26.413062 
+
+Epoch 195
+-------------------------------
+Loss: 14.809925  [    0/  126 samples]
+Average loss: 17.3502
+Test loss: 26.516830 
+
+Epoch 196
+-------------------------------
+Loss: 17.451973  [    0/  126 samples]
+Average loss: 17.3409
+Test loss: 26.682645 
+
+Epoch 197
+-------------------------------
+Loss: 18.795071  [    0/  126 samples]
+Average loss: 17.2797
+Test loss: 26.531994 
+
+Epoch 198
+-------------------------------
+Loss: 17.947943  [    0/  126 samples]
+Average loss: 17.2424
+Test loss: 26.496657 
+
+Epoch 199
+-------------------------------
+Loss: 15.277531  [    0/  126 samples]
+Average loss: 17.1086
+Test loss: 26.483148 
+
+Epoch 200
+-------------------------------
+Loss: 18.874832  [    0/  126 samples]
+Average loss: 17.0060
+Test loss: 26.433078 
+
+Epoch 201
+-------------------------------
+Loss: 16.135670  [    0/  126 samples]
+Average loss: 16.9024
+Test loss: 26.347904 
+
+Epoch 202
+-------------------------------
+Loss: 17.143517  [    0/  126 samples]
+Average loss: 16.7965
+Test loss: 25.945492 
+
+Epoch 203
+-------------------------------
+Loss: 14.608477  [    0/  126 samples]
+Average loss: 16.8179
+Test loss: 25.566855 
+
+Epoch 204
+-------------------------------
+Loss: 15.740944  [    0/  126 samples]
+Average loss: 16.7310
+Test loss: 25.705643 
+
+Epoch 205
+-------------------------------
+Loss: 16.553545  [    0/  126 samples]
+Average loss: 16.7705
+Test loss: 25.582661 
+
+Epoch 206
+-------------------------------
+Loss: 16.869812  [    0/  126 samples]
+Average loss: 16.7351
+Test loss: 25.568023 
+
+Epoch 207
+-------------------------------
+Loss: 18.386061  [    0/  126 samples]
+Average loss: 16.8010
+Test loss: 25.658376 
+
+Epoch 208
+-------------------------------
+Loss: 14.456217  [    0/  126 samples]
+Average loss: 16.7254
+Test loss: 25.622553 
+
+Epoch 209
+-------------------------------
+Loss: 17.143681  [    0/  126 samples]
+Average loss: 16.5920
+Test loss: 25.715893 
+
+Epoch 210
+-------------------------------
+Loss: 15.193293  [    0/  126 samples]
+Average loss: 16.5884
+Test loss: 25.687559 
+
+Epoch 211
+-------------------------------
+Loss: 15.171326  [    0/  126 samples]
+Average loss: 16.5312
+Test loss: 25.723582 
+
+Epoch 212
+-------------------------------
+Loss: 18.463692  [    0/  126 samples]
+Average loss: 16.5582
+Test loss: 25.711119 
+
+Epoch 213
+-------------------------------
+Loss: 17.583858  [    0/  126 samples]
+Average loss: 16.4713
+Test loss: 25.669503 
+
+Epoch 214
+-------------------------------
+Loss: 13.844395  [    0/  126 samples]
+Average loss: 16.5051
+Test loss: 25.862498 
+
+Epoch 215
+-------------------------------
+Loss: 14.742365  [    0/  126 samples]
+Average loss: 16.4754
+Test loss: 26.033333 
+
+Epoch 216
+-------------------------------
+Loss: 15.921339  [    0/  126 samples]
+Average loss: 16.4493
+Test loss: 26.317977 
+
+Epoch 217
+-------------------------------
+Loss: 19.097040  [    0/  126 samples]
+Average loss: 16.7797
+Test loss: 26.342494 
+
+Epoch 218
+-------------------------------
+Loss: 19.144806  [    0/  126 samples]
+Average loss: 16.7397
+Test loss: 26.563378 
+
+Epoch 219
+-------------------------------
+Loss: 15.052212  [    0/  126 samples]
+Average loss: 16.9649
+Test loss: 26.670229 
+
+Epoch 220
+-------------------------------
+Loss: 17.396841  [    0/  126 samples]
+Average loss: 17.0079
+Test loss: 26.909018 
+
+Epoch 221
+-------------------------------
+Loss: 18.603123  [    0/  126 samples]
+Average loss: 16.8840
+Test loss: 27.131424 
+
+Epoch 222
+-------------------------------
+Loss: 17.955162  [    0/  126 samples]
+Average loss: 16.7461
+Test loss: 26.700965 
+
+Epoch 223
+-------------------------------
+Loss: 17.824097  [    0/  126 samples]
+Average loss: 16.6523
+Test loss: 26.915366 
+
+Epoch 224
+-------------------------------
+Loss: 13.867418  [    0/  126 samples]
+Average loss: 16.6135
+Test loss: 26.842657 
+
+Epoch 225
+-------------------------------
+Loss: 14.659227  [    0/  126 samples]
+Average loss: 16.6281
+Test loss: 26.541742 
+
+Epoch 226
+-------------------------------
+Loss: 16.207275  [    0/  126 samples]
+Average loss: 16.6036
+Test loss: 26.720329 
+
+Epoch 227
+-------------------------------
+Loss: 17.423916  [    0/  126 samples]
+Average loss: 16.5769
+Test loss: 27.076538 
+
+Epoch 228
+-------------------------------
+Loss: 15.121529  [    0/  126 samples]
+Average loss: 16.7302
+Test loss: 26.950751 
+
+Epoch 229
+-------------------------------
+Loss: 14.463603  [    0/  126 samples]
+Average loss: 16.6728
+Test loss: 26.908211 
+
+Epoch 230
+-------------------------------
+Loss: 15.944834  [    0/  126 samples]
+Average loss: 16.5909
+Test loss: 26.816644 
+
+Epoch 231
+-------------------------------
+Loss: 14.550086  [    0/  126 samples]
+Average loss: 16.4207
+Test loss: 26.727133 
+
+Epoch 232
+-------------------------------
+Loss: 16.344566  [    0/  126 samples]
+Average loss: 16.4088
+Test loss: 26.728313 
+
+Epoch 233
+-------------------------------
+Loss: 19.414497  [    0/  126 samples]
+Average loss: 16.3972
+Test loss: 26.755694 
+
+Epoch 234
+-------------------------------
+Loss: 13.694122  [    0/  126 samples]
+Average loss: 16.2445
+Test loss: 26.710162 
+
+Epoch 235
+-------------------------------
+Loss: 18.078499  [    0/  126 samples]
+Average loss: 16.1987
+Test loss: 26.567781 
+
+Epoch 236
+-------------------------------
+Loss: 14.044717  [    0/  126 samples]
+Average loss: 16.1643
+Test loss: 27.073628 
+
+Epoch 237
+-------------------------------
+Loss: 15.368907  [    0/  126 samples]
+Average loss: 16.2205
+Test loss: 26.973101 
+
+Epoch 238
+-------------------------------
+Loss: 15.957675  [    0/  126 samples]
+Average loss: 16.1587
+Test loss: 27.005554 
+
+Epoch 239
+-------------------------------
+Loss: 15.945191  [    0/  126 samples]
+Average loss: 16.2692
+Test loss: 27.094286 
+
+Epoch 240
+-------------------------------
+Loss: 16.481152  [    0/  126 samples]
+Average loss: 16.2510
+Test loss: 27.078093 
+
+Epoch 241
+-------------------------------
+Loss: 17.241552  [    0/  126 samples]
+Average loss: 16.2267
+Test loss: 27.047863 
+
+Epoch 242
+-------------------------------
+Loss: 16.167858  [    0/  126 samples]
+Average loss: 16.1522
+Test loss: 27.014578 
+
+Epoch 243
+-------------------------------
+Loss: 16.503277  [    0/  126 samples]
+Average loss: 16.0480
+Test loss: 26.949114 
+
+Epoch 244
+-------------------------------
+Loss: 13.829929  [    0/  126 samples]
+Average loss: 15.9583
+Test loss: 26.754391 
+
+Epoch 245
+-------------------------------
+Loss: 18.333031  [    0/  126 samples]
+Average loss: 15.9818
+Test loss: 26.765328 
+
+Epoch 246
+-------------------------------
+Loss: 17.200512  [    0/  126 samples]
+Average loss: 15.9585
+Test loss: 26.839968 
+
+Epoch 247
+-------------------------------
+Loss: 18.254156  [    0/  126 samples]
+Average loss: 15.8761
+Test loss: 27.148075 
+
+Epoch 248
+-------------------------------
+Loss: 17.192184  [    0/  126 samples]
+Average loss: 15.9145
+Test loss: 27.085272 
+
+Epoch 249
+-------------------------------
+Loss: 15.405158  [    0/  126 samples]
+Average loss: 15.8314
+Test loss: 26.780474 
+
+Epoch 250
+-------------------------------
+Loss: 17.421875  [    0/  126 samples]
+Average loss: 16.0308
+Test loss: 26.996659 
+
+Epoch 251
+-------------------------------
+Loss: 15.304003  [    0/  126 samples]
+Average loss: 16.0591
+Test loss: 26.801813 
+
+Epoch 252
+-------------------------------
+Loss: 17.216253  [    0/  126 samples]
+Average loss: 16.0377
+Test loss: 26.633557 
+
+Epoch 253
+-------------------------------
+Loss: 17.843002  [    0/  126 samples]
+Average loss: 16.1312
+Test loss: 26.254713 
+
+Epoch 254
+-------------------------------
+Loss: 14.189995  [    0/  126 samples]
+Average loss: 15.9092
+Test loss: 25.813374 
+
+Epoch 255
+-------------------------------
+Loss: 15.865208  [    0/  126 samples]
+Average loss: 15.8525
+Test loss: 25.803502 
+
+Epoch 256
+-------------------------------
+Loss: 17.983784  [    0/  126 samples]
+Average loss: 15.7790
+Test loss: 25.897264 
+
+Epoch 257
+-------------------------------
+Loss: 14.235414  [    0/  126 samples]
+Average loss: 15.7090
+Test loss: 26.440276 
+
+Epoch 258
+-------------------------------
+Loss: 15.232765  [    0/  126 samples]
+Average loss: 15.7192
+Test loss: 26.376644 
+
+Epoch 259
+-------------------------------
+Loss: 13.714239  [    0/  126 samples]
+Average loss: 15.7675
+Test loss: 26.093207 
+
+Epoch 260
+-------------------------------
+Loss: 18.187363  [    0/  126 samples]
+Average loss: 15.7494
+Test loss: 26.166994 
+
+Epoch 261
+-------------------------------
+Loss: 14.525934  [    0/  126 samples]
+Average loss: 15.8225
+Test loss: 26.267295 
+
+Epoch 262
+-------------------------------
+Loss: 13.713915  [    0/  126 samples]
+Average loss: 15.6839
+Test loss: 26.338489 
+
+Epoch 263
+-------------------------------
+Loss: 15.602511  [    0/  126 samples]
+Average loss: 15.5897
+Test loss: 26.236478 
+
+Epoch 264
+-------------------------------
+Loss: 13.797665  [    0/  126 samples]
+Average loss: 15.6286
+Test loss: 25.931676 
+
+Epoch 265
+-------------------------------
+Loss: 17.013363  [    0/  126 samples]
+Average loss: 15.7424
+Test loss: 26.119759 
+
+Epoch 266
+-------------------------------
+Loss: 16.005114  [    0/  126 samples]
+Average loss: 15.9651
+Test loss: 26.091039 
+
+Epoch 267
+-------------------------------
+Loss: 16.371864  [    0/  126 samples]
+Average loss: 16.0902
+Test loss: 26.334969 
+
+Epoch 268
+-------------------------------
+Loss: 17.342962  [    0/  126 samples]
+Average loss: 16.0022
+Test loss: 25.965492 
+
+Epoch 269
+-------------------------------
+Loss: 15.909924  [    0/  126 samples]
+Average loss: 15.9404
+Test loss: 25.973621 
+
+Epoch 270
+-------------------------------
+Loss: 17.730675  [    0/  126 samples]
+Average loss: 15.9128
+Test loss: 25.926585 
+
+Epoch 271
+-------------------------------
+Loss: 13.555341  [    0/  126 samples]
+Average loss: 16.0513
+Test loss: 25.898182 
+
+Epoch 272
+-------------------------------
+Loss: 16.064037  [    0/  126 samples]
+Average loss: 15.9134
+Test loss: 26.320041 
+
+Epoch 273
+-------------------------------
+Loss: 15.576935  [    0/  126 samples]
+Average loss: 15.8592
+Test loss: 26.189372 
+
+Epoch 274
+-------------------------------
+Loss: 15.110784  [    0/  126 samples]
+Average loss: 15.7668
+Test loss: 26.104346 
+
+Epoch 275
+-------------------------------
+Loss: 17.007820  [    0/  126 samples]
+Average loss: 16.0161
+Test loss: 26.356126 
+
+Epoch 276
+-------------------------------
+Loss: 15.141077  [    0/  126 samples]
+Average loss: 15.9955
+Test loss: 26.345022 
+
+Epoch 277
+-------------------------------
+Loss: 16.768402  [    0/  126 samples]
+Average loss: 15.9492
+Test loss: 26.040236 
+
+Epoch 278
+-------------------------------
+Loss: 15.598871  [    0/  126 samples]
+Average loss: 15.8498
+Test loss: 26.008450 
+
+Epoch 279
+-------------------------------
+Loss: 13.965034  [    0/  126 samples]
+Average loss: 15.8625
+Test loss: 26.010833 
+
+Epoch 280
+-------------------------------
+Loss: 14.397710  [    0/  126 samples]
+Average loss: 15.8248
+Test loss: 26.405520 
+
+Epoch 281
+-------------------------------
+Loss: 17.194145  [    0/  126 samples]
+Average loss: 15.6398
+Test loss: 26.575083 
+
+Epoch 282
+-------------------------------
+Loss: 14.065496  [    0/  126 samples]
+Average loss: 15.6792
+Test loss: 26.632545 
+
+Epoch 283
+-------------------------------
+Loss: 16.804710  [    0/  126 samples]
+Average loss: 15.6308
+Test loss: 26.593274 
+
+Epoch 284
+-------------------------------
+Loss: 13.631546  [    0/  126 samples]
+Average loss: 15.4295
+Test loss: 26.482125 
+
+Epoch 285
+-------------------------------
+Loss: 17.315102  [    0/  126 samples]
+Average loss: 15.3482
+Test loss: 26.537680 
+
+Epoch 286
+-------------------------------
+Loss: 13.033751  [    0/  126 samples]
+Average loss: 15.1396
+Test loss: 26.368369 
+
+Epoch 287
+-------------------------------
+Loss: 14.316257  [    0/  126 samples]
+Average loss: 15.1743
+Test loss: 26.177411 
+
+Epoch 288
+-------------------------------
+Loss: 14.518963  [    0/  126 samples]
+Average loss: 15.4102
+Test loss: 26.061378 
+
+Epoch 289
+-------------------------------
+Loss: 15.437520  [    0/  126 samples]
+Average loss: 15.5041
+Test loss: 25.999734 
+
+Epoch 290
+-------------------------------
+Loss: 15.684269  [    0/  126 samples]
+Average loss: 15.4993
+Test loss: 25.965742 
+
+Epoch 291
+-------------------------------
+Loss: 15.400957  [    0/  126 samples]
+Average loss: 15.4482
+Test loss: 25.940894 
+
+Epoch 292
+-------------------------------
+Loss: 15.992912  [    0/  126 samples]
+Average loss: 15.5032
+Test loss: 26.156766 
+
+Epoch 293
+-------------------------------
+Loss: 15.934306  [    0/  126 samples]
+Average loss: 15.4668
+Test loss: 26.237025 
+
+Epoch 294
+-------------------------------
+Loss: 14.912104  [    0/  126 samples]
+Average loss: 15.3243
+Test loss: 26.434633 
+
+Epoch 295
+-------------------------------
+Loss: 15.863754  [    0/  126 samples]
+Average loss: 15.2063
+Test loss: 26.603086 
+
+Epoch 296
+-------------------------------
+Loss: 15.115570  [    0/  126 samples]
+Average loss: 15.2023
+Test loss: 26.823788 
+
+Epoch 297
+-------------------------------
+Loss: 16.053497  [    0/  126 samples]
+Average loss: 15.0937
+Test loss: 26.630605 
+
+Epoch 298
+-------------------------------
+Loss: 16.617523  [    0/  126 samples]
+Average loss: 14.9764
+Test loss: 26.418638 
+
+Epoch 299
+-------------------------------
+Loss: 17.554518  [    0/  126 samples]
+Average loss: 14.9805
+Test loss: 26.486084 
+
+Epoch 300
+-------------------------------
+Loss: 16.722609  [    0/  126 samples]
+Average loss: 15.0219
+Test loss: 26.759423 
+
+Epoch 301
+-------------------------------
+Loss: 13.132448  [    0/  126 samples]
+Average loss: 15.1715
+Test loss: 26.766200 
+
+Epoch 302
+-------------------------------
+Loss: 15.037878  [    0/  126 samples]
+Average loss: 14.9730
+Test loss: 26.655640 
+
+Epoch 303
+-------------------------------
+Loss: 13.456545  [    0/  126 samples]
+Average loss: 15.0837
+Test loss: 26.188433 
+
+Epoch 304
+-------------------------------
+Loss: 16.014927  [    0/  126 samples]
+Average loss: 15.1810
+Test loss: 26.084609 
+
+Epoch 305
+-------------------------------
+Loss: 13.425470  [    0/  126 samples]
+Average loss: 15.0965
+Test loss: 26.132923 
+
+Epoch 306
+-------------------------------
+Loss: 14.466591  [    0/  126 samples]
+Average loss: 15.0994
+Test loss: 26.155852 
+
+Epoch 307
+-------------------------------
+Loss: 17.683208  [    0/  126 samples]
+Average loss: 15.0268
+Test loss: 26.161261 
+
+Epoch 308
+-------------------------------
+Loss: 15.744577  [    0/  126 samples]
+Average loss: 14.8852
+Test loss: 26.377918 
+
+Epoch 309
+-------------------------------
+Loss: 15.214566  [    0/  126 samples]
+Average loss: 14.8677
+Test loss: 26.295694 
+
+Epoch 310
+-------------------------------
+Loss: 13.299108  [    0/  126 samples]
+Average loss: 14.7416
+Test loss: 26.283813 
+
+Epoch 311
+-------------------------------
+Loss: 15.921560  [    0/  126 samples]
+Average loss: 14.8018
+Test loss: 25.950632 
+
+Epoch 312
+-------------------------------
+Loss: 16.435936  [    0/  126 samples]
+Average loss: 14.8076
+Test loss: 26.106644 
+
+Epoch 313
+-------------------------------
+Loss: 14.929413  [    0/  126 samples]
+Average loss: 14.7383
+Test loss: 26.355506 
+
+Epoch 314
+-------------------------------
+Loss: 15.682476  [    0/  126 samples]
+Average loss: 14.5975
+Test loss: 26.275119 
+
+Epoch 315
+-------------------------------
+Loss: 15.099914  [    0/  126 samples]
+Average loss: 14.7486
+Test loss: 25.822372 
+
+Epoch 316
+-------------------------------
+Loss: 13.023941  [    0/  126 samples]
+Average loss: 14.6898
+Test loss: 25.811980 
+
+Epoch 317
+-------------------------------
+Loss: 14.839523  [    0/  126 samples]
+Average loss: 14.7285
+Test loss: 25.851102 
+
+Epoch 318
+-------------------------------
+Loss: 14.440418  [    0/  126 samples]
+Average loss: 14.6276
+Test loss: 25.901448 
+
+Epoch 319
+-------------------------------
+Loss: 15.712120  [    0/  126 samples]
+Average loss: 14.5289
+Test loss: 25.950085 
+
+Epoch 320
+-------------------------------
+Loss: 15.395786  [    0/  126 samples]
+Average loss: 14.5753
+Test loss: 26.189642 
+
+Epoch 321
+-------------------------------
+Loss: 14.627193  [    0/  126 samples]
+Average loss: 14.3744
+Test loss: 26.188134 
+
+Epoch 322
+-------------------------------
+Loss: 15.327166  [    0/  126 samples]
+Average loss: 14.4942
+Test loss: 26.212200 
+
+Epoch 323
+-------------------------------
+Loss: 12.581088  [    0/  126 samples]
+Average loss: 14.4216
+Test loss: 26.244149 
+
+Epoch 324
+-------------------------------
+Loss: 14.470457  [    0/  126 samples]
+Average loss: 14.3701
+Test loss: 26.283731 
+
+Epoch 325
+-------------------------------
+Loss: 14.298826  [    0/  126 samples]
+Average loss: 14.3186
+Test loss: 26.306582 
+
+Epoch 326
+-------------------------------
+Loss: 12.646767  [    0/  126 samples]
+Average loss: 14.2465
+Test loss: 26.288358 
+
+Epoch 327
+-------------------------------
+Loss: 14.672910  [    0/  126 samples]
+Average loss: 14.1751
+Test loss: 26.344667 
+
+Epoch 328
+-------------------------------
+Loss: 14.449110  [    0/  126 samples]
+Average loss: 14.1810
+Test loss: 26.326784 
+
+Epoch 329
+-------------------------------
+Loss: 14.639004  [    0/  126 samples]
+Average loss: 14.1368
+Test loss: 26.332242 
+
+Epoch 330
+-------------------------------
+Loss: 13.095028  [    0/  126 samples]
+Average loss: 14.0891
+Test loss: 26.299950 
+
+Epoch 331
+-------------------------------
+Loss: 15.219774  [    0/  126 samples]
+Average loss: 13.9791
+Test loss: 26.198986 
+
+Epoch 332
+-------------------------------
+Loss: 14.906997  [    0/  126 samples]
+Average loss: 13.9912
+Test loss: 26.221266 
+
+Epoch 333
+-------------------------------
+Loss: 14.685785  [    0/  126 samples]
+Average loss: 14.0314
+Test loss: 26.304105 
+
+Epoch 334
+-------------------------------
+Loss: 12.803675  [    0/  126 samples]
+Average loss: 14.0394
+Test loss: 26.349353 
+
+Epoch 335
+-------------------------------
+Loss: 14.429447  [    0/  126 samples]
+Average loss: 13.9932
+Test loss: 26.415265 
+
+Epoch 336
+-------------------------------
+Loss: 11.906986  [    0/  126 samples]
+Average loss: 14.0057
+Test loss: 26.366479 
+
+Epoch 337
+-------------------------------
+Loss: 13.671188  [    0/  126 samples]
+Average loss: 14.1846
+Test loss: 26.366892 
+
+Epoch 338
+-------------------------------
+Loss: 14.000440  [    0/  126 samples]
+Average loss: 14.1522
+Test loss: 26.425321 
+
+Epoch 339
+-------------------------------
+Loss: 14.279950  [    0/  126 samples]
+Average loss: 14.0182
+Test loss: 26.494507 
+
+Epoch 340
+-------------------------------
+Loss: 13.431158  [    0/  126 samples]
+Average loss: 14.1622
+Test loss: 26.450804 
+
+Epoch 341
+-------------------------------
+Loss: 14.535112  [    0/  126 samples]
+Average loss: 14.1055
+Test loss: 26.286690 
+
+Epoch 342
+-------------------------------
+Loss: 14.071817  [    0/  126 samples]
+Average loss: 14.1784
+Test loss: 26.250736 
+
+Epoch 343
+-------------------------------
+Loss: 15.216537  [    0/  126 samples]
+Average loss: 14.2843
+Test loss: 26.121348 
+
+Epoch 344
+-------------------------------
+Loss: 12.494490  [    0/  126 samples]
+Average loss: 14.3823
+Test loss: 25.924120 
+
+Epoch 345
+-------------------------------
+Loss: 13.877866  [    0/  126 samples]
+Average loss: 14.3891
+Test loss: 26.413177 
+
+Epoch 346
+-------------------------------
+Loss: 12.982351  [    0/  126 samples]
+Average loss: 14.3494
+Test loss: 26.644651 
+
+Epoch 347
+-------------------------------
+Loss: 13.461886  [    0/  126 samples]
+Average loss: 14.3543
+Test loss: 26.534672 
+
+Epoch 348
+-------------------------------
+Loss: 12.744079  [    0/  126 samples]
+Average loss: 14.3334
+Test loss: 26.363271 
+
+Epoch 349
+-------------------------------
+Loss: 13.314173  [    0/  126 samples]
+Average loss: 14.3505
+Test loss: 26.340907 
+
+Epoch 350
+-------------------------------
+Loss: 14.021585  [    0/  126 samples]
+Average loss: 14.3110
+Test loss: 26.185350 
+
+Epoch 351
+-------------------------------
+Loss: 12.442713  [    0/  126 samples]
+Average loss: 14.2515
+Test loss: 26.141369 
+
+Epoch 352
+-------------------------------
+Loss: 15.207201  [    0/  126 samples]
+Average loss: 14.2531
+Test loss: 26.091429 
+
+Epoch 353
+-------------------------------
+Loss: 13.820330  [    0/  126 samples]
+Average loss: 14.1718
+Test loss: 26.221632 
+
+Epoch 354
+-------------------------------
+Loss: 12.032568  [    0/  126 samples]
+Average loss: 14.1474
+Test loss: 26.216702 
+
+Epoch 355
+-------------------------------
+Loss: 15.425810  [    0/  126 samples]
+Average loss: 14.2437
+Test loss: 26.141050 
+
+Epoch 356
+-------------------------------
+Loss: 12.430258  [    0/  126 samples]
+Average loss: 14.1299
+Test loss: 26.044463 
+
+Epoch 357
+-------------------------------
+Loss: 15.608906  [    0/  126 samples]
+Average loss: 14.0781
+Test loss: 26.089357 
+
+Epoch 358
+-------------------------------
+Loss: 15.305429  [    0/  126 samples]
+Average loss: 13.9676
+Test loss: 26.046503 
+
+Epoch 359
+-------------------------------
+Loss: 12.969690  [    0/  126 samples]
+Average loss: 13.9770
+Test loss: 26.197159 
+
+Epoch 360
+-------------------------------
+Loss: 12.762854  [    0/  126 samples]
+Average loss: 13.8557
+Test loss: 26.429380 
+
+Epoch 361
+-------------------------------
+Loss: 11.851627  [    0/  126 samples]
+Average loss: 13.7730
+Test loss: 26.472339 
+
+Epoch 362
+-------------------------------
+Loss: 12.427896  [    0/  126 samples]
+Average loss: 13.8182
+Test loss: 26.464080 
+
+Epoch 363
+-------------------------------
+Loss: 12.206320  [    0/  126 samples]
+Average loss: 13.8156
+Test loss: 26.395413 
+
+Epoch 364
+-------------------------------
+Loss: 14.226222  [    0/  126 samples]
+Average loss: 13.7384
+Test loss: 26.331232 
+
+Epoch 365
+-------------------------------
+Loss: 12.777313  [    0/  126 samples]
+Average loss: 13.6488
+Test loss: 26.259084 
+
+Epoch 366
+-------------------------------
+Loss: 13.379072  [    0/  126 samples]
+Average loss: 13.6426
+Test loss: 26.287980 
+
+Epoch 367
+-------------------------------
+Loss: 12.667327  [    0/  126 samples]
+Average loss: 13.6466
+Test loss: 26.297978 
+
+Epoch 368
+-------------------------------
+Loss: 12.184381  [    0/  126 samples]
+Average loss: 13.6036
+Test loss: 26.301551 
+
+Epoch 369
+-------------------------------
+Loss: 13.756174  [    0/  126 samples]
+Average loss: 13.5148
+Test loss: 26.319777 
+
+Epoch 370
+-------------------------------
+Loss: 11.576342  [    0/  126 samples]
+Average loss: 13.4645
+Test loss: 26.453416 
+
+Epoch 371
+-------------------------------
+Loss: 13.939335  [    0/  126 samples]
+Average loss: 13.4767
+Test loss: 26.447939 
+
+Epoch 372
+-------------------------------
+Loss: 13.158198  [    0/  126 samples]
+Average loss: 13.4198
+Test loss: 26.435191 
+
+Epoch 373
+-------------------------------
+Loss: 12.673779  [    0/  126 samples]
+Average loss: 13.6553
+Test loss: 26.490479 
+
+Epoch 374
+-------------------------------
+Loss: 12.696150  [    0/  126 samples]
+Average loss: 13.5825
+Test loss: 26.607327 
+
+Epoch 375
+-------------------------------
+Loss: 12.331732  [    0/  126 samples]
+Average loss: 13.5054
+Test loss: 26.599491 
+
+Epoch 376
+-------------------------------
+Loss: 12.439007  [    0/  126 samples]
+Average loss: 13.5543
+Test loss: 26.531224 
+
+Epoch 377
+-------------------------------
+Loss: 12.894574  [    0/  126 samples]
+Average loss: 13.4680
+Test loss: 26.419957 
+
+Epoch 378
+-------------------------------
+Loss: 14.245388  [    0/  126 samples]
+Average loss: 13.3378
+Test loss: 26.635541 
+
+Epoch 379
+-------------------------------
+Loss: 12.479925  [    0/  126 samples]
+Average loss: 13.2902
+Test loss: 26.549438 
+
+Epoch 380
+-------------------------------
+Loss: 15.152347  [    0/  126 samples]
+Average loss: 13.1658
+Test loss: 26.716328 
+
+Epoch 381
+-------------------------------
+Loss: 13.004112  [    0/  126 samples]
+Average loss: 13.1666
+Test loss: 26.793481 
+
+Epoch 382
+-------------------------------
+Loss: 13.864256  [    0/  126 samples]
+Average loss: 13.3780
+Test loss: 26.853185 
+
+Epoch 383
+-------------------------------
+Loss: 12.478607  [    0/  126 samples]
+Average loss: 13.2294
+Test loss: 26.633474 
+
+Epoch 384
+-------------------------------
+Loss: 13.370663  [    0/  126 samples]
+Average loss: 13.3216
+Test loss: 26.591029 
+
+Epoch 385
+-------------------------------
+Loss: 13.665724  [    0/  126 samples]
+Average loss: 13.4728
+Test loss: 26.688520 
+
+Epoch 386
+-------------------------------
+Loss: 12.711958  [    0/  126 samples]
+Average loss: 13.4983
+Test loss: 26.811901 
+
+Epoch 387
+-------------------------------
+Loss: 15.099516  [    0/  126 samples]
+Average loss: 13.6820
+Test loss: 26.908012 
+
+Epoch 388
+-------------------------------
+Loss: 11.504416  [    0/  126 samples]
+Average loss: 13.7362
+Test loss: 26.980548 
+
+Epoch 389
+-------------------------------
+Loss: 12.743801  [    0/  126 samples]
+Average loss: 13.9691
+Test loss: 26.838418 
+
+Epoch 390
+-------------------------------
+Loss: 13.003094  [    0/  126 samples]
+Average loss: 14.0055
+Test loss: 26.758842 
+
+Epoch 391
+-------------------------------
+Loss: 15.014483  [    0/  126 samples]
+Average loss: 13.8668
+Test loss: 26.776347 
+
+Epoch 392
+-------------------------------
+Loss: 15.380064  [    0/  126 samples]
+Average loss: 13.7945
+Test loss: 26.890662 
+
+Epoch 393
+-------------------------------
+Loss: 12.673042  [    0/  126 samples]
+Average loss: 13.9319
+Test loss: 26.996070 
+
+Epoch 394
+-------------------------------
+Loss: 15.396569  [    0/  126 samples]
+Average loss: 14.1673
+Test loss: 26.967706 
+
+Epoch 395
+-------------------------------
+Loss: 12.866137  [    0/  126 samples]
+Average loss: 14.3510
+Test loss: 27.026485 
+
+Epoch 396
+-------------------------------
+Loss: 12.745270  [    0/  126 samples]
+Average loss: 14.1859
+Test loss: 27.231703 
+
+Epoch 397
+-------------------------------
+Loss: 14.378665  [    0/  126 samples]
+Average loss: 14.3455
+Test loss: 26.965883 
+
+Epoch 398
+-------------------------------
+Loss: 14.654705  [    0/  126 samples]
+Average loss: 14.4031
+Test loss: 27.042965 
+
+Epoch 399
+-------------------------------
+Loss: 14.428949  [    0/  126 samples]
+Average loss: 14.4242
+Test loss: 27.118345 
+
+Epoch 400
+-------------------------------
+Loss: 14.228796  [    0/  126 samples]
+Average loss: 14.3172
+Test loss: 27.273313 
+
+Epoch 401
+-------------------------------
+Loss: 14.745662  [    0/  126 samples]
+Average loss: 14.1634
+Test loss: 27.309712 
+
+Epoch 402
+-------------------------------
+Loss: 14.001348  [    0/  126 samples]
+Average loss: 13.9453
+Test loss: 27.099633 
+
+Epoch 403
+-------------------------------
+Loss: 14.935170  [    0/  126 samples]
+Average loss: 13.9688
+Test loss: 26.986399 
+
+Epoch 404
+-------------------------------
+Loss: 12.500648  [    0/  126 samples]
+Average loss: 13.9425
+Test loss: 26.961703 
+
+Epoch 405
+-------------------------------
+Loss: 14.978092  [    0/  126 samples]
+Average loss: 13.8900
+Test loss: 27.266247 
+
+Epoch 406
+-------------------------------
+Loss: 13.986492  [    0/  126 samples]
+Average loss: 13.7927
+Test loss: 27.278116 
+
+Epoch 407
+-------------------------------
+Loss: 13.200281  [    0/  126 samples]
+Average loss: 13.5461
+Test loss: 27.259165 
+
+Epoch 408
+-------------------------------
+Loss: 13.860922  [    0/  126 samples]
+Average loss: 13.4915
+Test loss: 27.118471 
+
+Epoch 409
+-------------------------------
+Loss: 12.817313  [    0/  126 samples]
+Average loss: 13.5914
+Test loss: 27.132049 
+
+Epoch 410
+-------------------------------
+Loss: 12.484524  [    0/  126 samples]
+Average loss: 13.7384
+Test loss: 27.123744 
+
+Epoch 411
+-------------------------------
+Loss: 13.328739  [    0/  126 samples]
+Average loss: 13.6946
+Test loss: 27.270896 
+
+Epoch 412
+-------------------------------
+Loss: 13.775829  [    0/  126 samples]
+Average loss: 13.6086
+Test loss: 27.270252 
+
+Epoch 413
+-------------------------------
+Loss: 13.947593  [    0/  126 samples]
+Average loss: 13.4834
+Test loss: 27.059879 
+
+Epoch 414
+-------------------------------
+Loss: 15.454631  [    0/  126 samples]
+Average loss: 13.3826
+Test loss: 27.042910 
+
+Epoch 415
+-------------------------------
+Loss: 13.368845  [    0/  126 samples]
+Average loss: 13.3907
+Test loss: 27.177707 
+
+Epoch 416
+-------------------------------
+Loss: 12.604207  [    0/  126 samples]
+Average loss: 13.3588
+Test loss: 27.234078 
+
+Epoch 417
+-------------------------------
+Loss: 13.574564  [    0/  126 samples]
+Average loss: 13.3966
+Test loss: 27.278161 
+
+Epoch 418
+-------------------------------
+Loss: 15.071401  [    0/  126 samples]
+Average loss: 13.3809
+Test loss: 27.293150 
+
+Epoch 419
+-------------------------------
+Loss: 12.028609  [    0/  126 samples]
+Average loss: 13.1505
+Test loss: 27.127634 
+
+Epoch 420
+-------------------------------
+Loss: 13.034309  [    0/  126 samples]
+Average loss: 13.1655
+Test loss: 26.950518 
+
+Epoch 421
+-------------------------------
+Loss: 13.612825  [    0/  126 samples]
+Average loss: 13.1942
+Test loss: 26.814638 
+
+Epoch 422
+-------------------------------
+Loss: 12.545954  [    0/  126 samples]
+Average loss: 13.0707
+Test loss: 26.787582 
+
+Epoch 423
+-------------------------------
+Loss: 12.277941  [    0/  126 samples]
+Average loss: 13.0291
+Test loss: 26.537322 
+
+Epoch 424
+-------------------------------
+Loss: 12.558704  [    0/  126 samples]
+Average loss: 12.9642
+Test loss: 26.101444 
+
+Epoch 425
+-------------------------------
+Loss: 13.790482  [    0/  126 samples]
+Average loss: 12.9833
+Test loss: 26.623283 
+
+Epoch 426
+-------------------------------
+Loss: 14.735289  [    0/  126 samples]
+Average loss: 12.9147
+Test loss: 26.432119 
+
+Epoch 427
+-------------------------------
+Loss: 11.675314  [    0/  126 samples]
+Average loss: 12.8815
+Test loss: 26.494259 
+
+Epoch 428
+-------------------------------
+Loss: 12.760019  [    0/  126 samples]
+Average loss: 12.8473
+Test loss: 26.533191 
+
+Epoch 429
+-------------------------------
+Loss: 13.299383  [    0/  126 samples]
+Average loss: 12.7364
+Test loss: 27.009287 
+
+Epoch 430
+-------------------------------
+Loss: 13.406213  [    0/  126 samples]
+Average loss: 12.6887
+Test loss: 26.999787 
+
+Epoch 431
+-------------------------------
+Loss: 14.140532  [    0/  126 samples]
+Average loss: 12.7285
+Test loss: 27.102819 
+
+Epoch 432
+-------------------------------
+Loss: 11.416483  [    0/  126 samples]
+Average loss: 12.6243
+Test loss: 27.104335 
+
+Epoch 433
+-------------------------------
+Loss: 11.268345  [    0/  126 samples]
+Average loss: 12.5987
+Test loss: 27.098424 
+
+Epoch 434
+-------------------------------
+Loss: 13.377161  [    0/  126 samples]
+Average loss: 12.5017
+Test loss: 26.882161 
+
+Epoch 435
+-------------------------------
+Loss: 12.628340  [    0/  126 samples]
+Average loss: 12.4800
+Test loss: 26.847837 
+
+Epoch 436
+-------------------------------
+Loss: 11.108698  [    0/  126 samples]
+Average loss: 12.4470
+Test loss: 26.567466 
+
+Epoch 437
+-------------------------------
+Loss: 11.834051  [    0/  126 samples]
+Average loss: 12.4618
+Test loss: 26.373543 
+
+Epoch 438
+-------------------------------
+Loss: 13.406169  [    0/  126 samples]
+Average loss: 12.3940
+Test loss: 26.468085 
+
+Epoch 439
+-------------------------------
+Loss: 12.587690  [    0/  126 samples]
+Average loss: 12.3982
+Test loss: 26.726206 
+
+Epoch 440
+-------------------------------
+Loss: 13.062807  [    0/  126 samples]
+Average loss: 12.3996
+Test loss: 26.293313 
+
+Epoch 441
+-------------------------------
+Loss: 11.855643  [    0/  126 samples]
+Average loss: 12.3839
+Test loss: 26.261026 
+
+Epoch 442
+-------------------------------
+Loss: 13.825560  [    0/  126 samples]
+Average loss: 12.6354
+Test loss: 26.716702 
+
+Epoch 443
+-------------------------------
+Loss: 11.522228  [    0/  126 samples]
+Average loss: 12.6968
+Test loss: 26.713225 
+
+Epoch 444
+-------------------------------
+Loss: 12.248043  [    0/  126 samples]
+Average loss: 12.5867
+Test loss: 26.354508 
+
+Epoch 445
+-------------------------------
+Loss: 10.699525  [    0/  126 samples]
+Average loss: 12.5400
+Test loss: 26.218179 
+
+Epoch 446
+-------------------------------
+Loss: 14.173599  [    0/  126 samples]
+Average loss: 12.4353
+Test loss: 26.423740 
+
+Epoch 447
+-------------------------------
+Loss: 12.934553  [    0/  126 samples]
+Average loss: 12.4138
+Test loss: 26.587662 
+
+Epoch 448
+-------------------------------
+Loss: 10.725687  [    0/  126 samples]
+Average loss: 12.4685
+Test loss: 26.600180 
+
+Epoch 449
+-------------------------------
+Loss: 12.748256  [    0/  126 samples]
+Average loss: 12.2782
+Test loss: 26.446078 
+
+Epoch 450
+-------------------------------
+Loss: 12.825901  [    0/  126 samples]
+Average loss: 12.5552
+Test loss: 26.580889 
+
+Epoch 451
+-------------------------------
+Loss: 11.341669  [    0/  126 samples]
+Average loss: 12.8073
+Test loss: 26.756619 
+
+Epoch 452
+-------------------------------
+Loss: 14.819344  [    0/  126 samples]
+Average loss: 12.7746
+Test loss: 26.826940 
+
+Epoch 453
+-------------------------------
+Loss: 11.790553  [    0/  126 samples]
+Average loss: 12.4933
+Test loss: 27.028649 
+
+Epoch 454
+-------------------------------
+Loss: 10.968128  [    0/  126 samples]
+Average loss: 12.9909
+Test loss: 26.872334 
+
+Epoch 455
+-------------------------------
+Loss: 12.360153  [    0/  126 samples]
+Average loss: 12.6230
+Test loss: 27.012223 
+
+Epoch 456
+-------------------------------
+Loss: 11.423384  [    0/  126 samples]
+Average loss: 12.7327
+Test loss: 27.766798 
+
+Epoch 457
+-------------------------------
+Loss: 13.021527  [    0/  126 samples]
+Average loss: 12.9793
+Test loss: 27.891842 
+
+Epoch 458
+-------------------------------
+Loss: 11.759866  [    0/  126 samples]
+Average loss: 13.0907
+Test loss: 27.961211 
+
+Epoch 459
+-------------------------------
+Loss: 13.915382  [    0/  126 samples]
+Average loss: 13.1598
+Test loss: 27.479313 
+
+Epoch 460
+-------------------------------
+Loss: 13.306450  [    0/  126 samples]
+Average loss: 13.3569
+Test loss: 27.883368 
+
+Epoch 461
+-------------------------------
+Loss: 13.009844  [    0/  126 samples]
+Average loss: 13.3082
+Test loss: 28.198597 
+
+Epoch 462
+-------------------------------
+Loss: 10.722372  [    0/  126 samples]
+Average loss: 13.3824
+Test loss: 28.101620 
+
+Epoch 463
+-------------------------------
+Loss: 13.670874  [    0/  126 samples]
+Average loss: 13.3785
+Test loss: 28.212477 
+
+Epoch 464
+-------------------------------
+Loss: 13.841282  [    0/  126 samples]
+Average loss: 13.3147
+Test loss: 28.161657 
+
+Epoch 465
+-------------------------------
+Loss: 14.596025  [    0/  126 samples]
+Average loss: 13.2716
+Test loss: 28.187915 
+
+Epoch 466
+-------------------------------
+Loss: 15.564060  [    0/  126 samples]
+Average loss: 13.2493
+Test loss: 28.221751 
+
+Epoch 467
+-------------------------------
+Loss: 12.442077  [    0/  126 samples]
+Average loss: 13.1237
+Test loss: 28.300450 
+
+Epoch 468
+-------------------------------
+Loss: 12.081126  [    0/  126 samples]
+Average loss: 12.9829
+Test loss: 27.984521 
+
+Epoch 469
+-------------------------------
+Loss: 12.154345  [    0/  126 samples]
+Average loss: 12.9866
+Test loss: 27.911785 
+
+Epoch 470
+-------------------------------
+Loss: 12.801348  [    0/  126 samples]
+Average loss: 12.8401
+Test loss: 27.871649 
+
+Epoch 471
+-------------------------------
+Loss: 14.398518  [    0/  126 samples]
+Average loss: 12.7709
+Test loss: 28.149312 
+
+Epoch 472
+-------------------------------
+Loss: 11.871669  [    0/  126 samples]
+Average loss: 12.8557
+Test loss: 28.067379 
+
+Epoch 473
+-------------------------------
+Loss: 12.226652  [    0/  126 samples]
+Average loss: 12.7647
+Test loss: 28.010425 
+
+Epoch 474
+-------------------------------
+Loss: 12.351856  [    0/  126 samples]
+Average loss: 12.8459
+Test loss: 27.954694 
+
+Epoch 475
+-------------------------------
+Loss: 12.482246  [    0/  126 samples]
+Average loss: 12.8092
+Test loss: 28.017956 
+
+Epoch 476
+-------------------------------
+Loss: 13.316949  [    0/  126 samples]
+Average loss: 12.7147
+Test loss: 28.034766 
+
+Epoch 477
+-------------------------------
+Loss: 14.094171  [    0/  126 samples]
+Average loss: 12.8009
+Test loss: 27.998063 
+
+Epoch 478
+-------------------------------
+Loss: 11.683165  [    0/  126 samples]
+Average loss: 12.6802
+Test loss: 27.945139 
+
+Epoch 479
+-------------------------------
+Loss: 13.976983  [    0/  126 samples]
+Average loss: 12.5198
+Test loss: 27.891310 
+
+Epoch 480
+-------------------------------
+Loss: 11.299056  [    0/  126 samples]
+Average loss: 12.5113
+Test loss: 27.862840 
+
+Epoch 481
+-------------------------------
+Loss: 12.642849  [    0/  126 samples]
+Average loss: 12.4040
+Test loss: 27.876420 
+
+Epoch 482
+-------------------------------
+Loss: 12.198762  [    0/  126 samples]
+Average loss: 12.4228
+Test loss: 27.864155 
+
+Epoch 483
+-------------------------------
+Loss: 12.421843  [    0/  126 samples]
+Average loss: 12.4502
+Test loss: 27.781640 
+
+Epoch 484
+-------------------------------
+Loss: 13.345745  [    0/  126 samples]
+Average loss: 12.5859
+Test loss: 27.750526 
+
+Epoch 485
+-------------------------------
+Loss: 11.101263  [    0/  126 samples]
+Average loss: 12.5400
+Test loss: 27.668443 
+
+Epoch 486
+-------------------------------
+Loss: 12.492241  [    0/  126 samples]
+Average loss: 12.5646
+Test loss: 27.614090 
+
+Epoch 487
+-------------------------------
+Loss: 11.292796  [    0/  126 samples]
+Average loss: 12.4930
+Test loss: 27.632247 
+
+Epoch 488
+-------------------------------
+Loss: 11.741690  [    0/  126 samples]
+Average loss: 12.3812
+Test loss: 27.694675 
+
+Epoch 489
+-------------------------------
+Loss: 12.514546  [    0/  126 samples]
+Average loss: 12.6845
+Test loss: 27.818690 
+
+Epoch 490
+-------------------------------
+Loss: 14.521084  [    0/  126 samples]
+Average loss: 12.6558
+Test loss: 28.047413 
+
+Epoch 491
+-------------------------------
+Loss: 15.241306  [    0/  126 samples]
+Average loss: 12.6826
+Test loss: 28.073435 
+
+Epoch 492
+-------------------------------
+Loss: 11.002617  [    0/  126 samples]
+Average loss: 12.5551
+Test loss: 27.825770 
+
+Epoch 493
+-------------------------------
+Loss: 13.076965  [    0/  126 samples]
+Average loss: 12.4091
+Test loss: 27.651121 
+
+Epoch 494
+-------------------------------
+Loss: 13.454630  [    0/  126 samples]
+Average loss: 12.5800
+Test loss: 27.771923 
+
+Epoch 495
+-------------------------------
+Loss: 10.300245  [    0/  126 samples]
+Average loss: 12.5690
+Test loss: 27.889830 
+
+Epoch 496
+-------------------------------
+Loss: 11.667541  [    0/  126 samples]
+Average loss: 12.5700
+Test loss: 28.134025 
+
+Epoch 497
+-------------------------------
+Loss: 11.824465  [    0/  126 samples]
+Average loss: 12.4311
+Test loss: 27.970177 
+
+Epoch 498
+-------------------------------
+Loss: 14.008541  [    0/  126 samples]
+Average loss: 12.3821
+Test loss: 27.729268 
+
+Epoch 499
+-------------------------------
+Loss: 10.192854  [    0/  126 samples]
+Average loss: 12.3127
+Test loss: 27.795032 
+
+Epoch 500
+-------------------------------
+Loss: 13.355002  [    0/  126 samples]
+Average loss: 12.3389
+Test loss: 27.784747 
+
+Epoch 501
+-------------------------------
+Loss: 13.992302  [    0/  126 samples]
+Average loss: 12.3357
+Test loss: 27.733249 
+
+Epoch 502
+-------------------------------
+Loss: 10.032172  [    0/  126 samples]
+Average loss: 12.2746
+Test loss: 27.734621 
+
+Epoch 503
+-------------------------------
+Loss: 11.239378  [    0/  126 samples]
+Average loss: 12.3216
+Test loss: 27.781154 
+
+Epoch 504
+-------------------------------
+Loss: 12.454326  [    0/  126 samples]
+Average loss: 12.2228
+Test loss: 27.927931 
+
+Epoch 505
+-------------------------------
+Loss: 10.597912  [    0/  126 samples]
+Average loss: 12.3630
+Test loss: 27.857631 
+
+Epoch 506
+-------------------------------
+Loss: 12.096069  [    0/  126 samples]
+Average loss: 12.2364
+Test loss: 27.821084 
+
+Epoch 507
+-------------------------------
+Loss: 11.994734  [    0/  126 samples]
+Average loss: 12.2763
+Test loss: 27.776462 
+
+Epoch 508
+-------------------------------
+Loss: 13.351074  [    0/  126 samples]
+Average loss: 12.0984
+Test loss: 27.724566 
+
+Epoch 509
+-------------------------------
+Loss: 10.207795  [    0/  126 samples]
+Average loss: 11.9555
+Test loss: 27.619521 
+
+Epoch 510
+-------------------------------
+Loss: 11.523233  [    0/  126 samples]
+Average loss: 11.7705
+Test loss: 27.812524 
+
+Epoch 511
+-------------------------------
+Loss: 9.643117  [    0/  126 samples]
+Average loss: 11.7625
+Test loss: 27.750053 
+
+Epoch 512
+-------------------------------
+Loss: 13.772767  [    0/  126 samples]
+Average loss: 11.7235
+Test loss: 27.753753 
+
+Epoch 513
+-------------------------------
+Loss: 11.957951  [    0/  126 samples]
+Average loss: 11.6515
+Test loss: 27.899347 
+
+Epoch 514
+-------------------------------
+Loss: 11.601154  [    0/  126 samples]
+Average loss: 11.6709
+Test loss: 27.830452 
+
+Epoch 515
+-------------------------------
+Loss: 9.950744  [    0/  126 samples]
+Average loss: 11.6134
+Test loss: 27.773506 
+
+Epoch 516
+-------------------------------
+Loss: 12.015656  [    0/  126 samples]
+Average loss: 11.5407
+Test loss: 27.598523 
+
+Epoch 517
+-------------------------------
+Loss: 13.534172  [    0/  126 samples]
+Average loss: 11.3957
+Test loss: 27.592401 
+
+Epoch 518
+-------------------------------
+Loss: 10.984825  [    0/  126 samples]
+Average loss: 11.3789
+Test loss: 27.633888 
+
+Epoch 519
+-------------------------------
+Loss: 11.648458  [    0/  126 samples]
+Average loss: 11.2667
+Test loss: 27.518649 
+
+Epoch 520
+-------------------------------
+Loss: 11.752123  [    0/  126 samples]
+Average loss: 11.2973
+Test loss: 27.530199 
+
+Epoch 521
+-------------------------------
+Loss: 11.392010  [    0/  126 samples]
+Average loss: 11.2532
+Test loss: 27.717746 
+
+Epoch 522
+-------------------------------
+Loss: 11.031719  [    0/  126 samples]
+Average loss: 11.1479
+Test loss: 27.554900 
+
+Epoch 523
+-------------------------------
+Loss: 9.314734  [    0/  126 samples]
+Average loss: 11.0974
+Test loss: 27.589320 
+
+Epoch 524
+-------------------------------
+Loss: 8.892147  [    0/  126 samples]
+Average loss: 11.0297
+Test loss: 27.760683 
+
+Epoch 525
+-------------------------------
+Loss: 11.310377  [    0/  126 samples]
+Average loss: 11.0388
+Test loss: 27.726818 
+
+Epoch 526
+-------------------------------
+Loss: 9.851460  [    0/  126 samples]
+Average loss: 11.1287
+Test loss: 27.670816 
+
+Epoch 527
+-------------------------------
+Loss: 10.438290  [    0/  126 samples]
+Average loss: 11.1362
+Test loss: 27.801291 
+
+Epoch 528
+-------------------------------
+Loss: 9.536371  [    0/  126 samples]
+Average loss: 11.1382
+Test loss: 27.746421 
+
+Epoch 529
+-------------------------------
+Loss: 9.474722  [    0/  126 samples]
+Average loss: 11.1104
+Test loss: 27.888892 
+
+Epoch 530
+-------------------------------
+Loss: 11.319007  [    0/  126 samples]
+Average loss: 10.9627
+Test loss: 27.607004 
+
+Epoch 531
+-------------------------------
+Loss: 9.302228  [    0/  126 samples]
+Average loss: 10.9034
+Test loss: 27.597404 
+
+Epoch 532
+-------------------------------
+Loss: 10.281397  [    0/  126 samples]
+Average loss: 10.9631
+Test loss: 27.767688 
+
+Epoch 533
+-------------------------------
+Loss: 11.571373  [    0/  126 samples]
+Average loss: 11.0042
+Test loss: 27.773768 
+
+Epoch 534
+-------------------------------
+Loss: 10.659399  [    0/  126 samples]
+Average loss: 10.9989
+Test loss: 27.907847 
+
+Epoch 535
+-------------------------------
+Loss: 12.663593  [    0/  126 samples]
+Average loss: 11.1438
+Test loss: 27.864910 
+
+Epoch 536
+-------------------------------
+Loss: 10.758133  [    0/  126 samples]
+Average loss: 11.0370
+Test loss: 27.771291 
+
+Epoch 537
+-------------------------------
+Loss: 9.458701  [    0/  126 samples]
+Average loss: 10.9521
+Test loss: 27.783120 
+
+Epoch 538
+-------------------------------
+Loss: 10.184935  [    0/  126 samples]
+Average loss: 10.8572
+Test loss: 27.653196 
+
+Epoch 539
+-------------------------------
+Loss: 10.182752  [    0/  126 samples]
+Average loss: 10.8193
+Test loss: 27.722444 
+
+Epoch 540
+-------------------------------
+Loss: 11.403106  [    0/  126 samples]
+Average loss: 10.8155
+Test loss: 27.799261 
+
+Epoch 541
+-------------------------------
+Loss: 10.605048  [    0/  126 samples]
+Average loss: 10.7849
+Test loss: 27.801195 
+
+Epoch 542
+-------------------------------
+Loss: 10.057310  [    0/  126 samples]
+Average loss: 10.7181
+Test loss: 27.698108 
+
+Epoch 543
+-------------------------------
+Loss: 12.065511  [    0/  126 samples]
+Average loss: 10.6708
+Test loss: 27.589631 
+
+Epoch 544
+-------------------------------
+Loss: 9.653513  [    0/  126 samples]
+Average loss: 10.6433
+Test loss: 27.532406 
+
+Epoch 545
+-------------------------------
+Loss: 10.389945  [    0/  126 samples]
+Average loss: 10.6332
+Test loss: 27.858627 
+
+Epoch 546
+-------------------------------
+Loss: 11.968181  [    0/  126 samples]
+Average loss: 10.6084
+Test loss: 27.924123 
+
+Epoch 547
+-------------------------------
+Loss: 11.859390  [    0/  126 samples]
+Average loss: 10.5576
+Test loss: 27.950156 
+
+Epoch 548
+-------------------------------
+Loss: 9.835751  [    0/  126 samples]
+Average loss: 10.5320
+Test loss: 28.033453 
+
+Epoch 549
+-------------------------------
+Loss: 12.167531  [    0/  126 samples]
+Average loss: 10.4924
+Test loss: 27.808680 
+
+Epoch 550
+-------------------------------
+Loss: 10.974954  [    0/  126 samples]
+Average loss: 10.4322
+Test loss: 27.868266 
+
+Epoch 551
+-------------------------------
+Loss: 8.954782  [    0/  126 samples]
+Average loss: 10.4534
+Test loss: 27.799120 
+
+Epoch 552
+-------------------------------
+Loss: 12.104900  [    0/  126 samples]
+Average loss: 10.4621
+Test loss: 27.790405 
+
+Epoch 553
+-------------------------------
+Loss: 11.284017  [    0/  126 samples]
+Average loss: 10.3984
+Test loss: 27.814831 
+
+Epoch 554
+-------------------------------
+Loss: 11.596453  [    0/  126 samples]
+Average loss: 10.4062
+Test loss: 27.811240 
+
+Epoch 555
+-------------------------------
+Loss: 10.337656  [    0/  126 samples]
+Average loss: 10.3119
+Test loss: 27.820230 
+
+Epoch 556
+-------------------------------
+Loss: 8.869165  [    0/  126 samples]
+Average loss: 10.2630
+Test loss: 27.910288 
+
+Epoch 557
+-------------------------------
+Loss: 10.226625  [    0/  126 samples]
+Average loss: 10.3333
+Test loss: 27.830551 
+
+Epoch 558
+-------------------------------
+Loss: 10.372697  [    0/  126 samples]
+Average loss: 10.2656
+Test loss: 27.802008 
+
+Epoch 559
+-------------------------------
+Loss: 8.595732  [    0/  126 samples]
+Average loss: 10.1712
+Test loss: 27.838147 
+
+Epoch 560
+-------------------------------
+Loss: 9.448172  [    0/  126 samples]
+Average loss: 10.2097
+Test loss: 27.900481 
+
+Epoch 561
+-------------------------------
+Loss: 10.340624  [    0/  126 samples]
+Average loss: 10.1353
+Test loss: 27.944082 
+
+Epoch 562
+-------------------------------
+Loss: 9.435440  [    0/  126 samples]
+Average loss: 10.0754
+Test loss: 27.945348 
+
+Epoch 563
+-------------------------------
+Loss: 9.586424  [    0/  126 samples]
+Average loss: 10.0296
+Test loss: 27.936297 
+
+Epoch 564
+-------------------------------
+Loss: 10.627086  [    0/  126 samples]
+Average loss: 10.0143
+Test loss: 27.922922 
+
+Epoch 565
+-------------------------------
+Loss: 9.494226  [    0/  126 samples]
+Average loss: 9.9770
+Test loss: 27.915799 
+
+Epoch 566
+-------------------------------
+Loss: 11.244759  [    0/  126 samples]
+Average loss: 10.1083
+Test loss: 27.923539 
+
+Epoch 567
+-------------------------------
+Loss: 9.032290  [    0/  126 samples]
+Average loss: 10.2777
+Test loss: 27.948258 
+
+Epoch 568
+-------------------------------
+Loss: 10.798161  [    0/  126 samples]
+Average loss: 10.2403
+Test loss: 27.974639 
+
+Epoch 569
+-------------------------------
+Loss: 7.691338  [    0/  126 samples]
+Average loss: 10.4814
+Test loss: 28.010406 
+
+Epoch 570
+-------------------------------
+Loss: 9.315073  [    0/  126 samples]
+Average loss: 10.3877
+Test loss: 28.047729 
+
+Epoch 571
+-------------------------------
+Loss: 9.352205  [    0/  126 samples]
+Average loss: 10.3010
+Test loss: 28.082754 
+
+Epoch 572
+-------------------------------
+Loss: 11.498648  [    0/  126 samples]
+Average loss: 10.2833
+Test loss: 28.121452 
+
+Epoch 573
+-------------------------------
+Loss: 10.281701  [    0/  126 samples]
+Average loss: 10.3734
+Test loss: 28.058192 
+
+Epoch 574
+-------------------------------
+Loss: 10.820535  [    0/  126 samples]
+Average loss: 10.4324
+Test loss: 28.044111 
+
+Epoch 575
+-------------------------------
+Loss: 8.783932  [    0/  126 samples]
+Average loss: 10.4150
+Test loss: 28.043884 
+
+Epoch 576
+-------------------------------
+Loss: 10.385135  [    0/  126 samples]
+Average loss: 10.2624
+Test loss: 28.041949 
+
+Epoch 577
+-------------------------------
+Loss: 8.709824  [    0/  126 samples]
+Average loss: 10.2284
+Test loss: 28.055446 
+
+Epoch 578
+-------------------------------
+Loss: 9.332335  [    0/  126 samples]
+Average loss: 10.1568
+Test loss: 27.832866 
+
+Epoch 579
+-------------------------------
+Loss: 9.568003  [    0/  126 samples]
+Average loss: 10.1241
+Test loss: 28.202074 
+
+Epoch 580
+-------------------------------
+Loss: 7.984175  [    0/  126 samples]
+Average loss: 9.9932
+Test loss: 28.282882 
+
+Epoch 581
+-------------------------------
+Loss: 9.041662  [    0/  126 samples]
+Average loss: 9.8779
+Test loss: 28.199427 
+
+Epoch 582
+-------------------------------
+Loss: 9.711720  [    0/  126 samples]
+Average loss: 10.1400
+Test loss: 27.939207 
+
+Epoch 583
+-------------------------------
+Loss: 10.871706  [    0/  126 samples]
+Average loss: 10.1082
+Test loss: 27.665419 
+
+Epoch 584
+-------------------------------
+Loss: 9.659341  [    0/  126 samples]
+Average loss: 10.0826
+Test loss: 27.370919 
+
+Epoch 585
+-------------------------------
+Loss: 9.071089  [    0/  126 samples]
+Average loss: 10.1331
+Test loss: 27.648237 
+
+Epoch 586
+-------------------------------
+Loss: 10.465737  [    0/  126 samples]
+Average loss: 10.2248
+Test loss: 27.615264 
+
+Epoch 587
+-------------------------------
+Loss: 9.838940  [    0/  126 samples]
+Average loss: 10.1953
+Test loss: 27.810626 
+
+Epoch 588
+-------------------------------
+Loss: 9.839144  [    0/  126 samples]
+Average loss: 10.0386
+Test loss: 28.150952 
+
+Epoch 589
+-------------------------------
+Loss: 8.799190  [    0/  126 samples]
+Average loss: 9.9977
+Test loss: 28.214090 
+
+Epoch 590
+-------------------------------
+Loss: 12.190681  [    0/  126 samples]
+Average loss: 10.0329
+Test loss: 28.229819 
+
+Epoch 591
+-------------------------------
+Loss: 10.402189  [    0/  126 samples]
+Average loss: 10.0043
+Test loss: 27.834573 
+
+Epoch 592
+-------------------------------
+Loss: 10.647898  [    0/  126 samples]
+Average loss: 10.1263
+Test loss: 28.092677 
+
+Epoch 593
+-------------------------------
+Loss: 9.990063  [    0/  126 samples]
+Average loss: 10.1694
+Test loss: 27.918406 
+
+Epoch 594
+-------------------------------
+Loss: 8.673348  [    0/  126 samples]
+Average loss: 9.8586
+Test loss: 28.530396 
+
+Epoch 595
+-------------------------------
+Loss: 9.648284  [    0/  126 samples]
+Average loss: 10.0789
+Test loss: 28.219108 
+
+Epoch 596
+-------------------------------
+Loss: 10.654276  [    0/  126 samples]
+Average loss: 10.0710
+Test loss: 28.246318 
+
+Epoch 597
+-------------------------------
+Loss: 11.103035  [    0/  126 samples]
+Average loss: 9.9697
+Test loss: 28.608174 
+
+Epoch 598
+-------------------------------
+Loss: 10.476770  [    0/  126 samples]
+Average loss: 9.9192
+Test loss: 28.651127 
+
+Epoch 599
+-------------------------------
+Loss: 8.174630  [    0/  126 samples]
+Average loss: 9.9243
+Test loss: 28.752788 
+
+Epoch 600
+-------------------------------
+Loss: 11.760489  [    0/  126 samples]
+Average loss: 9.8874
+Test loss: 28.788881 
+
+Epoch 601
+-------------------------------
+Loss: 9.832717  [    0/  126 samples]
+Average loss: 9.8549
+Test loss: 28.797135 
+
+Epoch 602
+-------------------------------
+Loss: 8.906672  [    0/  126 samples]
+Average loss: 9.7578
+Test loss: 28.719918 
+
+Epoch 603
+-------------------------------
+Loss: 9.395382  [    0/  126 samples]
+Average loss: 9.7884
+Test loss: 28.735446 
+
+Epoch 604
+-------------------------------
+Loss: 9.771938  [    0/  126 samples]
+Average loss: 9.7619
+Test loss: 28.767192 
+
+Epoch 605
+-------------------------------
+Loss: 10.659511  [    0/  126 samples]
+Average loss: 9.6884
+Test loss: 28.802380 
+
+Epoch 606
+-------------------------------
+Loss: 10.217480  [    0/  126 samples]
+Average loss: 9.6869
+Test loss: 28.766267 
+
+Epoch 607
+-------------------------------
+Loss: 9.040837  [    0/  126 samples]
+Average loss: 9.6725
+Test loss: 28.777505 
+
+Epoch 608
+-------------------------------
+Loss: 8.867598  [    0/  126 samples]
+Average loss: 9.6236
+Test loss: 28.818763 
+
+Epoch 609
+-------------------------------
+Loss: 8.343279  [    0/  126 samples]
+Average loss: 9.6272
+Test loss: 28.976994 
+
+Epoch 610
+-------------------------------
+Loss: 9.893679  [    0/  126 samples]
+Average loss: 9.6238
+Test loss: 28.994808 
+
+Epoch 611
+-------------------------------
+Loss: 10.051291  [    0/  126 samples]
+Average loss: 9.6008
+Test loss: 28.973381 
+
+Epoch 612
+-------------------------------
+Loss: 10.086612  [    0/  126 samples]
+Average loss: 9.6577
+Test loss: 28.995385 
+
+Epoch 613
+-------------------------------
+Loss: 8.605316  [    0/  126 samples]
+Average loss: 9.7100
+Test loss: 28.877459 
+
+Epoch 614
+-------------------------------
+Loss: 9.970365  [    0/  126 samples]
+Average loss: 9.6654
+Test loss: 28.898745 
+
+Epoch 615
+-------------------------------
+Loss: 10.907522  [    0/  126 samples]
+Average loss: 9.6823
+Test loss: 29.029773 
+
+Epoch 616
+-------------------------------
+Loss: 9.844804  [    0/  126 samples]
+Average loss: 9.6114
+Test loss: 29.241802 
+
+Epoch 617
+-------------------------------
+Loss: 9.764645  [    0/  126 samples]
+Average loss: 9.5849
+Test loss: 29.235143 
+
+Epoch 618
+-------------------------------
+Loss: 8.591622  [    0/  126 samples]
+Average loss: 9.6202
+Test loss: 29.205620 
+
+Epoch 619
+-------------------------------
+Loss: 9.996708  [    0/  126 samples]
+Average loss: 9.6105
+Test loss: 29.378233 
+
+Epoch 620
+-------------------------------
+Loss: 8.188046  [    0/  126 samples]
+Average loss: 9.5700
+Test loss: 29.485403 
+
+Epoch 621
+-------------------------------
+Loss: 8.875757  [    0/  126 samples]
+Average loss: 9.4820
+Test loss: 29.489144 
+
+Epoch 622
+-------------------------------
+Loss: 9.552946  [    0/  126 samples]
+Average loss: 9.3983
+Test loss: 29.540071 
+
+Epoch 623
+-------------------------------
+Loss: 9.690823  [    0/  126 samples]
+Average loss: 9.3715
+Test loss: 29.498311 
+
+Epoch 624
+-------------------------------
+Loss: 8.829194  [    0/  126 samples]
+Average loss: 9.3752
+Test loss: 29.728898 
+
+Epoch 625
+-------------------------------
+Loss: 8.518316  [    0/  126 samples]
+Average loss: 9.3253
+Test loss: 29.678660 
+
+Epoch 626
+-------------------------------
+Loss: 8.686185  [    0/  126 samples]
+Average loss: 9.2977
+Test loss: 29.633338 
+
+Epoch 627
+-------------------------------
+Loss: 11.667828  [    0/  126 samples]
+Average loss: 9.3740
+Test loss: 29.477165 
+
+Epoch 628
+-------------------------------
+Loss: 9.996222  [    0/  126 samples]
+Average loss: 9.3359
+Test loss: 29.572799 
+
+Epoch 629
+-------------------------------
+Loss: 7.865990  [    0/  126 samples]
+Average loss: 9.3536
+Test loss: 29.591305 
+
+Epoch 630
+-------------------------------
+Loss: 7.674967  [    0/  126 samples]
+Average loss: 9.2917
+Test loss: 29.504977 
+
+Epoch 631
+-------------------------------
+Loss: 9.913069  [    0/  126 samples]
+Average loss: 9.2888
+Test loss: 29.488061 
+
+Epoch 632
+-------------------------------
+Loss: 10.262156  [    0/  126 samples]
+Average loss: 9.1907
+Test loss: 29.778147 
+
+Epoch 633
+-------------------------------
+Loss: 10.349266  [    0/  126 samples]
+Average loss: 9.1359
+Test loss: 29.685281 
+
+Epoch 634
+-------------------------------
+Loss: 7.660151  [    0/  126 samples]
+Average loss: 9.2581
+Test loss: 29.784174 
+
+Epoch 635
+-------------------------------
+Loss: 10.629549  [    0/  126 samples]
+Average loss: 9.2761
+Test loss: 29.908528 
+
+Epoch 636
+-------------------------------
+Loss: 9.574330  [    0/  126 samples]
+Average loss: 9.2953
+Test loss: 29.945637 
+
+Epoch 637
+-------------------------------
+Loss: 10.735620  [    0/  126 samples]
+Average loss: 9.3061
+Test loss: 29.875610 
+
+Epoch 638
+-------------------------------
+Loss: 8.850515  [    0/  126 samples]
+Average loss: 9.3427
+Test loss: 29.767871 
+
+Epoch 639
+-------------------------------
+Loss: 11.164220  [    0/  126 samples]
+Average loss: 9.2340
+Test loss: 30.018606 
+
+Epoch 640
+-------------------------------
+Loss: 10.148204  [    0/  126 samples]
+Average loss: 9.2122
+Test loss: 30.078538 
+
+Epoch 641
+-------------------------------
+Loss: 10.642038  [    0/  126 samples]
+Average loss: 9.1309
+Test loss: 30.063624 
+
+Epoch 642
+-------------------------------
+Loss: 8.913528  [    0/  126 samples]
+Average loss: 9.2835
+Test loss: 30.094313 
+
+Epoch 643
+-------------------------------
+Loss: 8.989104  [    0/  126 samples]
+Average loss: 9.2391
+Test loss: 30.131293 
+
+Epoch 644
+-------------------------------
+Loss: 7.262570  [    0/  126 samples]
+Average loss: 9.0910
+Test loss: 30.214698 
+
+Epoch 645
+-------------------------------
+Loss: 8.361969  [    0/  126 samples]
+Average loss: 9.2413
+Test loss: 30.271490 
+
+Epoch 646
+-------------------------------
+Loss: 8.758677  [    0/  126 samples]
+Average loss: 9.3022
+Test loss: 30.298283 
+
+Epoch 647
+-------------------------------
+Loss: 10.543600  [    0/  126 samples]
+Average loss: 9.2835
+Test loss: 30.071120 
+
+Epoch 648
+-------------------------------
+Loss: 9.038830  [    0/  126 samples]
+Average loss: 9.2390
+Test loss: 30.196437 
+
+Epoch 649
+-------------------------------
+Loss: 9.849170  [    0/  126 samples]
+Average loss: 9.1355
+Test loss: 30.268722 
+
+Epoch 650
+-------------------------------
+Loss: 7.274485  [    0/  126 samples]
+Average loss: 9.0753
+Test loss: 30.186386 
+
+Epoch 651
+-------------------------------
+Loss: 9.123665  [    0/  126 samples]
+Average loss: 9.0524
+Test loss: 30.111429 
+
+Epoch 652
+-------------------------------
+Loss: 8.333705  [    0/  126 samples]
+Average loss: 8.9934
+Test loss: 30.140416 
+
+Epoch 653
+-------------------------------
+Loss: 10.453386  [    0/  126 samples]
+Average loss: 9.0077
+Test loss: 30.104098 
+
+Epoch 654
+-------------------------------
+Loss: 7.387320  [    0/  126 samples]
+Average loss: 8.9381
+Test loss: 29.753579 
+
+Epoch 655
+-------------------------------
+Loss: 8.668831  [    0/  126 samples]
+Average loss: 8.9645
+Test loss: 29.701432 
+
+Epoch 656
+-------------------------------
+Loss: 10.052746  [    0/  126 samples]
+Average loss: 8.8784
+Test loss: 29.859680 
+
+Epoch 657
+-------------------------------
+Loss: 8.930431  [    0/  126 samples]
+Average loss: 9.0212
+Test loss: 29.901934 
+
+Epoch 658
+-------------------------------
+Loss: 10.650936  [    0/  126 samples]
+Average loss: 9.0666
+Test loss: 29.919556 
+
+Epoch 659
+-------------------------------
+Loss: 8.630817  [    0/  126 samples]
+Average loss: 9.0303
+Test loss: 29.941233 
+
+Epoch 660
+-------------------------------
+Loss: 10.822208  [    0/  126 samples]
+Average loss: 8.9864
+Test loss: 29.921072 
+
+Epoch 661
+-------------------------------
+Loss: 9.331619  [    0/  126 samples]
+Average loss: 8.9335
+Test loss: 30.234418 
+
+Epoch 662
+-------------------------------
+Loss: 7.951040  [    0/  126 samples]
+Average loss: 8.9551
+Test loss: 30.313571 
+
+Epoch 663
+-------------------------------
+Loss: 7.253969  [    0/  126 samples]
+Average loss: 8.8067
+Test loss: 30.371964 
+
+Epoch 664
+-------------------------------
+Loss: 9.035107  [    0/  126 samples]
+Average loss: 8.8233
+Test loss: 30.369491 
+
+Epoch 665
+-------------------------------
+Loss: 8.686516  [    0/  126 samples]
+Average loss: 8.6950
+Test loss: 30.389717 
+
+Epoch 666
+-------------------------------
+Loss: 8.837820  [    0/  126 samples]
+Average loss: 8.6384
+Test loss: 30.428221 
+
+Epoch 667
+-------------------------------
+Loss: 9.660237  [    0/  126 samples]
+Average loss: 8.6364
+Test loss: 30.494857 
+
+Epoch 668
+-------------------------------
+Loss: 8.243435  [    0/  126 samples]
+Average loss: 8.5927
+Test loss: 30.450995 
+
+Epoch 669
+-------------------------------
+Loss: 8.805815  [    0/  126 samples]
+Average loss: 8.5944
+Test loss: 30.461560 
+
+Epoch 670
+-------------------------------
+Loss: 9.840769  [    0/  126 samples]
+Average loss: 8.6138
+Test loss: 30.431585 
+
+Epoch 671
+-------------------------------
+Loss: 10.579445  [    0/  126 samples]
+Average loss: 8.5838
+Test loss: 30.341393 
+
+Epoch 672
+-------------------------------
+Loss: 9.778131  [    0/  126 samples]
+Average loss: 8.5993
+Test loss: 30.486903 
+
+Epoch 673
+-------------------------------
+Loss: 10.832855  [    0/  126 samples]
+Average loss: 8.5701
+Test loss: 30.597902 
+
+Epoch 674
+-------------------------------
+Loss: 8.144390  [    0/  126 samples]
+Average loss: 8.6436
+Test loss: 30.622899 
+
+Epoch 675
+-------------------------------
+Loss: 8.781176  [    0/  126 samples]
+Average loss: 8.6785
+Test loss: 30.649861 
+
+Epoch 676
+-------------------------------
+Loss: 10.149239  [    0/  126 samples]
+Average loss: 8.5934
+Test loss: 30.694452 
+
+Epoch 677
+-------------------------------
+Loss: 7.535173  [    0/  126 samples]
+Average loss: 8.5219
+Test loss: 30.645711 
+
+Epoch 678
+-------------------------------
+Loss: 6.654461  [    0/  126 samples]
+Average loss: 8.5219
+Test loss: 30.664216 
+
+Epoch 679
+-------------------------------
+Loss: 9.188010  [    0/  126 samples]
+Average loss: 8.4405
+Test loss: 30.573382 
+
+Epoch 680
+-------------------------------
+Loss: 9.546663  [    0/  126 samples]
+Average loss: 8.3957
+Test loss: 30.605922 
+
+Epoch 681
+-------------------------------
+Loss: 8.111141  [    0/  126 samples]
+Average loss: 8.4139
+Test loss: 30.727943 
+
+Epoch 682
+-------------------------------
+Loss: 7.221670  [    0/  126 samples]
+Average loss: 8.4232
+Test loss: 30.785751 
+
+Epoch 683
+-------------------------------
+Loss: 8.066629  [    0/  126 samples]
+Average loss: 8.3471
+Test loss: 30.846991 
+
+Epoch 684
+-------------------------------
+Loss: 7.923491  [    0/  126 samples]
+Average loss: 8.4311
+Test loss: 30.790498 
+
+Epoch 685
+-------------------------------
+Loss: 9.713295  [    0/  126 samples]
+Average loss: 8.3823
+Test loss: 30.858341 
+
+Epoch 686
+-------------------------------
+Loss: 8.960659  [    0/  126 samples]
+Average loss: 8.3491
+Test loss: 30.510002 
+
+Epoch 687
+-------------------------------
+Loss: 7.423639  [    0/  126 samples]
+Average loss: 8.2916
+Test loss: 30.725003 
+
+Epoch 688
+-------------------------------
+Loss: 9.243624  [    0/  126 samples]
+Average loss: 8.2450
+Test loss: 30.680544 
+
+Epoch 689
+-------------------------------
+Loss: 10.150041  [    0/  126 samples]
+Average loss: 8.3029
+Test loss: 30.640097 
+
+Epoch 690
+-------------------------------
+Loss: 7.556787  [    0/  126 samples]
+Average loss: 8.1907
+Test loss: 30.563868 
+
+Epoch 691
+-------------------------------
+Loss: 7.776835  [    0/  126 samples]
+Average loss: 8.2134
+Test loss: 30.530411 
+
+Epoch 692
+-------------------------------
+Loss: 7.283784  [    0/  126 samples]
+Average loss: 8.1691
+Test loss: 30.787314 
+
+Epoch 693
+-------------------------------
+Loss: 8.825501  [    0/  126 samples]
+Average loss: 8.2609
+Test loss: 30.688106 
+
+Epoch 694
+-------------------------------
+Loss: 9.556024  [    0/  126 samples]
+Average loss: 8.2031
+Test loss: 30.653448 
+
+Epoch 695
+-------------------------------
+Loss: 6.462157  [    0/  126 samples]
+Average loss: 8.2603
+Test loss: 30.596776 
+
+Epoch 696
+-------------------------------
+Loss: 9.125485  [    0/  126 samples]
+Average loss: 8.2075
+Test loss: 30.631982 
+
+Epoch 697
+-------------------------------
+Loss: 9.406567  [    0/  126 samples]
+Average loss: 8.0931
+Test loss: 30.279571 
+
+Epoch 698
+-------------------------------
+Loss: 6.438569  [    0/  126 samples]
+Average loss: 7.9994
+Test loss: 30.670253 
+
+Epoch 699
+-------------------------------
+Loss: 8.987669  [    0/  126 samples]
+Average loss: 8.0212
+Test loss: 30.666195 
+
+Epoch 700
+-------------------------------
+Loss: 10.555223  [    0/  126 samples]
+Average loss: 7.9552
+Test loss: 30.814018 
+
+Epoch 701
+-------------------------------
+Loss: 7.275724  [    0/  126 samples]
+Average loss: 7.8693
+Test loss: 30.717890 
+
+Epoch 702
+-------------------------------
+Loss: 7.192327  [    0/  126 samples]
+Average loss: 7.9588
+Test loss: 30.962099 
+
+Epoch 703
+-------------------------------
+Loss: 8.018863  [    0/  126 samples]
+Average loss: 8.0099
+Test loss: 30.982981 
+
+Epoch 704
+-------------------------------
+Loss: 7.451771  [    0/  126 samples]
+Average loss: 7.9685
+Test loss: 30.748263 
+
+Epoch 705
+-------------------------------
+Loss: 7.548364  [    0/  126 samples]
+Average loss: 7.9460
+Test loss: 30.921465 
+
+Epoch 706
+-------------------------------
+Loss: 6.695519  [    0/  126 samples]
+Average loss: 7.9660
+Test loss: 30.908168 
+
+Epoch 707
+-------------------------------
+Loss: 7.739495  [    0/  126 samples]
+Average loss: 7.8974
+Test loss: 30.205328 
+
+Epoch 708
+-------------------------------
+Loss: 7.078361  [    0/  126 samples]
+Average loss: 7.9195
+Test loss: 30.328330 
+
+Epoch 709
+-------------------------------
+Loss: 7.128997  [    0/  126 samples]
+Average loss: 7.9102
+Test loss: 30.560131 
+
+Epoch 710
+-------------------------------
+Loss: 8.268995  [    0/  126 samples]
+Average loss: 7.8864
+Test loss: 30.660625 
+
+Epoch 711
+-------------------------------
+Loss: 8.592850  [    0/  126 samples]
+Average loss: 7.8827
+Test loss: 30.704895 
+
+Epoch 712
+-------------------------------
+Loss: 9.831702  [    0/  126 samples]
+Average loss: 7.8437
+Test loss: 30.700437 
+
+Epoch 713
+-------------------------------
+Loss: 7.798489  [    0/  126 samples]
+Average loss: 7.9112
+Test loss: 30.691568 
+
+Epoch 714
+-------------------------------
+Loss: 8.493851  [    0/  126 samples]
+Average loss: 7.8037
+Test loss: 30.693897 
+
+Epoch 715
+-------------------------------
+Loss: 7.417835  [    0/  126 samples]
+Average loss: 7.8124
+Test loss: 30.726165 
+
+Epoch 716
+-------------------------------
+Loss: 8.154182  [    0/  126 samples]
+Average loss: 7.7468
+Test loss: 30.775076 
+
+Epoch 717
+-------------------------------
+Loss: 8.456390  [    0/  126 samples]
+Average loss: 7.7681
+Test loss: 30.773898 
+
+Epoch 718
+-------------------------------
+Loss: 9.578856  [    0/  126 samples]
+Average loss: 7.7586
+Test loss: 30.784369 
+
+Epoch 719
+-------------------------------
+Loss: 8.399232  [    0/  126 samples]
+Average loss: 7.7338
+Test loss: 30.753233 
+
+Epoch 720
+-------------------------------
+Loss: 6.833867  [    0/  126 samples]
+Average loss: 7.7683
+Test loss: 30.772402 
+
+Epoch 721
+-------------------------------
+Loss: 8.437037  [    0/  126 samples]
+Average loss: 7.7105
+Test loss: 30.823703 
+
+Epoch 722
+-------------------------------
+Loss: 7.068202  [    0/  126 samples]
+Average loss: 7.7035
+Test loss: 30.907992 
+
+Epoch 723
+-------------------------------
+Loss: 8.774459  [    0/  126 samples]
+Average loss: 7.6932
+Test loss: 30.930534 
+
+Epoch 724
+-------------------------------
+Loss: 7.754866  [    0/  126 samples]
+Average loss: 7.6439
+Test loss: 30.897374 
+
+Epoch 725
+-------------------------------
+Loss: 7.958991  [    0/  126 samples]
+Average loss: 7.5700
+Test loss: 30.869572 
+
+Epoch 726
+-------------------------------
+Loss: 7.184891  [    0/  126 samples]
+Average loss: 7.6449
+Test loss: 30.796383 
+
+Epoch 727
+-------------------------------
+Loss: 6.757231  [    0/  126 samples]
+Average loss: 7.6931
+Test loss: 30.799622 
+
+Epoch 728
+-------------------------------
+Loss: 8.875219  [    0/  126 samples]
+Average loss: 7.5815
+Test loss: 30.713202 
+
+Epoch 729
+-------------------------------
+Loss: 7.533035  [    0/  126 samples]
+Average loss: 7.4496
+Test loss: 30.616451 
+
+Epoch 730
+-------------------------------
+Loss: 8.736004  [    0/  126 samples]
+Average loss: 7.4352
+Test loss: 30.481853 
+
+Epoch 731
+-------------------------------
+Loss: 7.615677  [    0/  126 samples]
+Average loss: 7.4282
+Test loss: 30.718699 
+
+Epoch 732
+-------------------------------
+Loss: 6.022817  [    0/  126 samples]
+Average loss: 7.3549
+Test loss: 30.910873 
+
+Epoch 733
+-------------------------------
+Loss: 8.522066  [    0/  126 samples]
+Average loss: 7.4091
+Test loss: 30.602673 
+
+Epoch 734
+-------------------------------
+Loss: 6.226910  [    0/  126 samples]
+Average loss: 7.4731
+Test loss: 30.893137 
+
+Epoch 735
+-------------------------------
+Loss: 7.830017  [    0/  126 samples]
+Average loss: 7.3726
+Test loss: 30.949282 
+
+Epoch 736
+-------------------------------
+Loss: 5.888582  [    0/  126 samples]
+Average loss: 7.5046
+Test loss: 31.248252 
+
+Epoch 737
+-------------------------------
+Loss: 6.680458  [    0/  126 samples]
+Average loss: 7.5888
+Test loss: 31.261110 
+
+Epoch 738
+-------------------------------
+Loss: 7.462650  [    0/  126 samples]
+Average loss: 7.4532
+Test loss: 31.124157 
+
+Epoch 739
+-------------------------------
+Loss: 8.569437  [    0/  126 samples]
+Average loss: 7.3650
+Test loss: 30.923470 
+
+Epoch 740
+-------------------------------
+Loss: 6.182237  [    0/  126 samples]
+Average loss: 7.4116
+Test loss: 31.009242 
+
+Epoch 741
+-------------------------------
+Loss: 7.276474  [    0/  126 samples]
+Average loss: 7.4427
+Test loss: 31.272709 
+
+Epoch 742
+-------------------------------
+Loss: 8.767797  [    0/  126 samples]
+Average loss: 7.4981
+Test loss: 31.394008 
+
+Epoch 743
+-------------------------------
+Loss: 6.165469  [    0/  126 samples]
+Average loss: 7.5258
+Test loss: 31.453269 
+
+Epoch 744
+-------------------------------
+Loss: 6.395005  [    0/  126 samples]
+Average loss: 7.3942
+Test loss: 31.415974 
+
+Epoch 745
+-------------------------------
+Loss: 7.521536  [    0/  126 samples]
+Average loss: 7.5369
+Test loss: 31.106882 
+
+Epoch 746
+-------------------------------
+Loss: 6.867925  [    0/  126 samples]
+Average loss: 7.4805
+Test loss: 30.698471 
+
+Epoch 747
+-------------------------------
+Loss: 7.585375  [    0/  126 samples]
+Average loss: 7.4275
+Test loss: 30.860572 
+
+Epoch 748
+-------------------------------
+Loss: 8.787554  [    0/  126 samples]
+Average loss: 7.7494
+Test loss: 30.863423 
+
+Epoch 749
+-------------------------------
+Loss: 7.783686  [    0/  126 samples]
+Average loss: 7.6282
+Test loss: 30.829263 
+
+Epoch 750
+-------------------------------
+Loss: 7.530904  [    0/  126 samples]
+Average loss: 7.5715
+Test loss: 30.862858 
+
+Epoch 751
+-------------------------------
+Loss: 9.204878  [    0/  126 samples]
+Average loss: 7.4929
+Test loss: 30.904490 
+
+Epoch 752
+-------------------------------
+Loss: 8.645446  [    0/  126 samples]
+Average loss: 7.3663
+Test loss: 30.919170 
+
+Epoch 753
+-------------------------------
+Loss: 7.923806  [    0/  126 samples]
+Average loss: 7.3601
+Test loss: 31.131958 
+
+Epoch 754
+-------------------------------
+Loss: 7.546729  [    0/  126 samples]
+Average loss: 7.3076
+Test loss: 31.120846 
+
+Epoch 755
+-------------------------------
+Loss: 8.013534  [    0/  126 samples]
+Average loss: 7.2626
+Test loss: 31.122876 
+
+Epoch 756
+-------------------------------
+Loss: 6.689664  [    0/  126 samples]
+Average loss: 7.2270
+Test loss: 31.098991 
+
+Epoch 757
+-------------------------------
+Loss: 9.420418  [    0/  126 samples]
+Average loss: 7.2321
+Test loss: 31.015009 
+
+Epoch 758
+-------------------------------
+Loss: 6.985465  [    0/  126 samples]
+Average loss: 7.2097
+Test loss: 30.893775 
+
+Epoch 759
+-------------------------------
+Loss: 7.280559  [    0/  126 samples]
+Average loss: 7.1552
+Test loss: 30.628457 
+
+Epoch 760
+-------------------------------
+Loss: 8.216055  [    0/  126 samples]
+Average loss: 7.1229
+Test loss: 30.917266 
+
+Epoch 761
+-------------------------------
+Loss: 8.142593  [    0/  126 samples]
+Average loss: 7.0416
+Test loss: 30.988492 
+
+Epoch 762
+-------------------------------
+Loss: 7.411857  [    0/  126 samples]
+Average loss: 7.0897
+Test loss: 31.007864 
+
+Epoch 763
+-------------------------------
+Loss: 6.796425  [    0/  126 samples]
+Average loss: 6.9751
+Test loss: 31.004406 
+
+Epoch 764
+-------------------------------
+Loss: 6.885963  [    0/  126 samples]
+Average loss: 6.8161
+Test loss: 30.881761 
+
+Epoch 765
+-------------------------------
+Loss: 5.670222  [    0/  126 samples]
+Average loss: 6.7790
+Test loss: 30.789941 
+
+Epoch 766
+-------------------------------
+Loss: 7.877527  [    0/  126 samples]
+Average loss: 6.8132
+Test loss: 30.943430 
+
+Epoch 767
+-------------------------------
+Loss: 5.686844  [    0/  126 samples]
+Average loss: 6.8104
+Test loss: 30.965241 
+
+Epoch 768
+-------------------------------
+Loss: 5.982555  [    0/  126 samples]
+Average loss: 6.8109
+Test loss: 30.937784 
+
+Epoch 769
+-------------------------------
+Loss: 7.615049  [    0/  126 samples]
+Average loss: 6.7646
+Test loss: 30.894868 
+
+Epoch 770
+-------------------------------
+Loss: 6.099169  [    0/  126 samples]
+Average loss: 6.6733
+Test loss: 30.902080 
+
+Epoch 771
+-------------------------------
+Loss: 5.947838  [    0/  126 samples]
+Average loss: 6.6871
+Test loss: 30.894262 
+
+Epoch 772
+-------------------------------
+Loss: 6.376666  [    0/  126 samples]
+Average loss: 6.6066
+Test loss: 30.861933 
+
+Epoch 773
+-------------------------------
+Loss: 6.380896  [    0/  126 samples]
+Average loss: 6.5239
+Test loss: 30.817158 
+
+Epoch 774
+-------------------------------
+Loss: 6.468551  [    0/  126 samples]
+Average loss: 6.5526
+Test loss: 30.775729 
+
+Epoch 775
+-------------------------------
+Loss: 6.263211  [    0/  126 samples]
+Average loss: 6.5337
+Test loss: 31.227502 
+
+Epoch 776
+-------------------------------
+Loss: 5.355049  [    0/  126 samples]
+Average loss: 6.4819
+Test loss: 31.457514 
+
+Epoch 777
+-------------------------------
+Loss: 6.809459  [    0/  126 samples]
+Average loss: 6.6258
+Test loss: 31.529163 
+
+Epoch 778
+-------------------------------
+Loss: 5.949637  [    0/  126 samples]
+Average loss: 6.5736
+Test loss: 31.181402 
+
+Epoch 779
+-------------------------------
+Loss: 6.153532  [    0/  126 samples]
+Average loss: 6.6716
+Test loss: 30.720132 
+
+Epoch 780
+-------------------------------
+Loss: 7.137852  [    0/  126 samples]
+Average loss: 6.5924
+Test loss: 30.639339 
+
+Epoch 781
+-------------------------------
+Loss: 5.043844  [    0/  126 samples]
+Average loss: 6.5372
+Test loss: 30.640420 
+
+Epoch 782
+-------------------------------
+Loss: 6.724724  [    0/  126 samples]
+Average loss: 6.5637
+Test loss: 30.862082 
+
+Epoch 783
+-------------------------------
+Loss: 7.316494  [    0/  126 samples]
+Average loss: 6.5344
+Test loss: 30.876036 
+
+Epoch 784
+-------------------------------
+Loss: 5.778348  [    0/  126 samples]
+Average loss: 6.5337
+Test loss: 30.809019 
+
+Epoch 785
+-------------------------------
+Loss: 7.420295  [    0/  126 samples]
+Average loss: 6.4831
+Test loss: 30.764550 
+
+Epoch 786
+-------------------------------
+Loss: 6.938616  [    0/  126 samples]
+Average loss: 6.5898
+Test loss: 30.787808 
+
+Epoch 787
+-------------------------------
+Loss: 5.798583  [    0/  126 samples]
+Average loss: 6.5275
+Test loss: 30.876685 
+
+Epoch 788
+-------------------------------
+Loss: 5.854495  [    0/  126 samples]
+Average loss: 6.4819
+Test loss: 30.937083 
+
+Epoch 789
+-------------------------------
+Loss: 5.895709  [    0/  126 samples]
+Average loss: 6.5615
+Test loss: 30.965545 
+
+Epoch 790
+-------------------------------
+Loss: 5.006646  [    0/  126 samples]
+Average loss: 6.4954
+Test loss: 30.997986 
+
+Epoch 791
+-------------------------------
+Loss: 4.449518  [    0/  126 samples]
+Average loss: 6.5203
+Test loss: 30.989549 
+
+Epoch 792
+-------------------------------
+Loss: 8.043062  [    0/  126 samples]
+Average loss: 6.5070
+Test loss: 30.883876 
+
+Epoch 793
+-------------------------------
+Loss: 7.085675  [    0/  126 samples]
+Average loss: 6.4605
+Test loss: 31.261931 
+
+Epoch 794
+-------------------------------
+Loss: 6.187514  [    0/  126 samples]
+Average loss: 6.4624
+Test loss: 31.407126 
+
+Epoch 795
+-------------------------------
+Loss: 7.321923  [    0/  126 samples]
+Average loss: 6.6166
+Test loss: 31.912623 
+
+Epoch 796
+-------------------------------
+Loss: 5.639422  [    0/  126 samples]
+Average loss: 6.9750
+Test loss: 32.132088 
+
+Epoch 797
+-------------------------------
+Loss: 7.663294  [    0/  126 samples]
+Average loss: 7.0800
+Test loss: 32.326995 
+
+Epoch 798
+-------------------------------
+Loss: 7.327687  [    0/  126 samples]
+Average loss: 7.2320
+Test loss: 32.460146 
+
+Epoch 799
+-------------------------------
+Loss: 5.134384  [    0/  126 samples]
+Average loss: 7.5139
+Test loss: 32.501378 
+
+Epoch 800
+-------------------------------
+Loss: 7.042778  [    0/  126 samples]
+Average loss: 7.5404
+Test loss: 32.709124 
+
+Epoch 801
+-------------------------------
+Loss: 8.034277  [    0/  126 samples]
+Average loss: 7.9916
+Test loss: 32.608426 
+
+Epoch 802
+-------------------------------
+Loss: 7.472710  [    0/  126 samples]
+Average loss: 8.2538
+Test loss: 32.777157 
+
+Epoch 803
+-------------------------------
+Loss: 8.236775  [    0/  126 samples]
+Average loss: 8.2763
+Test loss: 32.454174 
+
+Epoch 804
+-------------------------------
+Loss: 7.303055  [    0/  126 samples]
+Average loss: 8.1911
+Test loss: 32.365482 
+
+Epoch 805
+-------------------------------
+Loss: 6.800486  [    0/  126 samples]
+Average loss: 8.1740
+Test loss: 31.854620 
+
+Epoch 806
+-------------------------------
+Loss: 7.966969  [    0/  126 samples]
+Average loss: 8.1373
+Test loss: 32.255773 
+
+Epoch 807
+-------------------------------
+Loss: 10.345070  [    0/  126 samples]
+Average loss: 8.1677
+Test loss: 32.456389 
+
+Epoch 808
+-------------------------------
+Loss: 9.642649  [    0/  126 samples]
+Average loss: 8.1870
+Test loss: 32.331716 
+
+Epoch 809
+-------------------------------
+Loss: 6.420482  [    0/  126 samples]
+Average loss: 8.2100
+Test loss: 32.377560 
+
+Epoch 810
+-------------------------------
+Loss: 8.047274  [    0/  126 samples]
+Average loss: 8.2176
+Test loss: 32.455755 
+
+Epoch 811
+-------------------------------
+Loss: 10.017775  [    0/  126 samples]
+Average loss: 8.2415
+Test loss: 32.448350 
+
+Epoch 812
+-------------------------------
+Loss: 6.897323  [    0/  126 samples]
+Average loss: 8.1212
+Test loss: 32.418012 
+
+Epoch 813
+-------------------------------
+Loss: 6.880231  [    0/  126 samples]
+Average loss: 8.0733
+Test loss: 32.426754 
+
+Epoch 814
+-------------------------------
+Loss: 7.361732  [    0/  126 samples]
+Average loss: 7.9318
+Test loss: 32.659552 
+
+Epoch 815
+-------------------------------
+Loss: 8.259190  [    0/  126 samples]
+Average loss: 7.9268
+Test loss: 32.719624 
+
+Epoch 816
+-------------------------------
+Loss: 7.699196  [    0/  126 samples]
+Average loss: 7.8882
+Test loss: 32.604457 
+
+Epoch 817
+-------------------------------
+Loss: 8.017431  [    0/  126 samples]
+Average loss: 7.9123
+Test loss: 32.589946 
+
+Epoch 818
+-------------------------------
+Loss: 8.225815  [    0/  126 samples]
+Average loss: 7.8495
+Test loss: 32.559830 
+
+Epoch 819
+-------------------------------
+Loss: 8.235501  [    0/  126 samples]
+Average loss: 7.8316
+Test loss: 32.571905 
+
+Epoch 820
+-------------------------------
+Loss: 6.260046  [    0/  126 samples]
+Average loss: 7.7257
+Test loss: 32.589552 
+
+Epoch 821
+-------------------------------
+Loss: 8.540091  [    0/  126 samples]
+Average loss: 7.7983
+Test loss: 32.660914 
+
+Epoch 822
+-------------------------------
+Loss: 9.204678  [    0/  126 samples]
+Average loss: 7.7698
+Test loss: 32.554447 
+
+Epoch 823
+-------------------------------
+Loss: 8.412333  [    0/  126 samples]
+Average loss: 7.7767
+Test loss: 32.163429 
+
+Epoch 824
+-------------------------------
+Loss: 9.554550  [    0/  126 samples]
+Average loss: 7.7435
+Test loss: 32.257245 
+
+Epoch 825
+-------------------------------
+Loss: 6.092916  [    0/  126 samples]
+Average loss: 7.7303
+Test loss: 32.678148 
+
+Epoch 826
+-------------------------------
+Loss: 6.214017  [    0/  126 samples]
+Average loss: 7.7164
+Test loss: 32.703873 
+
+Epoch 827
+-------------------------------
+Loss: 5.855836  [    0/  126 samples]
+Average loss: 7.7431
+Test loss: 32.648961 
+
+Epoch 828
+-------------------------------
+Loss: 6.360989  [    0/  126 samples]
+Average loss: 7.8061
+Test loss: 32.459260 
+
+Epoch 829
+-------------------------------
+Loss: 5.678445  [    0/  126 samples]
+Average loss: 7.6543
+Test loss: 32.499592 
+
+Epoch 830
+-------------------------------
+Loss: 9.340591  [    0/  126 samples]
+Average loss: 7.6334
+Test loss: 32.540193 
+
+Epoch 831
+-------------------------------
+Loss: 7.030098  [    0/  126 samples]
+Average loss: 7.4827
+Test loss: 32.546664 
+
+Epoch 832
+-------------------------------
+Loss: 5.707731  [    0/  126 samples]
+Average loss: 7.4188
+Test loss: 32.538234 
+
+Epoch 833
+-------------------------------
+Loss: 6.789500  [    0/  126 samples]
+Average loss: 7.3324
+Test loss: 32.586908 
+
+Epoch 834
+-------------------------------
+Loss: 7.646931  [    0/  126 samples]
+Average loss: 7.4307
+Test loss: 32.617264 
+
+Epoch 835
+-------------------------------
+Loss: 8.549664  [    0/  126 samples]
+Average loss: 7.5252
+Test loss: 32.628172 
+
+Epoch 836
+-------------------------------
+Loss: 7.372663  [    0/  126 samples]
+Average loss: 7.5641
+Test loss: 32.611531 
+
+Epoch 837
+-------------------------------
+Loss: 8.984900  [    0/  126 samples]
+Average loss: 7.4996
+Test loss: 32.587741 
+
+Epoch 838
+-------------------------------
+Loss: 5.813284  [    0/  126 samples]
+Average loss: 7.5834
+Test loss: 32.536983 
+
+Epoch 839
+-------------------------------
+Loss: 3.992990  [    0/  126 samples]
+Average loss: 7.5260
+Test loss: 32.390026 
+
+Epoch 840
+-------------------------------
+Loss: 7.974669  [    0/  126 samples]
+Average loss: 7.5418
+Test loss: 32.411851 
+
+Epoch 841
+-------------------------------
+Loss: 6.703952  [    0/  126 samples]
+Average loss: 7.7619
+Test loss: 32.393505 
+
+Epoch 842
+-------------------------------
+Loss: 6.650307  [    0/  126 samples]
+Average loss: 7.7163
+Test loss: 32.169438 
+
+Epoch 843
+-------------------------------
+Loss: 6.156660  [    0/  126 samples]
+Average loss: 7.6409
+Test loss: 32.093331 
+
+Epoch 844
+-------------------------------
+Loss: 7.577142  [    0/  126 samples]
+Average loss: 7.6382
+Test loss: 32.115215 
+
+Epoch 845
+-------------------------------
+Loss: 7.994964  [    0/  126 samples]
+Average loss: 7.3660
+Test loss: 32.128617 
+
+Epoch 846
+-------------------------------
+Loss: 7.993510  [    0/  126 samples]
+Average loss: 7.4038
+Test loss: 32.161692 
+
+Epoch 847
+-------------------------------
+Loss: 6.840896  [    0/  126 samples]
+Average loss: 7.4555
+Test loss: 31.838584 
+
+Epoch 848
+-------------------------------
+Loss: 7.659316  [    0/  126 samples]
+Average loss: 7.6420
+Test loss: 31.984808 
+
+Epoch 849
+-------------------------------
+Loss: 8.292872  [    0/  126 samples]
+Average loss: 7.8072
+Test loss: 31.990502 
+
+Epoch 850
+-------------------------------
+Loss: 7.194000  [    0/  126 samples]
+Average loss: 7.6127
+Test loss: 31.948132 
+
+Epoch 851
+-------------------------------
+Loss: 8.840940  [    0/  126 samples]
+Average loss: 7.8528
+Test loss: 32.774085 
+
+Epoch 852
+-------------------------------
+Loss: 5.520254  [    0/  126 samples]
+Average loss: 8.3664
+Test loss: 32.456019 
+
+Epoch 853
+-------------------------------
+Loss: 7.073358  [    0/  126 samples]
+Average loss: 8.4884
+Test loss: 32.877443 
+
+Epoch 854
+-------------------------------
+Loss: 6.173372  [    0/  126 samples]
+Average loss: 8.6034
+Test loss: 32.987852 
+
+Epoch 855
+-------------------------------
+Loss: 7.441020  [    0/  126 samples]
+Average loss: 8.6404
+Test loss: 32.815552 
+
+Epoch 856
+-------------------------------
+Loss: 9.277674  [    0/  126 samples]
+Average loss: 8.7486
+Test loss: 32.752593 
+
+Epoch 857
+-------------------------------
+Loss: 8.504881  [    0/  126 samples]
+Average loss: 8.7426
+Test loss: 32.660499 
+
+Epoch 858
+-------------------------------
+Loss: 9.620745  [    0/  126 samples]
+Average loss: 8.7687
+Test loss: 32.482727 
+
+Epoch 859
+-------------------------------
+Loss: 10.713907  [    0/  126 samples]
+Average loss: 8.9206
+Test loss: 32.686228 
+
+Epoch 860
+-------------------------------
+Loss: 7.227807  [    0/  126 samples]
+Average loss: 8.7464
+Test loss: 32.745944 
+
+Epoch 861
+-------------------------------
+Loss: 6.453935  [    0/  126 samples]
+Average loss: 8.8456
+Test loss: 32.779765 
+
+Epoch 862
+-------------------------------
+Loss: 9.275455  [    0/  126 samples]
+Average loss: 8.8412
+Test loss: 33.005044 
+
+Epoch 863
+-------------------------------
+Loss: 11.249610  [    0/  126 samples]
+Average loss: 8.8013
+Test loss: 32.638170 
+
+Epoch 864
+-------------------------------
+Loss: 6.335596  [    0/  126 samples]
+Average loss: 8.6150
+Test loss: 32.677884 
+
+Epoch 865
+-------------------------------
+Loss: 8.024761  [    0/  126 samples]
+Average loss: 8.4969
+Test loss: 32.900615 
+
+Epoch 866
+-------------------------------
+Loss: 10.144753  [    0/  126 samples]
+Average loss: 8.4494
+Test loss: 32.754144 
+
+Epoch 867
+-------------------------------
+Loss: 6.843220  [    0/  126 samples]
+Average loss: 8.4392
+Test loss: 32.729925 
+
+Epoch 868
+-------------------------------
+Loss: 8.669258  [    0/  126 samples]
+Average loss: 8.2984
+Test loss: 32.722499 
+
+Epoch 869
+-------------------------------
+Loss: 6.569358  [    0/  126 samples]
+Average loss: 8.4725
+Test loss: 32.750732 
+
+Epoch 870
+-------------------------------
+Loss: 7.455777  [    0/  126 samples]
+Average loss: 8.2089
+Test loss: 32.881241 
+
+Epoch 871
+-------------------------------
+Loss: 7.524504  [    0/  126 samples]
+Average loss: 8.1590
+Test loss: 32.923533 
+
+Epoch 872
+-------------------------------
+Loss: 6.643507  [    0/  126 samples]
+Average loss: 8.1065
+Test loss: 32.930566 
+
+Epoch 873
+-------------------------------
+Loss: 6.135952  [    0/  126 samples]
+Average loss: 8.1112
+Test loss: 32.857808 
+
+Epoch 874
+-------------------------------
+Loss: 9.171057  [    0/  126 samples]
+Average loss: 8.0718
+Test loss: 32.933710 
+
+Epoch 875
+-------------------------------
+Loss: 7.172332  [    0/  126 samples]
+Average loss: 7.9192
+Test loss: 32.611190 
+
+Epoch 876
+-------------------------------
+Loss: 8.171261  [    0/  126 samples]
+Average loss: 8.0038
+Test loss: 32.615045 
+
+Epoch 877
+-------------------------------
+Loss: 9.179335  [    0/  126 samples]
+Average loss: 7.9631
+Test loss: 32.644389 
+
+Epoch 878
+-------------------------------
+Loss: 7.353124  [    0/  126 samples]
+Average loss: 8.0754
+Test loss: 32.616469 
+
+Epoch 879
+-------------------------------
+Loss: 8.606100  [    0/  126 samples]
+Average loss: 7.8976
+Test loss: 32.839763 
+
+Epoch 880
+-------------------------------
+Loss: 7.838978  [    0/  126 samples]
+Average loss: 7.7630
+Test loss: 32.719394 
+
+Epoch 881
+-------------------------------
+Loss: 7.984516  [    0/  126 samples]
+Average loss: 8.0208
+Test loss: 32.644013 
+
+Epoch 882
+-------------------------------
+Loss: 5.910871  [    0/  126 samples]
+Average loss: 8.1985
+Test loss: 32.562153 
+
+Epoch 883
+-------------------------------
+Loss: 7.192535  [    0/  126 samples]
+Average loss: 8.1036
+Test loss: 32.786127 
+
+Epoch 884
+-------------------------------
+Loss: 7.460091  [    0/  126 samples]
+Average loss: 8.0858
+Test loss: 32.955395 
+
+Epoch 885
+-------------------------------
+Loss: 7.586739  [    0/  126 samples]
+Average loss: 8.0276
+Test loss: 33.568387 
+
+Epoch 886
+-------------------------------
+Loss: 6.328588  [    0/  126 samples]
+Average loss: 8.0167
+Test loss: 33.002020 
+
+Epoch 887
+-------------------------------
+Loss: 6.231672  [    0/  126 samples]
+Average loss: 8.3298
+Test loss: 32.927585 
+
+Epoch 888
+-------------------------------
+Loss: 8.729869  [    0/  126 samples]
+Average loss: 8.3785
+Test loss: 32.868849 
+
+Epoch 889
+-------------------------------
+Loss: 10.077911  [    0/  126 samples]
+Average loss: 8.6324
+Test loss: 32.855821 
+
+Epoch 890
+-------------------------------
+Loss: 7.054173  [    0/  126 samples]
+Average loss: 8.8209
+Test loss: 33.049781 
+
+Epoch 891
+-------------------------------
+Loss: 6.274051  [    0/  126 samples]
+Average loss: 8.8477
+Test loss: 33.121972 
+
+Epoch 892
+-------------------------------
+Loss: 10.624155  [    0/  126 samples]
+Average loss: 8.8474
+Test loss: 33.096873 
+
+Epoch 893
+-------------------------------
+Loss: 6.917998  [    0/  126 samples]
+Average loss: 8.8474
+Test loss: 33.098054 
+
+Epoch 894
+-------------------------------
+Loss: 6.520383  [    0/  126 samples]
+Average loss: 8.7889
+Test loss: 32.918701 
+
+Epoch 895
+-------------------------------
+Loss: 7.558370  [    0/  126 samples]
+Average loss: 8.7707
+Test loss: 32.822648 
+
+Epoch 896
+-------------------------------
+Loss: 7.205818  [    0/  126 samples]
+Average loss: 8.6973
+Test loss: 32.800807 
+
+Epoch 897
+-------------------------------
+Loss: 8.661359  [    0/  126 samples]
+Average loss: 8.5615
+Test loss: 32.864467 
+
+Epoch 898
+-------------------------------
+Loss: 10.224829  [    0/  126 samples]
+Average loss: 8.4649
+Test loss: 32.882177 
+
+Epoch 899
+-------------------------------
+Loss: 10.845666  [    0/  126 samples]
+Average loss: 8.4340
+Test loss: 32.783735 
+
+Epoch 900
+-------------------------------
+Loss: 8.782022  [    0/  126 samples]
+Average loss: 8.2462
+Test loss: 32.690788 
+
+Epoch 901
+-------------------------------
+Loss: 9.255926  [    0/  126 samples]
+Average loss: 8.1869
+Test loss: 32.790474 
+
+Epoch 902
+-------------------------------
+Loss: 5.625430  [    0/  126 samples]
+Average loss: 8.1365
+Test loss: 32.238748 
+
+Epoch 903
+-------------------------------
+Loss: 8.334770  [    0/  126 samples]
+Average loss: 8.1258
+Test loss: 32.779218 
+
+Epoch 904
+-------------------------------
+Loss: 6.405253  [    0/  126 samples]
+Average loss: 8.0296
+Test loss: 32.913050 
+
+Epoch 905
+-------------------------------
+Loss: 6.611188  [    0/  126 samples]
+Average loss: 7.8538
+Test loss: 32.968683 
+
+Epoch 906
+-------------------------------
+Loss: 8.900155  [    0/  126 samples]
+Average loss: 7.7894
+Test loss: 32.940345 
+
+Epoch 907
+-------------------------------
+Loss: 7.121189  [    0/  126 samples]
+Average loss: 7.8112
+Test loss: 32.873238 
+
+Epoch 908
+-------------------------------
+Loss: 6.874995  [    0/  126 samples]
+Average loss: 7.9295
+Test loss: 32.816875 
+
+Epoch 909
+-------------------------------
+Loss: 6.992105  [    0/  126 samples]
+Average loss: 7.9804
+Test loss: 32.833234 
+
+Epoch 910
+-------------------------------
+Loss: 9.796429  [    0/  126 samples]
+Average loss: 7.8862
+Test loss: 32.879686 
+
+Epoch 911
+-------------------------------
+Loss: 7.633364  [    0/  126 samples]
+Average loss: 7.8088
+Test loss: 32.920032 
+
+Epoch 912
+-------------------------------
+Loss: 8.887247  [    0/  126 samples]
+Average loss: 7.6883
+Test loss: 32.888036 
+
+Epoch 913
+-------------------------------
+Loss: 6.053349  [    0/  126 samples]
+Average loss: 7.5716
+Test loss: 32.785908 
+
+Epoch 914
+-------------------------------
+Loss: 5.902511  [    0/  126 samples]
+Average loss: 7.6549
+Test loss: 32.891676 
+
+Epoch 915
+-------------------------------
+Loss: 5.920177  [    0/  126 samples]
+Average loss: 7.6170
+Test loss: 33.157652 
+
+Epoch 916
+-------------------------------
+Loss: 9.038058  [    0/  126 samples]
+Average loss: 7.6242
+Test loss: 33.192194 
+
+Epoch 917
+-------------------------------
+Loss: 6.738477  [    0/  126 samples]
+Average loss: 7.5631
+Test loss: 33.199357 
+
+Epoch 918
+-------------------------------
+Loss: 9.119514  [    0/  126 samples]
+Average loss: 7.3964
+Test loss: 33.182976 
+
+Epoch 919
+-------------------------------
+Loss: 9.705770  [    0/  126 samples]
+Average loss: 7.3933
+Test loss: 33.064225 
+
+Epoch 920
+-------------------------------
+Loss: 8.664383  [    0/  126 samples]
+Average loss: 7.2408
+Test loss: 32.837379 
+
+Epoch 921
+-------------------------------
+Loss: 6.595530  [    0/  126 samples]
+Average loss: 7.1366
+Test loss: 32.938918 
+
+Epoch 922
+-------------------------------
+Loss: 7.086479  [    0/  126 samples]
+Average loss: 7.1038
+Test loss: 33.041780 
+
+Epoch 923
+-------------------------------
+Loss: 5.825737  [    0/  126 samples]
+Average loss: 6.9861
+Test loss: 33.079940 
+
+Epoch 924
+-------------------------------
+Loss: 7.558076  [    0/  126 samples]
+Average loss: 7.0038
+Test loss: 33.050844 
+
+Epoch 925
+-------------------------------
+Loss: 5.570931  [    0/  126 samples]
+Average loss: 6.9875
+Test loss: 33.003979 
+
+Epoch 926
+-------------------------------
+Loss: 6.155684  [    0/  126 samples]
+Average loss: 7.2226
+Test loss: 33.042886 
+
+Epoch 927
+-------------------------------
+Loss: 5.823140  [    0/  126 samples]
+Average loss: 7.3780
+Test loss: 33.031815 
+
+Epoch 928
+-------------------------------
+Loss: 7.173458  [    0/  126 samples]
+Average loss: 7.3360
+Test loss: 32.919016 
+
+Epoch 929
+-------------------------------
+Loss: 8.298922  [    0/  126 samples]
+Average loss: 7.3518
+Test loss: 32.962361 
+
+Epoch 930
+-------------------------------
+Loss: 6.126892  [    0/  126 samples]
+Average loss: 7.3315
+Test loss: 33.031396 
+
+Epoch 931
+-------------------------------
+Loss: 8.745392  [    0/  126 samples]
+Average loss: 7.3341
+Test loss: 33.822053 
+
+Epoch 932
+-------------------------------
+Loss: 5.999441  [    0/  126 samples]
+Average loss: 7.6390
+Test loss: 34.436744 
+
+Epoch 933
+-------------------------------
+Loss: 9.348757  [    0/  126 samples]
+Average loss: 8.4114
+Test loss: 34.441131 
+
+Epoch 934
+-------------------------------
+Loss: 10.408190  [    0/  126 samples]
+Average loss: 8.3610
+Test loss: 34.618266 
+
+Epoch 935
+-------------------------------
+Loss: 8.651964  [    0/  126 samples]
+Average loss: 8.3217
+Test loss: 33.937681 
+
+Epoch 936
+-------------------------------
+Loss: 7.082340  [    0/  126 samples]
+Average loss: 8.2244
+Test loss: 33.710370 
+
+Epoch 937
+-------------------------------
+Loss: 10.850740  [    0/  126 samples]
+Average loss: 8.0809
+Test loss: 33.478271 
+
+Epoch 938
+-------------------------------
+Loss: 7.735140  [    0/  126 samples]
+Average loss: 8.1535
+Test loss: 33.486383 
+
+Epoch 939
+-------------------------------
+Loss: 6.481655  [    0/  126 samples]
+Average loss: 8.1529
+Test loss: 33.604421 
+
+Epoch 940
+-------------------------------
+Loss: 7.585762  [    0/  126 samples]
+Average loss: 8.0761
+Test loss: 33.424116 
+
+Epoch 941
+-------------------------------
+Loss: 6.847885  [    0/  126 samples]
+Average loss: 8.0861
+Test loss: 33.638239 
+
+Epoch 942
+-------------------------------
+Loss: 8.813288  [    0/  126 samples]
+Average loss: 7.9034
+Test loss: 33.734851 
+
+Epoch 943
+-------------------------------
+Loss: 8.756840  [    0/  126 samples]
+Average loss: 7.8037
+Test loss: 33.762069 
+
+Epoch 944
+-------------------------------
+Loss: 8.418373  [    0/  126 samples]
+Average loss: 7.7733
+Test loss: 33.844707 
+
+Epoch 945
+-------------------------------
+Loss: 7.295107  [    0/  126 samples]
+Average loss: 7.6193
+Test loss: 33.902604 
+
+Epoch 946
+-------------------------------
+Loss: 8.747826  [    0/  126 samples]
+Average loss: 7.4518
+Test loss: 33.960666 
+
+Epoch 947
+-------------------------------
+Loss: 9.069107  [    0/  126 samples]
+Average loss: 7.4973
+Test loss: 33.803061 
+
+Epoch 948
+-------------------------------
+Loss: 8.168269  [    0/  126 samples]
+Average loss: 7.5361
+Test loss: 33.748122 
+
+Epoch 949
+-------------------------------
+Loss: 7.294981  [    0/  126 samples]
+Average loss: 7.4239
+Test loss: 33.756505 
+
+Epoch 950
+-------------------------------
+Loss: 7.193400  [    0/  126 samples]
+Average loss: 7.4297
+Test loss: 33.783999 
+
+Epoch 951
+-------------------------------
+Loss: 7.452782  [    0/  126 samples]
+Average loss: 7.3348
+Test loss: 33.742310 
+
+Epoch 952
+-------------------------------
+Loss: 6.621009  [    0/  126 samples]
+Average loss: 7.2987
+Test loss: 33.370995 
+
+Epoch 953
+-------------------------------
+Loss: 7.602424  [    0/  126 samples]
+Average loss: 7.2697
+Test loss: 33.876449 
+
+Epoch 954
+-------------------------------
+Loss: 8.760738  [    0/  126 samples]
+Average loss: 7.3468
+Test loss: 33.477594 
+
+Epoch 955
+-------------------------------
+Loss: 6.590277  [    0/  126 samples]
+Average loss: 7.3297
+Test loss: 33.754918 
+
+Epoch 956
+-------------------------------
+Loss: 8.365940  [    0/  126 samples]
+Average loss: 7.2891
+Test loss: 33.871700 
+
+Epoch 957
+-------------------------------
+Loss: 7.070481  [    0/  126 samples]
+Average loss: 7.0965
+Test loss: 33.820978 
+
+Epoch 958
+-------------------------------
+Loss: 6.887786  [    0/  126 samples]
+Average loss: 7.0419
+Test loss: 33.800797 
+
+Epoch 959
+-------------------------------
+Loss: 7.752593  [    0/  126 samples]
+Average loss: 7.1543
+Test loss: 33.817269 
+
+Epoch 960
+-------------------------------
+Loss: 7.679482  [    0/  126 samples]
+Average loss: 7.2752
+Test loss: 34.017547 
+
+Epoch 961
+-------------------------------
+Loss: 6.441729  [    0/  126 samples]
+Average loss: 7.2917
+Test loss: 34.018815 
+
+Epoch 962
+-------------------------------
+Loss: 8.153456  [    0/  126 samples]
+Average loss: 7.1949
+Test loss: 33.890255 
+
+Epoch 963
+-------------------------------
+Loss: 5.167595  [    0/  126 samples]
+Average loss: 7.6807
+Test loss: 33.868034 
+
+Epoch 964
+-------------------------------
+Loss: 6.331650  [    0/  126 samples]
+Average loss: 7.6468
+Test loss: 33.804034 
+
+Epoch 965
+-------------------------------
+Loss: 6.958951  [    0/  126 samples]
+Average loss: 7.6666
+Test loss: 33.658164 
+
+Epoch 966
+-------------------------------
+Loss: 9.679192  [    0/  126 samples]
+Average loss: 7.5573
+Test loss: 33.540437 
+
+Epoch 967
+-------------------------------
+Loss: 7.757320  [    0/  126 samples]
+Average loss: 7.6042
+Test loss: 33.577668 
+
+Epoch 968
+-------------------------------
+Loss: 6.042300  [    0/  126 samples]
+Average loss: 7.5472
+Test loss: 33.767799 
+
+Epoch 969
+-------------------------------
+Loss: 5.467616  [    0/  126 samples]
+Average loss: 7.4690
+Test loss: 33.878036 
+
+Epoch 970
+-------------------------------
+Loss: 8.635252  [    0/  126 samples]
+Average loss: 7.3489
+Test loss: 33.887735 
+
+Epoch 971
+-------------------------------
+Loss: 6.275130  [    0/  126 samples]
+Average loss: 7.2846
+Test loss: 33.854094 
+
+Epoch 972
+-------------------------------
+Loss: 6.975628  [    0/  126 samples]
+Average loss: 7.1989
+Test loss: 33.780982 
+
+Epoch 973
+-------------------------------
+Loss: 6.301878  [    0/  126 samples]
+Average loss: 7.3226
+Test loss: 33.718506 
+
+Epoch 974
+-------------------------------
+Loss: 4.193392  [    0/  126 samples]
+Average loss: 7.3069
+Test loss: 33.432027 
+
+Epoch 975
+-------------------------------
+Loss: 6.405319  [    0/  126 samples]
+Average loss: 7.2383
+Test loss: 33.516101 
+
+Epoch 976
+-------------------------------
+Loss: 5.749274  [    0/  126 samples]
+Average loss: 7.0300
+Test loss: 33.565469 
+
+Epoch 977
+-------------------------------
+Loss: 6.381693  [    0/  126 samples]
+Average loss: 7.0144
+Test loss: 33.412665 
+
+Epoch 978
+-------------------------------
+Loss: 6.963016  [    0/  126 samples]
+Average loss: 7.1569
+Test loss: 33.413295 
+
+Epoch 979
+-------------------------------
+Loss: 8.330185  [    0/  126 samples]
+Average loss: 7.1820
+Test loss: 33.463603 
+
+Epoch 980
+-------------------------------
+Loss: 8.619465  [    0/  126 samples]
+Average loss: 7.0890
+Test loss: 33.553262 
+
+Epoch 981
+-------------------------------
+Loss: 7.624694  [    0/  126 samples]
+Average loss: 7.0024
+Test loss: 33.866904 
+
+Epoch 982
+-------------------------------
+Loss: 10.301413  [    0/  126 samples]
+Average loss: 7.0067
+Test loss: 33.826400 
+
+Epoch 983
+-------------------------------
+Loss: 4.909520  [    0/  126 samples]
+Average loss: 7.0026
+Test loss: 33.779549 
+
+Epoch 984
+-------------------------------
+Loss: 6.614187  [    0/  126 samples]
+Average loss: 6.9017
+Test loss: 33.697254 
+
+Epoch 985
+-------------------------------
+Loss: 5.998464  [    0/  126 samples]
+Average loss: 6.8684
+Test loss: 33.725751 
+
+Epoch 986
+-------------------------------
+Loss: 7.992983  [    0/  126 samples]
+Average loss: 6.7808
+Test loss: 33.735883 
+
+Epoch 987
+-------------------------------
+Loss: 7.174959  [    0/  126 samples]
+Average loss: 6.7386
+Test loss: 33.748901 
+
+Epoch 988
+-------------------------------
+Loss: 8.393984  [    0/  126 samples]
+Average loss: 6.9717
+Test loss: 33.785605 
+
+Epoch 989
+-------------------------------
+Loss: 9.287266  [    0/  126 samples]
+Average loss: 6.9005
+Test loss: 33.806298 
+
+Epoch 990
+-------------------------------
+Loss: 8.655679  [    0/  126 samples]
+Average loss: 6.9506
+Test loss: 33.789137 
+
+Epoch 991
+-------------------------------
+Loss: 7.149326  [    0/  126 samples]
+Average loss: 6.9339
+Test loss: 33.769563 
+
+Epoch 992
+-------------------------------
+Loss: 7.862444  [    0/  126 samples]
+Average loss: 6.8470
+Test loss: 33.729902 
+
+Epoch 993
+-------------------------------
+Loss: 6.821441  [    0/  126 samples]
+Average loss: 6.8668
+Test loss: 33.657392 
+
+Epoch 994
+-------------------------------
+Loss: 7.494812  [    0/  126 samples]
+Average loss: 6.9574
+Test loss: 33.587753 
+
+Epoch 995
+-------------------------------
+Loss: 7.954886  [    0/  126 samples]
+Average loss: 6.7481
+Test loss: 33.526470 
+
+Epoch 996
+-------------------------------
+Loss: 7.550921  [    0/  126 samples]
+Average loss: 6.7709
+Test loss: 33.516775 
+
+Epoch 997
+-------------------------------
+Loss: 8.769801  [    0/  126 samples]
+Average loss: 6.8435
+Test loss: 33.397177 
+
+Epoch 998
+-------------------------------
+Loss: 5.483655  [    0/  126 samples]
+Average loss: 6.8615
+Test loss: 33.160164 
+
+Epoch 999
+-------------------------------
+Loss: 4.010868  [    0/  126 samples]
+Average loss: 6.6509
+Test loss: 33.353776 
+
+Epoch 1000
+-------------------------------
+Loss: 5.941906  [    0/  126 samples]
+Average loss: 6.5868
+Test loss: 32.875228 
+
+Training done!
+Weights saved under /u/yinya/workspace/multi_modal_pMSSM/v1.1_pMSSM_model/normalizing_flow/checkpoints
+Loss history arrays saved under /u/yinya/workspace/multi_modal_pMSSM/v1.1_pMSSM_model/normalizing_flow/figures/training_1
+==========================================
+[norm-flow] finished: Wed Jul  8 12:26:07 CEST 2026
+[norm-flow] elapsed time: 0h 7m 30s
+==========================================
