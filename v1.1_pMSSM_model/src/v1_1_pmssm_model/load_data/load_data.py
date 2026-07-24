@@ -42,12 +42,14 @@ def _collect_files(data_folders):
         ))
     return file_names
 
-def load_data(data_folder='/ptmp/yinya/gen_flat_28346825/ntuples'):
+def load_data(data_folder='/ptmp/yinya/gen_flat_28346825/ntuples', data_fraction=1.0):
     """
     Load and preprocess pMSSM ntuple ROOT files.
 
     Args:
-        data_folder: Path or list of paths to directories containing ntuple ROOT files.
+        data_folder:   Path or list of paths to directories containing ntuple ROOT files.
+        data_fraction: Fraction of the filtered dataset to return (default 1.0 = all data).
+                       Set < 1.0 to work with a smaller subset, e.g. for test runs.
 
     Returns:
         parameters:           (N, D) float32 array of non-constant theory parameters, filtered.
@@ -82,6 +84,7 @@ def load_data(data_folder='/ptmp/yinya/gen_flat_28346825/ntuples'):
             all_parameters.append({k: v.astype(np.float32) for k, v in chunk.items()})
             all_mo_omega.append(tree['MO_Omega'].array(library="np").astype(np.float32))
             print(f"Loading files: {i+1}/{len(file_names)}", end='\r', flush=True)
+    print()
 
     parameters = np.concatenate([np.stack(list(chunk.values()), axis=1) for chunk in all_parameters])
     mo_omega = np.concatenate(all_mo_omega)[:, None] #This is to prevent tensor dimension conflict when calculating loss
@@ -91,7 +94,13 @@ def load_data(data_folder='/ptmp/yinya/gen_flat_28346825/ntuples'):
     mask = (mo_omega != -1).flatten()
     parameters = parameters[mask]
     mo_omega = mo_omega[mask]
-    print(f"Number of samples after filter on relic density: {len(parameters)}")
+    print(f"Samples after filter on relic density: {len(parameters)}")
+
+    if data_fraction < 1.0:
+        num_use = int(round(data_fraction * len(parameters)))
+        parameters = parameters[:num_use]
+        mo_omega = mo_omega[:num_use]
+        print(f"Using {num_use} samples ({data_fraction*100:.1f}% of filtered data)")
 
     # To make training easy for the normalizing flow, we standardize the parameters:
     parameters_mean = np.mean(parameters, axis=0)
@@ -99,6 +108,4 @@ def load_data(data_folder='/ptmp/yinya/gen_flat_28346825/ntuples'):
 
     parameters_standardized = (parameters - parameters_mean) / parameters_std
 
-    return parameters, mo_omega, parameters_mean, parameters_std, parameters_standardized, theory_param,  theory_param_nonconst
-
-parameters, mo_omega, parameters_mean, parameters_std, parameters_standardized, theory_param,  theory_param_nonconst = load_data()
+    return parameters, mo_omega, parameters_mean, parameters_std, parameters_standardized, theory_param, theory_param_nonconst
