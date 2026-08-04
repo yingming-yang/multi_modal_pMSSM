@@ -2,11 +2,26 @@
 Training script for a conditional normalizing flow on pMSSM data.
 
 Trains a rational-quadratic coupling flow (RQ-NSF) to learn the conditional
-distribution p(parameters | MO_Omega). Hyperparameters are logged as JSON and
-model weights are saved as checkpoints. Loss curves are saved as figures and
-numpy arrays for later analysis.
+distribution p(parameters | MO_Omega). Hyperparameters are logged as JSON under
+<doc_folder>/hyperparams/training_<id>.json.
+
+Three kinds of checkpoint are written to <doc_folder>/checkpoints:
+  training_<id>_latest.pt      Full training state (model weights, optimizer
+                               state, loss histories, best test loss), rewritten
+                               every 10 epochs through a temporary file plus an
+                               atomic os.replace, so an interrupted job always
+                               leaves a loadable checkpoint behind.
+  training_<id>_best.pt        Model weights from the last epoch whose test loss
+                               improved on the best so far by more than min_delta.
+  training_<id>_epoch_<n>.pt   Model weights snapshotted every 200 epochs and
+                               kept permanently, to trace the training dynamics.
+
+The loss curve is saved as a figure under <doc_folder>/figures/training_<id>; the
+loss histories themselves are stored inside the checkpoints above. Per-epoch and
+total training times are printed to stdout.
 """
 import os
+import time
 import json
 import argparse
 import yaml
@@ -48,9 +63,9 @@ else:
 # Hyperparameters and documentation
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--config', type=str, default=None, help='Path to yaml config file. If not given, defaults in this file are used.')
-parser.add_argument('--test_run', action='store_true', help='If set, results are saved under id_training=test and overwritten each run')
-parser.add_argument('--comment', type=str, default=None, help='Free-text note about this run, saved alongside the hyperparameters')
+parser.add_argument('-c', '--config', type=str, default=None, help='Path to yaml config file. If not given, defaults in this file are used.')
+parser.add_argument('-t', '--test_run', action='store_true', help='If set, results are saved under id_training=test and overwritten each run')
+parser.add_argument('-m', '--comment', type=str, default=None, help='Free-text note about this run, saved alongside the hyperparameters')
 args = parser.parse_args()
 
 # Default hyperparameters — overridden by --config if provided
@@ -60,8 +75,10 @@ num_transform_blocks = 2
 batch_norm          = False
 base_transform_type = "rq-coupling"
 num_bins            = 8  # only used when base_transform_type == "rq-coupling"
+tail_bound          = 3.0  # spline range; only used when base_transform_type == "rq-coupling"
 learning_rate       = 1e-5
 weight_decay        = 1e-5
+max_grad_norm       = 5.0  # gradient-norm clipping; set to null in the config to disable
 num_epochs          = 2
 data_fraction       = 1  # small fraction used for testing
 train_fraction      = 0.8
@@ -78,8 +95,10 @@ if args.config is not None:
     batch_norm          = cfg.get('batch_norm',          batch_norm)
     base_transform_type = cfg.get('base_transform_type', base_transform_type)
     num_bins            = cfg.get('num_bins',            num_bins)
+    tail_bound          = cfg.get('tail_bound',          tail_bound)
     learning_rate       = cfg.get('learning_rate',       learning_rate)
     weight_decay        = cfg.get('weight_decay',        weight_decay)
+    max_grad_norm       = cfg.get('max_grad_norm',       max_grad_norm)
     num_epochs          = cfg.get('num_epochs',          num_epochs)
     data_fraction       = cfg.get('data_fraction',       data_fraction)
     train_fraction      = cfg.get('train_fraction',      train_fraction)
@@ -106,7 +125,7 @@ os.makedirs(checkpoints_folder, exist_ok=True)
 os.makedirs(figures_folder, exist_ok=True)
 
 hyperparams = {
-    "model": "one-direction ResNet-based normalizing flow",
+    "model_type": "one-direction ResNet-based normalizing flow",
     "id_training": id_training,
     "num_flow_steps": num_flow_steps,
     "hidden_dim": hidden_dim,
@@ -115,6 +134,7 @@ hyperparams = {
     "base_transform_type": base_transform_type,
     "learning_rate": learning_rate,
     "weight_decay": weight_decay,
+    "max_grad_norm": max_grad_norm,
     "num_epochs": num_epochs,
     "data_fraction": data_fraction,
     "train_fraction": train_fraction,
@@ -123,6 +143,7 @@ hyperparams = {
 }
 if base_transform_type == "rq-coupling":
     hyperparams["num_bins"] = num_bins
+    hyperparams["tail_bound"] = tail_bound
 if args.comment:
     hyperparams["comment"] = args.comment
 with open(os.path.join(param_folder, f'training_{id_training}.json'), 'w') as f:
@@ -161,6 +182,7 @@ base_transform_kwargs = {
 }
 if base_transform_type == "rq-coupling":
     base_transform_kwargs["num_bins"] = num_bins
+    base_transform_kwargs["tail_bound"] = tail_bound
 
 transform = create_transform(num_flow_steps = num_flow_steps,
                              param_dim = np.shape(parameters_standardized)[-1],
@@ -178,11 +200,14 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=
 
 train_history = []
 test_history = []
+epoch_times = []
 best_test_loss = np.inf
 min_delta = 5e-3
+training_start = time.perf_counter()
 for t in range(num_epochs):
+    epoch_start = time.perf_counter()
     print(f"Epoch {t+1}\n-------------------------------")
-    loss = train_loop(train_dataloader, model, optimizer)
+    loss = train_loop(train_dataloader, model, optimizer, max_grad_norm=max_grad_norm)
     train_history.append(loss)
     loss = test_loop(test_dataloader, model)
     test_history.append(loss)
@@ -200,7 +225,20 @@ for t in range(num_epochs):
     if loss < best_test_loss - min_delta:
         torch.save(model.state_dict(), os.path.join(checkpoints_folder, f'training_{id_training}_best.pt'))
         best_test_loss = loss
+    # Measured at the end of the body, so checkpoint writes count towards the
+    # epoch they belong to. test_loop ends on a .item() call, which synchronises
+    # with the GPU, so no explicit torch.cuda.synchronize() is needed here.
+    epoch_time = time.perf_counter() - epoch_start
+    epoch_times.append(epoch_time)
+    print(f"Epoch time: {epoch_time:.1f} s\n")
 print("Training done!")
+
+total_time = time.perf_counter() - training_start
+print(f"Total training time: {total_time:.1f} s "
+      f"({int(total_time // 3600)}h {int(total_time % 3600 // 60)}m {total_time % 60:.1f}s)"
+      f" over {len(epoch_times)} epochs")
+print(f"Time per epoch: mean {np.mean(epoch_times):.1f} s, "
+      f"min {np.min(epoch_times):.1f} s, max {np.max(epoch_times):.1f} s")
 
 torch.save({'epoch': t,
             'model_state_dict': model.state_dict(),
