@@ -1,0 +1,42 @@
+[project]
+authors = [{name = "yingming-yang", email = "yangyingmingthomas@gmail.com"}]
+dependencies = []
+name = "v2_FM_pMSSM"
+requires-python = ">= 3.11"
+version = "0.1.0"
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.system-requirements]
+cuda = "12"
+
+[tool.pixi.pypi-dependencies]
+v2_fm_pmssm = { path = ".", editable = true }
+x-transformers = ">=2.28.4"
+flow-matching = ">=1.0.10"
+
+[tool.pixi.dependencies]
+numpy = "*"
+matplotlib = "*"
+pandas = "*"
+pytorch = { version = ">=2.5", build = "cuda12*" }
+corner = ">=2.2.3,<3"
+python = "3.11.*"
+ipykernel = ">=7.2.0,<8"
+jupyter = ">=1.1.1,<2"
+torchdiffeq = ">=0.2.2,<0.3"
+scipy = ">=1.17.1,<2"
+scikit-learn = ">=1.8.0,<2"
+uproot = ">=5.7.3,<6"
+awkward = ">=2.9.0,<3"
+pip = ">=26.0.1,<27"
+pyyaml = ">=6.0.3,<7"
+tqdm = ">=4.70.1,<5"
+
+[tool.pixi.tasks]

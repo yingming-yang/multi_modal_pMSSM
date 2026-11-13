@@ -1,0 +1,32 @@
+# Hyperparameters for tests/scripts/train_fm.py, read via --config.
+# Command-line arguments override these values, e.g.
+#   sbatch tests/slurm/train_fm.sbatch --max_iters 20000
+# Every key must be an argument of train_fm.py (a typo raises an error).
+# Floats need a dot before the exponent (3.0e-4): PyYAML reads 3e-4 as a string.
+
+# ---- data ----
+data_folder: /u/yinya/archive/gen_flat_v2/ntuples
+max_files: null          # null = all files
+branches: null           # passed to select(); list of branch names, e.g. [IN_M_1, MO_Omega]; null = all
+steps: null              # passed to select() when branches is null; e.g. [IN, MO]; null = all
+data_type: null          # passed to select() when branches is null (the modality); e.g. [theory_parameter, dark_matter]; null = all
+seed: 42
+
+# ---- optimisation ----
+batch_size: 1024
+learning_rate: 3.0e-4
+min_lr: 1.0e-5
+weight_decay: 0.01
+max_iters: 100000
+warmup_frac: 0.02        # fraction of max_iters
+warmup_iters: null       # optional absolute override of warmup_frac
+grad_clip: 1.0
+
+# ---- evaluation ----
+eval_interval: 1000
+eval_batch_size: 8192
+
+# ---- model ----
+n_embd: 128
+n_heads: 4
+n_layers: 6
