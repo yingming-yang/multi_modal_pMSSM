@@ -6,11 +6,16 @@
 
 # ---- data ----
 data_folder: /u/yinya/archive/gen_flat_v2/ntuples
-max_files: null          # null = all files
+max_files: null          # limits the training and the validation files; null = all files
+split_file: /u/yinya/workspace/multi_modal_pMSSM/v2_FM_pMSSM/configs/gen_flat_v2_split_files.json  # names of the test and val files
 branches: null           # passed to select(); list of branch names, e.g. [IN_M_1, MO_Omega]; null = all
-steps: null              # passed to select() when branches is null; e.g. [IN, MO]; null = all
-data_type: null          # passed to select() when branches is null (the modality); e.g. [theory_parameter, dark_matter]; null = all
+data_types: null         # passed to select() when branches is null (the modality); e.g. [theory_parameter, dark_matter]; null = all
+steps: null              # passed to select() when branches and data_types are null; e.g. [IN, MO]; null = all
 seed: 42
+
+# ---- masks ----
+mask_type: by_type       # training and validation masks: by_type (= by_modality, type, modality): whole modalities known together;
+                         # by_feature (= feature): every variable on its own.
 
 # ---- optimisation ----
 batch_size: 1024
@@ -30,3 +35,5 @@ eval_batch_size: 8192
 n_embd: 128
 n_heads: 4
 n_layers: 6
+use_adaptive_rmsnorm: true   # the sinusoidal time embedding also scales every normalization layer
+feature_embedding: shared    # shared: one value layer + variable-id embedding; per_feature: one Linear(1, n_embd) per feature

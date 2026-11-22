@@ -8,19 +8,26 @@
 #   sbatch /u/yinya/workspace/multi_modal_pMSSM/v2_FM_pMSSM/tests/slurm/train_fm.sbatch
 # Extra arguments go to the training script and override the YAML, e.g.:
 #   sbatch .../tests/slurm/train_fm.sbatch --max_files 20 --max_iters 20000
-# Choose variables by modality (data_type) or step, passed to select():
-#   sbatch .../tests/slurm/train_fm.sbatch --data_type theory_parameter dark_matter
+# Choose variables by modality (data_types) or step, passed to select():
+#   sbatch .../tests/slurm/train_fm.sbatch --data_types theory_parameter dark_matter
+# Choose the training masks (default by_type, see train_fm.yaml):
+#   sbatch .../tests/slurm/train_fm.sbatch --mask_type by_feature
 # Use a different YAML file (the last --config wins):
 #   sbatch .../tests/slurm/train_fm.sbatch --config /path/to/other.yaml
+# Name the run (folder fm_<jobid>_<run_name>/), here or as run_name in the YAML:
+#   sbatch .../tests/slurm/train_fm.sbatch --run_name by_feature
 #
 # Monitor:
 #   squeue --me --start
-#   tail -f /u/yinya/workspace/multi_modal_pMSSM/v2_FM_pMSSM/tests/checkpoints/logs/fm_<jobid>.out
+#   tail -f /u/yinya/workspace/multi_modal_pMSSM/v2_FM_pMSSM/tests/checkpoints/fm_<jobid>[_<run_name>]/fm_<jobid>[_<run_name>].out
 #
-# Results in tests/checkpoints/fm_<jobid>/ (log in tests/checkpoints/logs/fm_<jobid>.out):
-#   fm_<jobid>_weights.pt           dict: model_state, best_model_state, hparams, mean, std, file_names, ...
-#   fm_<jobid>_loss_history.npz     step, train_loss, val_loss, lr
-#   fm_<jobid>_loss.png             loss curve
+# Results in tests/checkpoints/fm_<jobid>[_<run_name>]/ (written as <name> below):
+#   <name>.out                      log. Slurm opens it as tests/checkpoints/logs/fm_<jobid>.out (the run
+#                                   folder does not exist yet at submission), and train_fm.py moves it here
+#                                   when it starts, about a minute in. If a job fails earlier, it stays in logs/.
+#   <name>_weights.pt              dict: model_state, best_model_state, hparams, mean, std, train_files, val_files, test_files, ...
+#   <name>_loss_history.npz        step, train_loss, val_loss, lr
+#   <name>_loss.png                loss curve
 # =============================================================================
 #SBATCH --job-name=fm_pmssm
 #SBATCH --gres=gpu:a100:1
@@ -36,9 +43,11 @@
 set -euo pipefail
 
 PROJ_DIR=/u/yinya/workspace/multi_modal_pMSSM/v2_FM_pMSSM
-OUT_DIR="${PROJ_DIR}/tests/checkpoints"
-RUN_NAME="fm_${SLURM_JOB_ID}"
 CONFIG="${PROJ_DIR}/tests/slurm/train_fm.yaml"
+
+# train_fm.py moves this log into its run folder when it starts (same path as #SBATCH --output).
+# Slurm keeps writing to the moved file (same filesystem), including its own messages such as a time-limit cancel.
+export FM_SLURM_LOG="${PROJ_DIR}/tests/checkpoints/logs/fm_${SLURM_JOB_ID}.out"
 
 echo "[fm] job_id=${SLURM_JOB_ID} node=$(hostname) started: $(date)"
 nvidia-smi --query-gpu=name,memory.total --format=csv
@@ -47,7 +56,7 @@ START=$(date +%s)
 cd "${PROJ_DIR}"
 
 echo "[fm] training"
-pixi run python -u "${PROJ_DIR}/tests/scripts/train_fm.py" --config "${CONFIG}" --out_dir "${OUT_DIR}" --run_name "${RUN_NAME}" "$@"
+pixi run python -u "${PROJ_DIR}/tests/scripts/train_fm.py" --config "${CONFIG}" "$@"
 
 ELAPSED=$(( $(date +%s) - START ))
 echo "[fm] finished: $(date)  elapsed: $((ELAPSED/3600))h $(((ELAPSED%3600)/60))m $((ELAPSED%60))s"

@@ -12,12 +12,13 @@ def _ntuple_index(filename):
         return int(match.group(1)), int(match.group(2))
     return float('inf'), float('inf')
 
-def _collect_files(data_folders, max_files=None):
+def _collect_files(data_folders, max_files=None, exclude=None):
     """
     Collects all .root files from the data folders and their direct subfolders
     Sorts them based on the ntuple index extracted from their filenames
     - data_folders: a list of folder paths or a single folder path
     - max_files: limits the maximum number of files; Default: no limit
+    - exclude: list of file names (e.g. "ntuple.<job>.<idx>.root") to skip; applied before max_files
     """
     if isinstance(data_folders, (str, os.PathLike)):
         data_folders = [data_folders]
@@ -36,6 +37,10 @@ def _collect_files(data_folders, max_files=None):
         key=lambda path: _ntuple_index(os.path.basename(path))
     )
 
+    if exclude is not None:  # before max_files, so max_files counts only the files that are kept
+        exclude = set(exclude)
+        file_names = [path for path in file_names if os.path.basename(path) not in exclude]
+
     if max_files is not None:
         if max_files <= 0:
             raise ValueError("max_files must be a positive integer")
@@ -47,7 +52,8 @@ def load_data(
         data_folder='/u/yinya/archive/gen_flat_v2/ntuples',
         param_names=None,
         max_files=None,
-        exact_paths=None
+        exact_paths=None,
+        exclude=None
     ):
     """
     Load and preprocess pMSSM ntuple ROOT files.
@@ -56,9 +62,12 @@ def load_data(
         data_folder:    Path or list of paths to directories containing ntuple ROOT files;
                         ROOT files in the direct subdirectories can also be found.
         param_names:    List of parameter names needed.
-        max_files:      Max number of files used in the training. (Default: no limit)
+        max_files:      Max number of files used in the training; also applies to exact_paths
+                        (the first max_files of the list). (Default: no limit)
         exact_paths:    List of String. Paths of files that should be loaded; Used for exact
-                        reproduction; Overrides data_folder and max_files. (Default: None)
+                        reproduction; Overrides data_folder and exclude. (Default: None)
+        exclude:        List of file names (e.g. "ntuple.<job>.<idx>.root") to skip when collecting
+                        files from data_folder, e.g. the test and validation files. (Default: None)
 
     Returns:
         parameters_dict:      A dictionary of param_names and parameters_table
@@ -70,9 +79,9 @@ def load_data(
 
     if exact_paths is None:
         data_folders = [data_folder] if isinstance(data_folder, str) else data_folder
-        file_names = _collect_files(data_folders, max_files)
+        file_names = _collect_files(data_folders, max_files, exclude)
     else:
-        file_names = exact_paths
+        file_names = exact_paths[:max_files]  # [:None] keeps all
     
     param_names = [param_names] if isinstance(param_names, str) else param_names
     if param_names is None:
