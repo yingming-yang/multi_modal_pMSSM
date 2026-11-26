@@ -41,6 +41,13 @@ def get_free_gpu():
     print(f"Selected GPU {best_gpu} ({free_mem[best_gpu]} MiB free)")
     return best_gpu
 
+# On many-core CPU nodes, PyTorch's default thread count causes OpenMP
+# thread-sync overhead to dwarf the actual compute for a model this small
+# (e.g. a 1-second epoch becomes >20s on a 104-core node at the default 72
+# threads). Respect SLURM's CPU allocation if present, else cap at a small
+# fixed number.
+torch.set_num_threads(int(os.environ.get("SLURM_CPUS_PER_TASK", 4)))
+
 # If running on Apple Silicon or CUDA is available, use the GPU.
 
 if torch.backends.mps.is_available():
@@ -70,7 +77,7 @@ min_unknown         = 1     # every mask must predict at least this many dims
 canonical_prob      = 0.5   # fraction of masks forced to a canonical direction below
 learning_rate       = 1e-5
 weight_decay        = 1e-5
-num_epochs          = 1000
+num_epochs          = 10
 data_fraction       = 1  # small fraction used for testing
 train_fraction      = 0.8
 batch_size          = 64
@@ -116,7 +123,7 @@ os.makedirs(checkpoints_folder, exist_ok=True)
 os.makedirs(figures_folder, exist_ok=True)
 
 hyperparams = {
-    "model": "two-direction ResNet-based normalizing flow",
+    "model": "masked ResNet-based normalizing flow",
     "id_training": id_training,
     "num_flow_steps": num_flow_steps,
     "hidden_dim": hidden_dim,

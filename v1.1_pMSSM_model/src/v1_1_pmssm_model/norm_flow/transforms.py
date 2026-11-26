@@ -19,7 +19,14 @@ def create_base_transform(
     batch_norm: bool = False,
     base_transform_type: str = "rq-coupling",
     num_bins: int = 8,
+    tail_bound: float = 3.0,
 ):
+    # tail_bound sets the half-width of the interval [-tail_bound, tail_bound] on
+    # which the spline is defined; with tails="linear" anything outside it is
+    # passed through unchanged. The inputs here are standardized parameters from
+    # a flat pMSSM scan, so their range is bounded at roughly |z| <= 2.3 -- the
+    # bound must cover that, but making it much larger only spreads the fixed
+    # num_bins knots over empty space and wastes spline resolution.
 
     activation_fn = torch.nn.ELU()
 
@@ -54,7 +61,7 @@ def create_base_transform(
             ),
             num_bins=num_bins,
             tails="linear",
-            tail_bound=1.0,
+            tail_bound=tail_bound,
             apply_unconditional_transform=False,
         )
 

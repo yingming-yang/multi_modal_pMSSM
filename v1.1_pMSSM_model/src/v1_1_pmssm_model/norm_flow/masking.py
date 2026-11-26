@@ -39,6 +39,7 @@ def sample_conditioning_mask(
     directions of interest (e.g. all-parameters-unknown / omega-unknown)
     alongside the general arbitrary-conditioning objective.
     """
+    #TODO: stop hard-coding prob with 0.5
     mask = (torch.rand(batch_size, total_dim, device=device) < 0.5).float()
 
     num_unknown = mask.sum(dim=-1)

@@ -1,0 +1,20 @@
+{
+    "model_type": "one-direction ResNet-based normalizing flow",
+    "id_training": 1,
+    "num_flow_steps": 10,
+    "hidden_dim": 512,
+    "num_transform_blocks": 2,
+    "batch_norm": false,
+    "base_transform_type": "rq-coupling",
+    "learning_rate": 0.0001,
+    "weight_decay": 1e-05,
+    "max_grad_norm": 5.0,
+    "num_epochs": 1000,
+    "data_fraction": 1,
+    "train_fraction": 0.8,
+    "batch_size": 4096,
+    "data_folder": "/ptmp/yinya/gen_flat_28346825/ntuples",
+    "num_bins": 8,
+    "tail_bound": 3.0,
+    "comment": "First model - can be used as benchmark"
+}

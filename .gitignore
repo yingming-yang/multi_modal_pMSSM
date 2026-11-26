@@ -1,0 +1,5 @@
+# data files
+*.root
+
+# python bytecode
+__pycache__/

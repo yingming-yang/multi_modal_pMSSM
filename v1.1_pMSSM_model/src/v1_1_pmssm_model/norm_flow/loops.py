@@ -1,8 +1,15 @@
 # Training and test loops
 import torch
 
-def train_loop(dataloader, model, optimizer):
+def train_loop(dataloader, model, optimizer, max_grad_norm=5.0):
+    """One training epoch.
 
+    max_grad_norm clips the total gradient norm before each optimizer step; pass
+    None to disable. Rational-quadratic splines occasionally produce very large
+    gradients (for samples landing near a bin edge or the tail boundary), and a
+    single unclipped spike can push the flow into a worse configuration it does
+    not recover from within the run.
+    """
     model.train()
 
     size = len(dataloader.dataset)
@@ -18,6 +25,8 @@ def train_loop(dataloader, model, optimizer):
         # Backpropagation
         optimizer.zero_grad()
         loss.backward()
+        if max_grad_norm is not None:
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
         optimizer.step()
 
         if batch % 50 == 0:

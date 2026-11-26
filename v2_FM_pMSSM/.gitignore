@@ -3,3 +3,4 @@
 !.pixi/config.toml
 tests/checkpoints/
 tests/plans/
+*.pt

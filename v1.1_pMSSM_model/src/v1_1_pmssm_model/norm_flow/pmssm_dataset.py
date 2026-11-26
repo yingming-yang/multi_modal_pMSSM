@@ -10,28 +10,23 @@ from .masking import sample_conditioning_mask
 
 class pMSSM_Dataset(Dataset):
     def __init__(self, parameters, observables, device):
+        # device: str or torch.device
         if isinstance(parameters, pd.core.frame.DataFrame):
-            self.parameters = parameters.to_numpy()
+            self.parameters = torch.as_tensor(parameters.to_numpy(), dtype=torch.float32, device=torch.device(device))
             self.columns = parameters.columns
         else:
-            self.parameters = parameters
-        self.observables = observables
-        self.device = torch.device(device) # also works if device has type torch.device
+            self.parameters = torch.as_tensor(parameters, dtype=torch.float32, device=torch.device(device))
+        self.observables = torch.as_tensor(observables, dtype=torch.float32, device=torch.device(device))
 
     def __len__(self):
         return len(self.parameters)
 
     def __getitem__(self, idx):
-        params = self.parameters[idx]
-        data = self.observables[idx]
-
-        if self.device.type == "mps":
-            return torch.tensor(data, dtype=torch.float32, device=self.device), torch.tensor(params,  dtype=torch.float32, device=self.device)
-        else:
-            return torch.tensor(data, device=self.device), torch.tensor(params, device=self.device)
+        return self.observables[idx], self.parameters[idx]
         
     def setDevice(self, device):
-        self.device = torch.device(device)
+        self.parameters = self.parameters.to(device)
+        self.observables = self.observables.to(device)
 
 
 class MaskedPMSSM_Dataset(Dataset):

@@ -6,3 +6,7 @@
 # training outputs
 logs/
 checkpoints/
+
+# generated outputs
+normalizing_flow/figures/
+normalizing_flow/slides/

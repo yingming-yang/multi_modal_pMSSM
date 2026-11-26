@@ -1,0 +1,20 @@
+data_folder: /u/yinya/workspace/multi_modal_pMSSM/v1.1_pMSSM_model/normalizing_flow/example_data/ntuples
+data_fraction: 1.0
+train_fraction: 0.8
+
+num_flow_steps: 4
+hidden_dim: 64
+num_transform_blocks: 2
+batch_norm: false
+num_bins: 8
+tail_bound: 3.0
+
+min_unknown: 1
+canonical_prob: 0.5
+
+learning_rate: 1.0e-3
+weight_decay: 1.0e-5
+num_epochs: 200
+batch_size: 64
+
+doc_folder: /u/yinya/workspace/multi_modal_pMSSM/v1.1_pMSSM_model/normalizing_flow
