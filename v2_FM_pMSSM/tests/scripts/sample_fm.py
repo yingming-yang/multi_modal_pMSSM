@@ -1,7 +1,8 @@
 # Sampling part of tests/eval_fm.ipynb as a script, to run on a GPU node.
 #
 # 1. eval_fm.ipynb with sample_mode = "save" writes tests/checkpoints/<run>/sampling_inputs.pt
-# 2. this script samples every job in it (all masks) and writes tests/checkpoints/<run>/sampling_outputs.pt
+# 2. this script samples every job in it and writes tests/checkpoints/<run>/sampling_outputs.pt
+#    (a job holds the keyword arguments of generate() from make_job: known, x_known, wanted, n)
 # 3. eval_fm.ipynb with sample_mode = "load" reads the outputs and makes the plots
 #
 #   cd /u/yinya/workspace/multi_modal_pMSSM/v2_FM_pMSSM
@@ -40,7 +41,6 @@ if device.type != "cuda":  # CHANGED: warn, sampling on the CPU is only good for
 
 # ---- checkpoint (CHANGED: no test set, only the model is needed) ----
 vf = load_run(run, input_dir, device, final)["model"]   # rebuilt as trained, weights loaded, eval mode
-n_var = vf.n_features
 
 # ---- sampling (CHANGED: resumes after a timeout, saves after every job) ----
 results = {}
@@ -56,8 +56,9 @@ for i, (name, job) in enumerate(jobs.items()):
     if name in results:
         continue
     t0 = time.time()
-    # one seed per job, so a resumed run gives the same samples; all columns (n, n_var), see training/evaluation.py
-    results[name] = generate(vf, **job, step_size=step_size, wanted=list(range(n_var)), seed=args.seed + i)
+    # one seed per job, so a resumed run gives the same samples; the job's wanted columns (n, len(wanted)),
+    # in the order of make_job (see training/evaluation.py)
+    results[name] = generate(vf, **job, step_size=step_size, seed=args.seed + i)
     torch.save({'settings': settings, 'results': results}, outputs_path + ".tmp")
     os.replace(outputs_path + ".tmp", outputs_path)  # a job killed mid-write cannot leave a broken file
     print(f"{name}: {tuple(results[name].shape)} in {time.time() - t0:.0f} s, saved {outputs_path}", flush=True)

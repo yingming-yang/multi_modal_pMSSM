@@ -38,5 +38,6 @@ awkward = ">=2.9.0,<3"
 pip = ">=26.0.1,<27"
 pyyaml = ">=6.0.3,<7"
 tqdm = ">=4.70.1,<5"
+pycirclize = ">=1.10.1,<2"
 
 [tool.pixi.tasks]

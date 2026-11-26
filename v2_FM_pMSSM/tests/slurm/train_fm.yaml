@@ -4,17 +4,22 @@
 # Every key must be an argument of train_fm.py (a typo raises an error).
 # Floats need a dot before the exponent (3.0e-4): PyYAML reads 3e-4 as a string.
 
+run_name: 20_by_type
+
 # ---- data ----
 data_folder: /u/yinya/archive/gen_flat_v2/ntuples
 max_files: null          # limits the training and the validation files; null = all files
 split_file: /u/yinya/workspace/multi_modal_pMSSM/v2_FM_pMSSM/configs/gen_flat_v2_split_files.json  # names of the test and val files
-branches: null           # passed to select(); list of branch names, e.g. [IN_M_1, MO_Omega]; null = all
+branches: [IN_M_1, IN_M_2, IN_M_3, IN_At, IN_Ab, IN_Atau, IN_mu, IN_tanb, IN_mA, IN_mqL3, IN_mtR, IN_mbR,
+           MO_Omega, SP_m_h,
+           SP_m_chi_10, SP_m_chi_20, SP_m_chi_30, SP_m_chi_40, SP_m_chi_1p, SP_m_chi_2p]
+           # passed to select(); list of branch names, e.g. [IN_M_1, MO_Omega]; null = all
 data_types: null         # passed to select() when branches is null (the modality); e.g. [theory_parameter, dark_matter]; null = all
 steps: null              # passed to select() when branches and data_types are null; e.g. [IN, MO]; null = all
 seed: 42
 
 # ---- masks ----
-mask_type: by_type       # training and validation masks: by_type (= by_modality, type, modality): whole modalities known together;
+mask_type: by_type    # training and validation masks: by_type (= by_modality, type, modality): whole modalities known together;
                          # by_feature (= feature): every variable on its own.
 
 # ---- optimisation ----
@@ -30,6 +35,8 @@ grad_clip: 1.0
 # ---- evaluation ----
 eval_interval: 1000
 eval_batch_size: 8192
+n_checkpoints: 4         # weights saved and per-mask validation losses evaluated at n_checkpoints log-spaced steps
+first_checkpoint: 100    # from first_checkpoint to max_iters, e.g. 100, 1000, 10000, 100000
 
 # ---- model ----
 n_embd: 128

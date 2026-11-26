@@ -11,13 +11,19 @@ from flow_matching.path.scheduler import CondOTScheduler
 from flow_matching.solver import ODESolver
 from flow_matching.utils import ModelWrapper
 
-from ..data.dataset import all_var, select, transform, inverse_transform
+from ..data import all_var, select, transform, inverse_transform
 from .transformer import Encoder_Transformer
 
+def get_saved_steps(run, input_dir="tests/checkpoints/"):
+    checkpoint = torch.load(f"{input_dir}{run}/{run}_weights.pt")
+    saved = checkpoint.get("checkpoints", {})
+    return list(saved.keys())
 
-def load_run(run, input_dir="tests/checkpoints/", device="cpu", final=True):
+def load_run(run, input_dir="tests/checkpoints/", device="cpu", final=True, step=None):
     """Load <input_dir>/<run>/<run>_weights.pt and rebuild the model as it was trained.
     final=True: weights after the last step; False: weights with the lowest validation loss.
+    step: load the weights saved at this training step instead (checkpoint["checkpoints"], see train_fm.py);
+          final is then ignored.
     Returns a dict: name, checkpoint, hparams, variables (list[Variable]), names (their branch names),
     mean, std, model (in eval mode)."""
     checkpoint = torch.load(f"{input_dir}{run}/{run}_weights.pt", map_location=device, weights_only=False)
@@ -26,7 +32,13 @@ def load_run(run, input_dir="tests/checkpoints/", device="cpu", final=True):
                                 variable_ids=checkpoint["variable_ids"],
                                 use_adaptive_rmsnorm=hparams.get("use_adaptive_rmsnorm", True),
                                 feature_embedding=hparams.get("feature_embedding", "shared")).to(device)
-    model.load_state_dict(checkpoint["model_state"] if final else checkpoint["best_model_state"])
+    if step is None:
+        model.load_state_dict(checkpoint["model_state"] if final else checkpoint["best_model_state"])
+    else:
+        saved = checkpoint.get("checkpoints", {})
+        if step not in saved:
+            raise KeyError(f"{run} has no weights at step {step}; saved steps: {sorted(saved)}")
+        model.load_state_dict(saved[step])
     model.eval()
     return dict(name=run, checkpoint=checkpoint, hparams=hparams, model=model,
                 variables=select(all_var, branches=checkpoint["variables"]), names=list(checkpoint["variables"]),
@@ -193,30 +205,28 @@ def plot_corner(samples, variables=None):
     return fig
 
 
-def plot_pred_vs_truth(pairs, variables=None):
+def plot_pred_vs_truth(pairs, variables=None, ncols=4):
     """pairs: {label: (generated (n, k), truth (n, k), list of the k names)}, physical units.
-    One row per variable (default: every variable of any pair), one column per label, with the y = x line.
-    Returns the figure."""
+    One panel per (variable, label) with the y = x line, for every variable (default: every variable of any pair)
+    and every label that has it; the labels of a variable are next to each other. The panels fill a grid with
+    ncols columns, row by row. Returns the figure."""
     variables = _union(pairs) if variables is None else list(variables)
-    labels = list(pairs)
-    fig, axes = plt.subplots(len(variables), len(labels), figsize=(4 * len(labels), 3.6 * len(variables)),
-                             squeeze=False, constrained_layout=True)
-    for i, name in enumerate(variables):
-        for j, label in enumerate(labels):
-            gen, true, names = pairs[label]
-            ax = axes[i, j]
-            if name not in names:
-                ax.set_visible(False)
-                continue
-            g, t = gen[:, names.index(name)], true[:, names.index(name)]
-            ax.scatter(t, g, s=1, alpha=0.3)
-            lims = [min(t.min(), g.min()), max(t.max(), g.max())]
-            ax.plot(lims, lims, 'r--', lw=1)
-            if name == "MO_Omega":
-                ax.set_xscale('log'); ax.set_yscale('log')
-                err = f"median |log10(gen/true)| = {np.median(np.abs(np.log10(g / t))):.3f}"
-            else:
-                err = f"median |gen - true| = {np.median(np.abs(g - t)):.3g}"
-            ax.set_title(f"{label}\n{err}", fontsize=8)
-            ax.set_xlabel(f"true {name}"); ax.set_ylabel(f"generated {name}")
+    panels = [(name, label) for name in variables for label in pairs if name in pairs[label][2]]
+    nrows = max(1, (len(panels) + ncols - 1) // ncols)
+    fig, axes = plt.subplots(nrows, ncols, figsize=(4 * ncols, 3.6 * nrows), squeeze=False, constrained_layout=True)
+    for ax, (name, label) in zip(axes.flat, panels):
+        gen, true, names = pairs[label]
+        g, t = gen[:, names.index(name)], true[:, names.index(name)]
+        ax.scatter(t, g, s=1, alpha=0.3)
+        lims = [min(t.min(), g.min()), max(t.max(), g.max())]
+        ax.plot(lims, lims, 'r--', lw=1)
+        if name == "MO_Omega":
+            ax.set_xscale('log'); ax.set_yscale('log')
+            err = f"median |log10(gen/true)| = {np.median(np.abs(np.log10(g / t))):.3f}"
+        else:
+            err = f"median |gen - true| = {np.median(np.abs(g - t)):.3g}"
+        ax.set_title(f"{label}\n{err}", fontsize=8)
+        ax.set_xlabel(f"true {name}"); ax.set_ylabel(f"generated {name}")
+    for ax in axes.flat[len(panels):]:
+        ax.set_visible(False)
     return fig

@@ -4,7 +4,7 @@ import torch.nn as nn
 from x_transformers import ContinuousTransformerWrapper, Encoder
 
 from .training import sinusoidal_embedding
-from ..data.dataset import TIME_ID
+from ..data import TIME_ID
 
 class Encoder_Transformer(nn.Module):
     def __init__(self, n_embd=128, n_layers=6, n_heads=4, *, variables=None, variable_ids=None, use_adaptive_rmsnorm=True,

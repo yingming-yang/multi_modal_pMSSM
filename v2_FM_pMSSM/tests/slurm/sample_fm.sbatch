@@ -18,7 +18,7 @@
 #   tail -f /u/yinya/workspace/multi_modal_pMSSM/v2_FM_pMSSM/tests/checkpoints/logs/sample_fm_<jobid>.out
 #
 # Results:
-#   tests/checkpoints/<run>/sampling_outputs.pt   dict: settings, results {job name: (n, 13) normalized samples}
+#   tests/checkpoints/<run>/sampling_outputs.pt   dict: settings, results {job name: (n, len(wanted)) normalized samples}
 #   tests/checkpoints/logs/sample_fm_<jobid>.out  log
 # =============================================================================
 #SBATCH --job-name=sample_fm

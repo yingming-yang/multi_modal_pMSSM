@@ -121,3 +121,27 @@ def modality_masks(variables):
         name = f"known: {', '.join(known_mod) or '-'} | gen: {', '.join(gen_mod)}"
         masks[name] = torch.tensor([v.data_type in known_mod for v in variables])
     return masks
+
+
+def eval_masks(variables, input_type="theory_parameter"):
+    """Fixed masks for the per-mask validation losses: {name: (known, loss_on)}, both (num_variables,) bool.
+    joint:               nothing known, loss on every variable
+    inputs->M:           inputs (input_type) known, loss on modality M only
+    M->inputs:           M known, loss on the inputs only
+    observables->inputs: every non-input variable known, loss on the inputs
+                         (left out with only one observable modality: then it equals M->inputs)
+    In inputs->M and M->inputs the other modalities are generated (unknown) but not in the loss."""
+    data_type = [v.data_type for v in variables]
+    is_input = torch.tensor([t == input_type for t in data_type])
+    observables = sorted(set(data_type) - {input_type})
+    nothing = torch.zeros(len(variables), dtype=torch.bool)
+    masks = {"joint": (nothing, ~nothing)}
+    for m in observables:
+        is_m = torch.tensor([t == m for t in data_type])
+        masks[f"inputs->{m}"] = (is_input, is_m)
+    for m in observables:
+        is_m = torch.tensor([t == m for t in data_type])
+        masks[f"{m}->inputs"] = (is_m, is_input)
+    if len(observables) > 1:
+        masks["observables->inputs"] = (~is_input, is_input)
+    return masks

@@ -23,6 +23,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/aws-c-sdkutils-1.0.1-ha404f16_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/aws-checksums-1.0.1-ha404f16_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/backports.zstd-1.8.0-py311hdac8cdf_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/biopython-1.88-py311h0d48ccd_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/brotli-1.2.1-h505cf86_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/brotli-bin-1.2.1-h9908984_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/brotli-python-1.2.1-py311heb3be6f_0.conda
@@ -316,6 +317,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/pybind11-3.0.4-pyh293190f_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pybind11-abi-11-hc364b38_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pybind11-global-3.0.4-pyh648e204_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/pycirclize-1.10.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pycparser-3.12-pyh5ded981_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pygments-2.21.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.3-pyh5ded981_0.conda
@@ -598,6 +600,21 @@ packages:
   run_exports: {}
   size: 249203
   timestamp: 1792690547998
+- conda: https://conda.anaconda.org/conda-forge/linux-64/biopython-1.88-py311h0d48ccd_2.conda
+  sha256: b635e26b757219535eb89a30700af81438e919f82f044cba2bab129b17a4e730
+  md5: 297c5310151dd450155b337599148b9c
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgcc >=15
+  - numpy
+  - python >=3.11,<3.12.0a0
+  - python_abi 3.11.* *_cp311
+  license: LicenseRef-Biopython
+  purls:
+  - pkg:pypi/biopython?source=hash-mapping
+  run_exports: {}
+  size: 3331327
+  timestamp: 1794908179962
 - conda: https://conda.anaconda.org/conda-forge/linux-64/brotli-1.2.1-h505cf86_0.conda
   sha256: 3efb8e6ac07f12773f02e876567700f554965e33a8e30ee05ddd891c303f7aa3
   md5: 65f1fc5f6a3a984a8a25641d0e60fc25
@@ -5354,6 +5371,22 @@ packages:
   run_exports: {}
   size: 244363
   timestamp: 1786199539429
+- conda: https://conda.anaconda.org/conda-forge/noarch/pycirclize-1.10.1-pyhd8ed1ab_0.conda
+  sha256: db6bf7b6272c3fa4ec73b3372b97538a9adaffc00edaca54d4a4dda8a30871d5
+  md5: 3a6bc4923f3348cbab153dac6e607392
+  depends:
+  - biopython >=1.80
+  - matplotlib-base >=3.6.3
+  - numpy >=1.21.1
+  - pandas >=1.3.5
+  - python >=3.10
+  license: MIT
+  license_family: MIT
+  purls:
+  - pkg:pypi/pycirclize?source=hash-mapping
+  run_exports: {}
+  size: 71806
+  timestamp: 1759544090952
 - conda: https://conda.anaconda.org/conda-forge/noarch/pycparser-3.12-pyh5ded981_1.conda
   sha256: eefb1b2140c1a6c33a85186f954e857e1a824365deeda4e11db9b99c1b5950aa
   md5: 3c2d671ef0bc5a0e8d1f7e6c4286af0b

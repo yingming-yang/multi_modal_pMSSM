@@ -23,24 +23,23 @@ def fm_loss(model, path, known, target, times, noise):
     xt = torch.column_stack([positions, times])
     model_field = model(xt, known=known)
     unknown = ~known
-    return ((model_field - path_sample.dx_t) ** 2 * unknown).sum() / unknown.sum()
+    # mean over each sample's unknown variables, then over the samples: every mask has the same weight
+    return (((model_field - path_sample.dx_t) ** 2 * unknown).sum(1) / unknown.sum(1)).mean()
 
 
 @torch.no_grad()
 def evaluate(model, path, val_set, eval_bs):
-    """Weighted mean loss over the whole validation split (fixed noise/times/masks).
+    """Mean loss over the whole validation split (fixed noise/times/masks), every sample with the same weight.
     val_set = (data, known, times, noise), known: (n_val, num_variables) bool"""
     model.eval()
     data, known, times, noise = val_set
-    total, n_unknown = 0.0, 0
+    total = 0.0
     for s in range(0, len(data), eval_bs):
         sl = slice(s, s + eval_bs)
-        unknown = (~known[sl]).sum().item()
         loss = fm_loss(model, path, known[sl], data[sl], times[sl], noise[sl])
-        total += loss.item() * unknown
-        n_unknown += unknown
+        total += loss.item() * len(data[sl])
     model.train()
-    return total / n_unknown
+    return total / len(data)
 
 
 def sinusoidal_embedding(t, dim, max_period=10_000, scale=1000.0):

@@ -6,8 +6,11 @@ Converted from tests/training.ipynb. Differences from the notebook:
   * AdamW with linear warmup + cosine decay, gradient clipping
 
 Outputs (prefix = <out_dir>/<name>/<name>, name = fm_<jobid>[_<run_name>], out_dir defaults to tests/checkpoints):
-  <prefix>_weights.pt       dict with model_state, hparams, mean, std, train_files, val_files, test_files, ...
-  <prefix>_loss_history.npz arrays: step, train_loss, val_loss, lr
+  <prefix>_weights.pt       dict with model_state, hparams, mean, std, train_files, val_files, test_files, ...,
+                            checkpoints: {step: model_state} at the checkpoint steps (n_checkpoints log-spaced
+                            steps from first_checkpoint to max_iters, e.g. 100, 1k, 10k, 100k)
+  <prefix>_loss_history.npz arrays: step, train_loss, val_loss, lr; per-mask validation losses (at the
+                            checkpoint steps): mask_step, mask_loss (n_checkpoints, n_masks), mask_names
   <prefix>_loss.png         train/val loss curve
 """
 import argparse
@@ -27,8 +30,8 @@ from flow_matching.path import AffineProbPath
 from flow_matching.path.scheduler import CondOTScheduler
 
 from v2_fm_pmssm.data import load_data, pMSSM_Dataset, select, all_var
-from v2_fm_pmssm.training import (Encoder_Transformer, MASK_TYPES, make_mask_sampler, EpochSampler,
-                                  fm_loss, evaluate, lr_at)
+from v2_fm_pmssm.training import (Encoder_Transformer, MASK_TYPES, make_mask_sampler, eval_masks, EpochSampler,
+                                  fm_loss, evaluate, lr_at, test_loss)
 
 def main():
     p = argparse.ArgumentParser()
@@ -37,7 +40,7 @@ def main():
     p.add_argument("--branches", nargs="+", default=None)  # passed to select(); None = all variables
     p.add_argument("--data_types", nargs="+", default=None) # passed to select() (modality), used only when branches is None
     p.add_argument("--steps", nargs="+", default=None)      # passed to select(), used only when branches and data_types are None
-    p.add_argument("--mask_type", default="by_type", choices=sorted(MASK_TYPES))  # training and validation masks: by_type (= by_modality, type, modality) or by_feature (= feature)
+    p.add_argument("--mask_type", default="by_feature", choices=sorted(MASK_TYPES))  # training and validation masks: by_type (= by_modality, type, modality) or by_feature (= feature)
     p.add_argument("--max_files", type=int, default=None)  # limits the training and the validation files
     p.add_argument("--split_file", default=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
                                                        "configs", "gen_flat_v2_split_files.json"))  # names of the test and val files
@@ -52,6 +55,8 @@ def main():
     p.add_argument("--warmup_iters", type=int, default=None)    # optional absolute override of warmup_frac
     p.add_argument("--eval_interval", type=int, default=1_000)
     p.add_argument("--eval_batch_size", type=int, default=8192)
+    p.add_argument("--n_checkpoints", type=int, default=4)       # weights saved and per-mask losses evaluated at n_checkpoints
+    p.add_argument("--first_checkpoint", type=int, default=100)  # log-spaced steps from first_checkpoint to max_iters
     p.add_argument("--grad_clip", type=float, default=1.0)
     p.add_argument("--n_embd", type=int, default=128)
     p.add_argument("--n_heads", type=int, default=4)
@@ -77,6 +82,10 @@ def main():
         args.warmup_iters = int(args.warmup_frac * args.max_iters)
     if args.warmup_iters >= args.max_iters:
         raise ValueError(f"warmup_iters ({args.warmup_iters}) must be smaller than max_iters ({args.max_iters})")
+    if not 0 < args.first_checkpoint < args.max_iters:
+        raise ValueError(f"first_checkpoint ({args.first_checkpoint}) must be between 0 and max_iters ({args.max_iters})")
+    # log-spaced, the last one is max_iters; e.g. 100, 1000, 10000, 100000
+    checkpoint_steps = sorted(set(round(s) for s in np.geomspace(args.first_checkpoint, args.max_iters, args.n_checkpoints)))
     job_id = os.environ.get("SLURM_JOB_ID", "local")
     args.run_name = f"fm_{job_id}" if args.run_name is None else f"fm_{job_id}_{args.run_name}"
     hparams = vars(args)
@@ -125,6 +134,10 @@ def main():
         torch.rand(n_val, device=device, generator=g),
         torch.randn(n_val, num_var, device=device, generator=g),
     )
+    # per-mask validation losses (fixed masks, see eval_masks) and saved weights, at checkpoint_steps
+    val_masks = eval_masks(var_registry)              # later an hparam
+    checkpoints = {}                                   # {step: model_state}
+    mask_history = {"mask_step": [], "mask_loss": []}  # separate from history, its zip stays unchanged
 
     # ---- model / optim -------------------------------------------------------
     model = Encoder_Transformer(args.n_embd, args.n_layers, args.n_heads, variables=var_registry,
@@ -158,6 +171,17 @@ def main():
         running += loss.item()
         n_running += 1
 
+        if step + 1 in checkpoint_steps:
+            checkpoints[step + 1] = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
+            model.eval()
+            mask_history["mask_loss"].append([test_loss(model, val.parameters, known, loss_on, seed=args.seed,
+                                                        eval_bs=args.eval_batch_size).mean().item()
+                                              for known, loss_on in val_masks.values()])
+            model.train()
+            mask_history["mask_step"].append(step + 1)
+            print(f"  checkpoint step {step + 1}:  "
+                  + "  ".join(f"{n} {l:.4f}" for n, l in zip(val_masks, mask_history["mask_loss"][-1])), flush=True)
+
         if (step + 1) % args.eval_interval == 0 or step == args.max_iters - 1:
             val_loss = evaluate(model, path, val_set, args.eval_batch_size)
             train_loss = running / n_running
@@ -177,6 +201,7 @@ def main():
         "model_state": {k: v.cpu() for k, v in model.state_dict().items()},  # final
         "best_model_state": best_state,                                     # lowest val loss
         "best_val_loss": best_val,
+        "checkpoints": checkpoints,                                         # {step: model_state} at checkpoint_steps
         "hparams": hparams,
         "mean": mean.cpu(), "std": std.cpu(),
         "variables": [v.branch for v in var_registry],
@@ -185,7 +210,8 @@ def main():
         "val_files": splits["val"],                  # validation file names
         "test_files": splits["test"],                # test file names, used by eval_fm.ipynb
     }, f"{prefix}_weights.pt")
-    np.savez(f"{prefix}_loss_history.npz", **{k: np.asarray(v) for k, v in history.items()})
+    np.savez(f"{prefix}_loss_history.npz", **{k: np.asarray(v) for k, v in history.items()},
+             **{k: np.asarray(v) for k, v in mask_history.items()}, mask_names=np.array(list(val_masks)))
 
     fig, ax = plt.subplots(figsize=(7, 4.5))
     ax.plot(history["step"], history["train_loss"], label="train")
